@@ -34,6 +34,8 @@ const CalorieCalc = function () {
     
     useEffect(() => {
         calc(initialState);
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
       
     const handleOnchange = (name: string, value: string) => {
