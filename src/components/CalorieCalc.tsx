@@ -58,8 +58,7 @@ const CalorieCalc = function () {
     }
     
     return (
-        <div className="container">
-            <h2>Calorie calculator</h2>
+        <div className="calorie-calc">
             <form>
                 <div className='row mb-1'>
                     <label className='col-md-3 col-lg-2'>Your weight</label>

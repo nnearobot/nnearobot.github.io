@@ -4,3 +4,7 @@ body {
     box-sizing: border-box;
 }
 
+.content {min-height: 90vh; padding: 1rem 0 0 1rem;}
+
+* + h2 {margin-top: 3rem;}
+
