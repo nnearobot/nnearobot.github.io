@@ -3,7 +3,7 @@ import classes from './NnInput.module.css';
 
 const NnInput = ({...props}) => {
     return (
-        <input {...props} className={classes.nn_input} />
+        <input {...props} className={`form-control ${classes.nn_input}`} />
     );
 };
 

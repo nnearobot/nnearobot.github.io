@@ -24,7 +24,7 @@ const CalorieCalc = function () {
         weight: 60,
         calorie: 1600,
         proteinKoeff: 1.6,
-        fatKoeff: 1.1,
+        fatKoeff: 1.0,
         protein: 0,
         fat: 0,
         carb: 0
@@ -64,24 +64,30 @@ const CalorieCalc = function () {
             <form>
                 <div className='row mb-1'>
                     <label className='col-md-3 col-lg-2'>Your weight</label>
-                    <div className='col-md-9 col-lg-10'>
-                        <NnInput
-                            value={state.weight}
-                            onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('weight', event.currentTarget.value)}
-                            type="text"
-                            placeholder="Weight"
-                        />                        
+                    <div className='col-md-9 col-lg-2'>
+                        <div className='input-group'>
+                            <NnInput
+                                value={state.weight}
+                                onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('weight', event.currentTarget.value)}
+                                type="text"
+                                placeholder="Weight"
+                            />                        
+                            <span className="input-group-text">kg</span>
+                        </div>
                     </div>
                 </div>
                 <div className='row mb-4'>
                     <label className='col-md-3 col-lg-2'>Desired day calories</label>
-                    <div className='col-md-9 col-lg-10'>
-                        <NnInput
-                            value={state.calorie}
-                            onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('calorie', event.currentTarget.value)}
-                            type="text"
-                            placeholder="Calories"
-                        />                        
+                    <div className='col-md-9 col-lg-2'>
+                        <div className='input-group'>
+                            <NnInput
+                                value={state.calorie}
+                                onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('calorie', event.currentTarget.value)}
+                                type="text"
+                                placeholder="Calories"
+                            />                        
+                            <span className="input-group-text">kcal</span>
+                        </div>
                     </div>
                 </div>
                 <div className='row mb-3'>
