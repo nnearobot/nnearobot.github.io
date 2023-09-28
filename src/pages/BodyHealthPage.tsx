@@ -1,6 +1,7 @@
 import React from 'react';
 
 import CalorieCalc from '../components/CalorieCalc';
+import BodyFatCalc from '../components/BodyFatCalc';
 
 function BodyHealthPage() {
   return (
@@ -11,7 +12,7 @@ function BodyHealthPage() {
       <CalorieCalc />
 
       <h2>Body Fat Percentage Calculator</h2>
-      <p>Coming soon...</p>
+      <BodyFatCalc />
     </div>
   );
 }
