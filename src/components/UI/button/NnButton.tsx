@@ -1,5 +1,5 @@
 import React from "react";
-import classes from './NnButton.module.css';
+import classes from './NnButton.module.scss';
 
 const NnButton = ({...props}) => {
     return (

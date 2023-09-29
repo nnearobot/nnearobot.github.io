@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import classes from './NnRange.module.css';
+import classes from './NnRange.module.scss';
 
 const NnRange = function({...props}) {
     const [value, setValue] = useState(props.value)

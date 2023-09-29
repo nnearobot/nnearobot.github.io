@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './NnInput.module.css';
+import classes from './NnInput.module.scss';
 
 const NnInput = ({...props}) => {
     return (

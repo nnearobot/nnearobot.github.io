@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './NnRadioButton.module.css';
+import classes from './NnRadioButton.module.scss';
 
 const NnRadioButton = ({...props}) => {
     return (
