@@ -55,7 +55,7 @@ const BodyFatCalc = function () {
                 fat2 = 163.205 * Math.log10((parseInt(state.waist) + parseInt(state.hips) - parseInt(state.neck)) / 2.54) - 97.684 * Math.log10(parseInt(state.height) / 2.54) - 78.387;
             } else {
                 // 86.010 × log10 [abdomen – neck (in)] - 70.041 × log10 [height (in)] + 36.76
-                fat2 = 163.205 * Math.log10((parseInt(state.waist) - parseInt(state.neck)) / 2.54) - 70.041 * Math.log10(parseInt(state.height) / 2.54) + 36.76;
+                fat2 = 86.010 * Math.log10((parseInt(state.waist) - parseInt(state.neck)) / 2.54) - 70.041 * Math.log10(parseInt(state.height) / 2.54) + 36.76;
             }
             count++;
         }
