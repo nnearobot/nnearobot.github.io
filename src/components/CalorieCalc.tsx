@@ -1,6 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import NnInput from './UI/input/NnInput';
-import NnRange from './UI/range/NnRange';
+'use client'
+
+import { useState, useEffect } from 'react';
+import InputWithSide from './UI/InputWithSide';
+import Range from './UI/Range';
+import FormRow from './UI/FormRow';
+import FormLabel from './UI/FormLabel';
+import GlassPlate from './UI/GlassPlate';
 
 type stateType = {
     weight: number;
@@ -45,86 +50,77 @@ const CalorieCalc = function () {
     }
 
     function calc(state: stateType): stateType {
-        let protein = state.weight * state.proteinKoeff; // g
-        let fat = state.weight * state.fatKoeff; // g
-        let carb = (state.calorie - protein * proteinCalorie - fat * fatCalorie) / carbsCalorie;
+        let protein = Math.round(state.weight * state.proteinKoeff); // g
+        let fat = Math.round(state.weight * state.fatKoeff); // g
+        let carb = Math.round((state.calorie - protein * proteinCalorie - fat * fatCalorie) / carbsCalorie);
 
         state = {
             ...state,
-            protein: Math.round(protein * 100) / 100,
-            fat: Math.round(fat * 100) / 100,
-            carb: Math.round(carb * 100) / 100
+            protein: protein,
+            fat: fat,
+            carb: carb
         }
 
         return state;
     }
     
     return (
-        <div className="calorie-calc">
-            <form>
-                <div className='row mb-1'>
-                    <label className='col-md-3 col-lg-2'>Your weight</label>
-                    <div className='col-md-9 col-lg-2'>
-                        <div className='input-group'>
-                            <NnInput
-                                value={state.weight}
-                                onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('weight', event.currentTarget.value)}
-                                type="text"
-                                placeholder="Weight"
-                            />                        
-                            <span className="input-group-text">kg</span>
-                        </div>
-                    </div>
+        <>
+            <FormRow className="md:grid-cols-6">
+                <FormLabel className="col-span-2">Your weight</FormLabel>
+                <div className='col-span-2'>
+                    <InputWithSide
+                        value={state.weight}
+                        onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('weight', event.currentTarget.value)}
+                        placeholder="Weight"
+                        sideLabel="kg"
+                    />
                 </div>
-                <div className='row mb-4'>
-                    <label className='col-md-3 col-lg-2'>Desired day calories</label>
-                    <div className='col-md-9 col-lg-2'>
-                        <div className='input-group'>
-                            <NnInput
-                                value={state.calorie}
-                                onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('calorie', event.currentTarget.value)}
-                                type="text"
-                                placeholder="Calories"
-                            />                        
-                            <span className="input-group-text">kcal</span>
-                        </div>
-                    </div>
+            </FormRow>
+            <FormRow className="md:grid-cols-6">
+                <FormLabel className="col-span-2">Desired day calories</FormLabel>
+                <div className='col-span-2'>
+                    <InputWithSide
+                        value={state.calorie}
+                        onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('calorie', event.currentTarget.value)}
+                        type="text"
+                        placeholder="Calories"
+                        sideLabel="kcal"
+                    />
                 </div>
-                <div className='row mb-3'>
-                    <label className='col-md-3 col-lg-2'>Proteins:</label>
-                    <div className='col-md-9 col-lg-2 fs-5'><b>{state.protein}</b></div>
-                    <div className='col-md-9 col-lg-4 fs-5'>
-                        <NnRange
-                            min={proteinKoeffRange[0]}
-                            max={proteinKoeffRange[1]}
-                            step={0.1}
-                            value={state.proteinKoeff}
-                            onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('proteinKoeff', event.currentTarget.value)}
-                        /> g/kg
-                    </div>
+            </FormRow>
+            <FormRow className="md:grid-cols-6">
+                <FormLabel className="col-span-2">Proteins:</FormLabel>
+                <div className='text-xl col-span-1'><b className="inline-block">{state.protein}</b> g</div>
+                <div className='text-xl col-span-3'>
+                    <Range
+                        min={proteinKoeffRange[0]}
+                        max={proteinKoeffRange[1]}
+                        step={0.1}
+                        value={state.proteinKoeff}
+                        onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('proteinKoeff', event.currentTarget.value)}
+                    /> g/kg
                 </div>
-                <div className='row mb-3'>
-                    <label className='col-md-3 col-lg-2'>Fats:</label>
-                    <div className='col-md-9 col-lg-2 fs-5'><b>{state.fat}</b></div>
-                    <div className='col-md-9 col-lg-4 fs-5'>
-                        <NnRange
-                            min={fatKoeffRange[0]}
-                            max={fatKoeffRange[1]}
-                            step={0.1}
-                            value={state.fatKoeff}
-                            onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('fatKoeff', event.currentTarget.value)}
-                        /> g/kg
-                    </div>
+            </FormRow>
+            <FormRow className="md:grid-cols-6">
+                <FormLabel className="col-span-2">Fats:</FormLabel>
+                <div className='text-xl col-span-1'><b className="inline-block">{state.fat}</b> g</div>
+                <div className='text-xl col-span-3'>
+                    <Range
+                        min={fatKoeffRange[0]}
+                        max={fatKoeffRange[1]}
+                        step={0.1}
+                        value={state.fatKoeff}
+                        onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('fatKoeff', event.currentTarget.value)}
+                    /> g/kg
                 </div>
-                <div className='row mb-3'>
-                    <label className='col-md-3 col-lg-2'>Carbs:</label>
-                    <div className='col-md-9 col-lg-10 fs-5'><b>
-                        {state.carb}
-                    </b></div>
-                </div>
-            </form>
-        </div>
+            </FormRow>
+            <FormRow className="md:grid-cols-6">
+                <FormLabel className="col-span-2">Carbs:</FormLabel>
+                <div className='text-xl col-span-4'><b>{state.carb}</b> g</div>
+            </FormRow>
+        </>
     );
 };
 
-export default CalorieCalc;
+export default GlassPlate(CalorieCalc, 'calorie-calc w-[600px] max-w-full');

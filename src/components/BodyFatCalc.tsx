@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
-import NnInput from './UI/input/NnInput';
-import NnRadioButton from './UI/radioButton/NnRadioButton';
+'use client'
+
+import { useState } from 'react'
+import InputWithSide from './UI/InputWithSide'
+import RadioButton from './UI/RadioButton'
+import QuestionCircle from './UI/QuestionCircle'
+import FormRow from './UI/FormRow'
+import FormLabel from './UI/FormLabel'
+import GlassPlate from './UI/GlassPlate'
 
 type stateType = {
     female: boolean; // true = female, false = male
@@ -73,7 +79,7 @@ const BodyFatCalc = function () {
         }
 
         // Average BF for 3 methods:
-        let fat = (fat1 + fat2 + fat3) / count;
+        let fat = count ? (fat1 + fat2 + fat3) / count : 0;
 
         let newState = {
             ...state,
@@ -84,112 +90,88 @@ const BodyFatCalc = function () {
     }
     
     return (
-        <div className="calorie-calc">
-            <form>
-                <div className='row mb-1'>
-                    <label className='col-md-3 col-lg-2 col-form-label'>Your sex</label>
-                    <div className='col-md-9 col-lg-10'>
-                        <div className="mb-2"><label><NnRadioButton
-                            value={1}
-                            checked={state.female ? "checked" : ""}
-                            onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnSexCheck(event.currentTarget.value)}
-                        /> Female</label></div>
-                        <div className="mb-2"><label><NnRadioButton
-                            value={0}
-                            checked={!state.female ? "checked" : ""}
-                            onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnSexCheck(event.currentTarget.value)}
-                        /> Male</label></div>
-                    </div>
+        <>
+            <FormRow className="md:grid-cols-3">
+                <FormLabel>Your sex</FormLabel>
+                <div className='col-span-2'>
+                    <div className="mb-2"><label><RadioButton
+                        value={1}
+                        checked={state.female ? "checked" : ""}
+                        onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnSexCheck(event.currentTarget.value)}
+                    /> Female</label></div>
+                    <div className="mb-2"><label><RadioButton
+                        value={0}
+                        checked={!state.female ? "checked" : ""}
+                        onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnSexCheck(event.currentTarget.value)}
+                    /> Male</label></div>
                 </div>
-                <div className='row mb-1'>
-                    <label className='col-md-3 col-lg-2'>Your weight</label>
-                    <div className='col-md-9 col-lg-2'>
-                        <div className='input-group'>
-                            <NnInput
-                                value={state.weight}
-                                onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('weight', event.currentTarget.value)}
-                                type="text"
-                                placeholder="Weight"
-                            />                        
-                            <span className="input-group-text">kg</span>
-                        </div>
-                    </div>
+            </FormRow>
+            <FormRow className="md:grid-cols-3">
+                <FormLabel>Your weight</FormLabel>
+                <div className='col-span-2'>
+                    <InputWithSide
+                        value={state.weight}
+                        onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('weight', event.currentTarget.value)}
+                        placeholder="Weight"
+                        sideLabel="kg"
+                    />
                 </div>
-                <div className='row mb-1'>
-                    <label className='col-md-3 col-lg-2 col-form-label'>Your height</label>
-                    <div className='col-md-3 col-lg-2'>
-                        <div className='input-group'>
-                            <NnInput
-                                value={state.height}
-                                onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('height', event.currentTarget.value)}
-                                type="text"
-                                placeholder="Height"
-                            />
-                            <span className="input-group-text">cm</span>
-                        </div>
-                    </div>
-                    <div className='col-md-6 col-lg-8 small'></div>
+            </FormRow>
+            <FormRow className="md:grid-cols-3">
+                <FormLabel>Your height</FormLabel>
+                <div className='col-span-2'>
+                    <InputWithSide
+                        value={state.height}
+                        onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('height', event.currentTarget.value)}
+                        placeholder="Height"
+                        sideLabel="cm"
+                    />
                 </div>
-                <div className='row mb-1'>
-                    <label className='col-md-3 col-lg-2'>Your waist</label>
-                    <div className='col-md-3 col-lg-2'>
-                        <div className='input-group'>
-                            <NnInput
-                                value={state.waist}
-                                onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('waist', event.currentTarget.value)}
-                                type="text"
-                                placeholder="Waist"
-                            />                        
-                            <span className="input-group-text">cm</span>
-                        </div>
-                    </div>
-                    <div className='col-md-6 col-lg-8 small'>
-                        {state.female
-                            ? "measured at the natural waistline (or the smallest waist circumference) and rounded down"
-                            : "measured at the navel and rounded down"
-                        }
-                    </div>
+            </FormRow>
+            <FormRow className="md:grid-cols-3">
+                <FormLabel>
+                    Your waist <QuestionCircle title={state.female
+                        ? "measured at the natural waistline (or the smallest waist circumference) and rounded down"
+                        : "measured at the navel and rounded down"
+                    }/>
+                </FormLabel>
+                <div className='col-span-2'>
+                    <InputWithSide
+                        value={state.waist}
+                        onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('waist', event.currentTarget.value)}
+                        placeholder="Waist"
+                        sideLabel="cm"
+                    />
                 </div>
-                <div className={`row mb-1 ${state.female ? "d-flex" : "d-none"}`}>
-                    <label className='col-md-3 col-lg-2 col-form-label'>Your hips</label>
-                    <div className='col-md-3 col-lg-2'>
-                        <div className='input-group'>
-                            <NnInput
-                                value={state.hips}
-                                onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('hips', event.currentTarget.value)}
-                                type="text"
-                                placeholder="Hips"
-                            />                        
-                            <span className="input-group-text">cm</span>
-                        </div>
-                    </div>
-                    <div className='col-md-6 col-lg-8 small'>measured at the largest protrusion of the buttocks</div>
+            </FormRow>
+            <FormRow className="md:grid-cols-3">
+                <FormLabel>Your neck <QuestionCircle title="measured right below the voicebox and rounded up" /></FormLabel>
+                <div className='col-span-2'>
+                    <InputWithSide
+                        value={state.neck}
+                        onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('neck', event.currentTarget.value)}
+                        placeholder="Neck"
+                        sideLabel="cm"
+                    />
                 </div>
-                <div className='row mb-3'>
-                    <label className='col-md-3 col-lg-2 col-form-label'>Your neck</label>
-                    <div className='col-md-3 col-lg-2'>
-                        <div className='input-group'>
-                            <NnInput
-                                value={state.neck}
-                                onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('neck', event.currentTarget.value)}
-                                type="text"
-                                placeholder="Neck"
-                            />                        
-                            <span className="input-group-text">cm</span>
-                        </div>
-                    </div>
-                    <div className='col-md-6 col-lg-8 small'>measured right below the voicebox and rounded up</div>
+            </FormRow>
+            <FormRow className={`md:grid-cols-3 ${state.female ? "flex" : "hidden"}`}>
+                <FormLabel>Your hips <QuestionCircle title="measured at the largest protrusion of the buttocks" /></FormLabel>
+                <div className='col-span-2'>
+                    <InputWithSide
+                        value={state.hips}
+                        onChange={(event: React.FormEvent<HTMLInputElement>) => handleOnchange('hips', event.currentTarget.value)}
+                        placeholder="Hips"
+                        sideLabel="cm"
+                    />
                 </div>
-
-                <div className='row mb-3'>
-                    <label className='col-md-3 col-lg-2 col-form-label'>Yor body fat percentage:</label>
-                    <div className='col-md-9 col-lg-10 fs-5'><b>
-                        {state.bodyFat}%
-                    </b></div>
-                </div>
-            </form>
-        </div>
+            </FormRow>
+            <FormRow className="md:grid-cols-3">
+                <FormLabel>Yor body fat:</FormLabel>
+                <div className='text-xl font-bold col-span-2'>{state.bodyFat}%</div>
+            </FormRow>
+        </>
     );
 };
 
-export default BodyFatCalc;
+export default GlassPlate(BodyFatCalc, 'body-fat-calc w-[600px] max-w-full');
