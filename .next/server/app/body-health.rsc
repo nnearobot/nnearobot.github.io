@@ -2,10 +2,10 @@
 2:HL["/_next/static/media/3a04115668d8070d-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 3:HL["/_next/static/media/699512af39861afa-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 4:HL["/_next/static/media/934c4b7cb736f2a3-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-5:HL["/_next/static/css/fcd90416707afb5f.css","style",{"crossOrigin":""}]
-0:["viJA9ywSTz_jMCJZxb_G5",[[["",{"children":["body-health",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],"$L6",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/fcd90416707afb5f.css","precedence":"next","crossOrigin":""}]],"$L7"]]]]
-8:I{"id":1443,"chunks":["272:static/chunks/webpack-72c2c48998c48bc9.js","971:static/chunks/fd9d1056-fd5c17de0a8e4c09.js","864:static/chunks/864-d96cbd58ed229677.js"],"name":"","async":false}
-9:I{"id":8639,"chunks":["272:static/chunks/webpack-72c2c48998c48bc9.js","971:static/chunks/fd9d1056-fd5c17de0a8e4c09.js","864:static/chunks/864-d96cbd58ed229677.js"],"name":"","async":false}
+5:HL["/_next/static/css/bd0eb9c7680ac843.css","style",{"crossOrigin":""}]
+0:["BcVlSgQpGio1MjiPliwmd",[[["",{"children":["body-health",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],"$L6",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/bd0eb9c7680ac843.css","precedence":"next","crossOrigin":""}]],"$L7"]]]]
+8:I{"id":1443,"chunks":["272:static/chunks/webpack-b3116d1cb12c2c60.js","971:static/chunks/fd9d1056-fd5c17de0a8e4c09.js","864:static/chunks/864-d96cbd58ed229677.js"],"name":"","async":false}
+9:I{"id":8639,"chunks":["272:static/chunks/webpack-b3116d1cb12c2c60.js","971:static/chunks/fd9d1056-fd5c17de0a8e4c09.js","864:static/chunks/864-d96cbd58ed229677.js"],"name":"","async":false}
 b:I{"id":3486,"chunks":["732:static/chunks/732-d87c69ef485c1a67.js","125:static/chunks/app/body-health/page-c49b6c6356489528.js"],"name":"","async":false}
 c:I{"id":8554,"chunks":["732:static/chunks/732-d87c69ef485c1a67.js","125:static/chunks/app/body-health/page-c49b6c6356489528.js"],"name":"","async":false}
 d:I{"id":617,"chunks":["732:static/chunks/732-d87c69ef485c1a67.js","125:static/chunks/app/body-health/page-c49b6c6356489528.js"],"name":"","async":false}
