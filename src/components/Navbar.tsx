@@ -2,6 +2,13 @@
 
 import { useState } from 'react'
 import { navLinks } from '../data';
+import { Exo_2 } from 'next/font/google'
+import Tri from '@/components/Svg/Tri';
+
+const exo2 = Exo_2({
+  weight: ['400'],
+  subsets: ['latin']
+})
 
 const Navbar = ({...props}) => {
   const [state, setState] = useState(false)
@@ -9,10 +16,15 @@ const Navbar = ({...props}) => {
   return (
       <nav className="w-full md:static">
           <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
-              <div className="flex items-center justify-between py-3 md:py-5 md:block">
-                <a className="text-nn-300 hover:text-nn-200 text-xl" href="/">Nnearobot.io</a>
+                <div className="flex items-center justify-between py-3 md:py-5 md:block">
+                    <a className={`${props.dark ? 'text-zinc-300 stroke-zinc-300 ' : 'text-zinc-700 stroke-zinc-700'} hover:text-white hover:stroke-white text-xl`} href="/">
+                        <Tri
+                            className={`w-[40px] h-[40px] inline-block mr-1 -mt-1`}
+                        />
+                        Nnearobot.io
+                    </a>
                     <div className="md:hidden">
-                        <button className="text-zinc-700 outline-none p-2 rounded-md focus:border-zinc-400 focus:border"
+                        <button className={`${props.dark ? 'text-zinc-50' : 'text-zinc-600'} outline-none p-2 rounded-md focus:border-zinc-400 focus:border`}
                             onClick={() => setState(!state)}
                         >
                             {
@@ -28,24 +40,24 @@ const Navbar = ({...props}) => {
                             }
                         </button>
                     </div>
-              </div>
-              <div className={`flex-1 justify-self-center pb-3 mt-6 md:block md:pb-0 md:mt-0 ${ state ? 'block' : 'hidden'}`}>
-                  <ul className="justify-center items-center space-y-4 md:flex md:space-x-6 md:space-y-0">
-                      {
-                          navLinks.map((item, idx) => {
-                              return (
-                                <li key={idx} className={`${props.dark ? 'text-zinc-50 border-zinc-600' : 'text-zinc-600 border-zinc-200'} hover:text-nn-300 pb-4 md:pb-0 border-b md:border-0`}>
-                                    <a href={item.url}>
-                                        { item.title }
-                                    </a>
-                                </li>
-                              )
-                          })
-                      }
-                  </ul>
-              </div>
-              <div className="hidden md:inline-block">
-              </div>
+                </div>
+                <div className={`flex-1 justify-self-center pb-3 mt-6 md:block md:pb-0 md:mt-0 ${ state ? 'block' : 'hidden'}`}>
+                    <ul className={`justify-center items-center space-y-4 md:flex md:space-x-6 md:space-y-0 ${exo2.className}`}>
+                        {
+                            navLinks.map((item, idx) => {
+                                return (
+                                    <li key={idx} className={`${props.dark ? 'text-zinc-50 border-zinc-600' : 'text-zinc-600 border-zinc-200'} hover:text-nn-300 pb-4 md:pb-0 border-b md:border-0`}>
+                                        <a href={item.url}>
+                                            { item.title }
+                                        </a>
+                                    </li>
+                                )
+                            })
+                        }
+                    </ul>
+                </div>
+                <div className="hidden md:inline-block">
+                </div>
           </div>
       </nav>
   )

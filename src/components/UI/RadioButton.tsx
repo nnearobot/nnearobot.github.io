@@ -1,6 +1,6 @@
 const RadioButton = ({...props}) => {
     return (
-        <input type="radio" {...props} className="accent-nn" />
+        <input type="radio" {...props} className="accent-zinc-500" />
     );
 };
 

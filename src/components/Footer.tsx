@@ -1,7 +1,7 @@
 const Footer = () => {   
     return (
         <footer>
-            <div className='container'>
+            <div className='p-10 text-right'>
                 &copy; 2023 Rimma Maksiutova
             </div>
         </footer>

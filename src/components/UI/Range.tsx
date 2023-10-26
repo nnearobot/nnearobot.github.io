@@ -19,7 +19,7 @@ const Range = function({...props}) {
 
     return (
         <>
-            <input {...props} type="range" onChange={handleSlide} className={`accent-nn ${className}`} /> <span>{value}</span>
+            <input {...props} type="range" onChange={handleSlide} className={`accent-zinc-500 ${className}`} /> <span>{value}</span>
         </>
     );    
 }

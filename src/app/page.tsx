@@ -1,5 +1,6 @@
 import Header from '@/components/Header'
 import Hero from '../components/Home/Hero';
+import Container from '@/components/UI/Container'
 
 export default function Home() {
   return (
@@ -8,8 +9,6 @@ export default function Home() {
         <Header dark={true} />
         <Hero />
       </div>
-
-
     </main>
   )
 }

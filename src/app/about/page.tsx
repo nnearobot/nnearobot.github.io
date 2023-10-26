@@ -1,12 +1,15 @@
 import Header from '@/components/Header'
+import Container from '@/components/UI/Container'
+import H1 from '@/components/UI/H1'
 
 export default function AboutPage() {
   return (
     <>
       <Header />
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <h1>About</h1>
-      </main>
+      <Container>
+        <H1>About</H1>
+        <p>Coming soon...</p>
+      </Container>
     </>
   )
 }
