@@ -7,7 +7,7 @@ export default function AboutPage() {
     <>
       <Header />
       <Container>
-        <H1>About</H1>
+        <H1>Profile</H1>
         <p>Coming soon...</p>
       </Container>
     </>
