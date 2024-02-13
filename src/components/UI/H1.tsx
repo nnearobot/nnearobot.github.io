@@ -1,4 +1,4 @@
-import { Major_Mono_Display } from 'next/font/google'
+import { Major_Mono_Display } from 'next/font/google';
 
 const majorMonoDisplay = Major_Mono_Display({
     weight: ['400'],
@@ -10,12 +10,12 @@ const H1 = ({...props}) => {
         children,
         className,
         ...rest
-    } = props
+    } = props;
 
-    className = className || ""
+    className = className || "";
 
     return (
-        <h1 className={`mb-4 font-bold text-4xl ${className} ${majorMonoDisplay.className}`}>{ children }</h1>
+        <h1 className={`mb-5 font-bold text-4xl text-center capitalize ${className} ${majorMonoDisplay.className}`}>{ children }</h1>
     );
 };
 

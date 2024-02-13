@@ -9,7 +9,7 @@ export default function HealthPage() {
   return (
     <>
       <Header />
-      <Container>
+      <Container className="items-center">
         <H1>Healthy Body, Healthy Mind</H1>
         <p>Here are some useful tools for calculating health parameters.</p>
 

@@ -1,9 +1,10 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { navLinks } from '../data';
-import { Exo_2 } from 'next/font/google'
+import { useState } from 'react';
+import { navLinks, snsLinks } from '../data/links';
+import { Exo_2 } from 'next/font/google';
 import Tri from '@/components/Svg/Tri';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const exo2 = Exo_2({
   weight: ['400'],
@@ -13,11 +14,15 @@ const exo2 = Exo_2({
 const Navbar = ({...props}) => {
   const [state, setState] = useState(false)
 
+  let colors = props.dark
+  ? "text-zinc-400 stroke-zinc-400 fill-zinc-400 border-zinc-400 hover:text-white hover:stroke-white hover:fill-white hover:border-white"
+  : "text-zinc-600 stroke-zinc-600 fill-zinc-600 border-zinc-600 hover:text-zinc-900 hover:stroke-zinc-900 hover:fill-zinc-900 hover:border-zinc-900"
+
   return (
       <nav className="w-full md:static">
           <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
                 <div className="flex items-center justify-between py-3 md:py-5 md:block">
-                    <a className={`${props.dark ? 'text-zinc-300 stroke-zinc-300 ' : 'text-zinc-700 stroke-zinc-700'} hover:text-white hover:stroke-white text-xl`} href="/">
+                    <a className={`${colors} text-xl`} href="/">
                         <Tri
                             className={`w-[40px] h-[40px] inline-block mr-1 -mt-1`}
                         />
@@ -46,7 +51,7 @@ const Navbar = ({...props}) => {
                         {
                             navLinks.map((item, idx) => {
                                 return (
-                                    <li key={idx} className={`${props.dark ? 'text-zinc-50 border-zinc-600' : 'text-zinc-600 border-zinc-200'} hover:text-nn-300 pb-4 md:pb-0 border-b md:border-0`}>
+                                    <li key={idx} className={`${colors} pb-4 md:pb-0 border-b md:border-0`}>
                                         <a href={item.url}>
                                             { item.title }
                                         </a>
@@ -56,7 +61,16 @@ const Navbar = ({...props}) => {
                         }
                     </ul>
                 </div>
-                <div className="hidden md:inline-block">
+                <div className="md:inline-block">
+                    {
+                        snsLinks.map((item, idx) => {
+                            return (
+                                <a key={idx} href={item.url} title={ item.title } className={colors}>
+                                    <FontAwesomeIcon icon={item.icon} className="text-xl inline-block ml-4" />
+                                </a>
+                            )
+                        })
+                    }
                 </div>
           </div>
       </nav>

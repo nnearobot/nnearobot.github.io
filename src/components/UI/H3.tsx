@@ -1,4 +1,4 @@
-import { Exo_2 } from 'next/font/google'
+import { Exo_2 } from 'next/font/google';
 
 const exo2 = Exo_2({
   weight: ['400'],
@@ -10,12 +10,12 @@ const H3 = ({...props}) => {
         children,
         className,
         ...rest
-    } = props
+    } = props;
 
-    className = className || ""
+    className = className || "";
 
     return (
-        <h3 className={`font-bold text-xl ${className} ${exo2.className}`}>{ children }</h3>
+        <h3 className={`mb-2 font-bold text-xl capitalize ${className} ${exo2.className}`}>{ children }</h3>
     );
 };
 
