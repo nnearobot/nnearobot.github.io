@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { navLinks, snsLinks } from '../data/links';
+import { navLinks, snsLinks } from '@/data/links';
 import { Exo_2 } from 'next/font/google';
 import Tri from '@/components/Svg/Tri';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

@@ -6,7 +6,7 @@ import H2 from '@/components/UI/H2';
 import H4 from '@/components/UI/H4';
 import TagCloud from '@/components/UI/TagCloud';
 
-import { languages, frameworks, frontend, backend, devops, software, os } from '../../data/skills';
+import { languages, frameworks, frontend, backend, devops, software, os } from '@/data/skills';
 
 export default function AboutPage() {
   return (
