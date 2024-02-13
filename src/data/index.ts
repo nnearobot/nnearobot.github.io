@@ -1,4 +1,4 @@
-import navLinks from "./navLinks";
+import navLinks from "./links";
 
 
 export {
