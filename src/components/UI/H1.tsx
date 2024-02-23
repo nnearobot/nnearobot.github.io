@@ -15,7 +15,7 @@ const H1 = ({...props}) => {
     className = className || "";
 
     return (
-        <h1 className={`mb-5 font-bold text-4xl text-center capitalize ${className} ${majorMonoDisplay.className}`}>{ children }</h1>
+        <h1 className={`mb-5 font-bold text-xl xs:text-2xl sm:text-3xl md:text-4xl text-center capitalize ${className} ${majorMonoDisplay.className}`}>{ children }</h1>
     );
 };
 

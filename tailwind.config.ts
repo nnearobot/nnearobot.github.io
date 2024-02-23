@@ -15,6 +15,14 @@ const config: Config = {
     'text-xl',
   ],
   theme: {
+    screens: {
+      xs: '320px',
+      sm: '576px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px',
+    },
     fontSize: {
       'xs': '0.7rem',
       'sm': '0.85rem',

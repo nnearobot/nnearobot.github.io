@@ -15,7 +15,7 @@ export default function AboutPage() {
       <Container className="max-w-4xl mx-auto ">
         <H1 className="!mb-0">Rimma Maksiutova</H1>
         <p className="text-zinc-400 text-sm mb-10 text-center">(She/Her)</p>
-        <p className="capitalize mb-5 text-center text-md">Full stack software engineer | Engineering manager</p>
+        <p className="capitalize mb-5 text-center text-md md:text-xl">Full stack software engineer&nbsp;| Engineering manager</p>
         <p className="text-center text-zinc-600">Translating product goals into software solutions.</p>
         <p className="mb-10 text-center text-zinc-600">Passionate about continuous learning and professional development.</p>
 
@@ -53,7 +53,8 @@ export default function AboutPage() {
         <TagCloud tags={os} className="mb-5" />
 
 
-        <p className="mt-20">To be continued...</p>
+        <H2>Projects</H2>
+        <p>[Under construction]</p>
 
       </Container>
     </>

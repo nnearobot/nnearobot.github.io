@@ -5,6 +5,7 @@ import { navLinks, snsLinks } from '@/data/links';
 import { Exo_2 } from 'next/font/google';
 import Tri from '@/components/Svg/Tri';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import SNSLinks from './SNSLinks';
 
 const exo2 = Exo_2({
   weight: ['400'],
@@ -23,9 +24,7 @@ const Navbar = ({...props}) => {
           <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
                 <div className="flex items-center justify-between py-3 md:py-5 md:block">
                     <a className={`${colors} text-xl`} href="/">
-                        <Tri
-                            className={`w-[40px] h-[40px] inline-block mr-1 -mt-1`}
-                        />
+                        <Tri className={`w-[30px] h-[30px] sm:w-[40px] sm:h-[40px] inline-block mr-1 -mt-1`} />
                         nnearobot
                     </a>
                     <div className="md:hidden">
@@ -59,19 +58,10 @@ const Navbar = ({...props}) => {
                                 )
                             })
                         }
+                        <li className={`${colors} pb-4 md:pb-0 border-b md:border-0 flex flex-row justify-around md:hidden`}><SNSLinks colors={colors} /></li>
                     </ul>
                 </div>
-                <div className="md:inline-block">
-                    {
-                        snsLinks.map((item, idx) => {
-                            return (
-                                <a key={idx} href={item.url} title={ item.title } className={colors}>
-                                    <FontAwesomeIcon icon={item.icon} className="text-xl inline-block ml-4" />
-                                </a>
-                            )
-                        })
-                    }
-                </div>
+                <div className="hidden md:inline-block"><SNSLinks colors={colors} /></div>
           </div>
       </nav>
   )

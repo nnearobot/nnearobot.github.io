@@ -15,7 +15,7 @@ const H3 = ({...props}) => {
     className = className || "";
 
     return (
-        <h3 className={`mb-2 font-bold text-xl capitalize ${className} ${exo2.className}`}>{ children }</h3>
+        <h3 className={`mb-2 font-bold text-xl md:text-2xl capitalize ${className} ${exo2.className}`}>{ children }</h3>
     );
 };
 
