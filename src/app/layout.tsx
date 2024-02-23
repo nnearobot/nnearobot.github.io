@@ -27,10 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <div className="absolute inset-0 max-w-lg m-auto h-[27rem] sm:h-64 sm:max-w-7xl"></div>
         {children}
         <Footer />
-        </body>
+      </body>
     </html>
   )
 }
