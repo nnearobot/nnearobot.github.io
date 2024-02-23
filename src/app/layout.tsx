@@ -15,7 +15,7 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  title: 'Nnearobot.io',
+  title: "nnearobot | Rimma Maksiutova's page",
   description: 'My experiments in frontend',
 }
 
