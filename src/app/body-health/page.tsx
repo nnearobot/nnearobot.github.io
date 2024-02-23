@@ -9,8 +9,8 @@ export default function HealthPage() {
   return (
     <>
       <Header />
+      <H1>Healthy Body, Healthy Mind</H1>
       <Container className="items-center">
-        <H1>Healthy Body, Healthy Mind</H1>
         <p className="md:text-md text-center">Here are some useful tools for calculating health parameters.</p>
 
         <H2>Daily Calorie Calculator</H2>

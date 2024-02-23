@@ -2,9 +2,9 @@ import { MetadataRoute } from 'next'
  
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Nnearobot.io',
-    short_name: 'Nnearobot',
-    description: 'My experiments in frontend',
+    name: 'nnearobot',
+    short_name: 'nnearobot',
+    description: 'Experiments in frontend',
     start_url: '/',
     display: 'standalone',
     background_color: '#fff',

@@ -8,9 +8,9 @@ const Container = ({...props}) => {
     className = className || ""
 
     return (
-        <main className={`flex min-h-screen flex-col justify-start container mx-auto p-2 xs:p-3 sm:p-6 md:p-10 ${className}`}>
+        <div className={`flex min-h-screen flex-col justify-start container max-w-4xl mx-auto p-2 xs:p-3 sm:p-6 md:p-10 ${className}`}>
             {props.children}
-        </main>
+        </div>
     );
 };
 

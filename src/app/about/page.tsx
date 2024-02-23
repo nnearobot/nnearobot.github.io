@@ -12,8 +12,8 @@ export default function AboutPage() {
   return (
     <>
       <Header />
-      <Container className="max-w-4xl mx-auto ">
-        <H1 className="!mb-0">Rimma Maksiutova</H1>
+      <H1 className="!mb-0">Rimma Maksiutova</H1>
+      <Container>
         <p className="text-zinc-400 text-sm mb-10 text-center">(She/Her)</p>
         <p className="capitalize mb-5 text-center text-md md:text-xl">Full stack software engineer&nbsp;| Engineering manager</p>
         <p className="text-center text-zinc-600">Translating product goals into software solutions.</p>
