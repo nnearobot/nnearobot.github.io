@@ -26,7 +26,7 @@ const Navbar = ({...props}) => {
                         <Tri
                             className={`w-[40px] h-[40px] inline-block mr-1 -mt-1`}
                         />
-                        Nnearobot.io
+                        nnearobot
                     </a>
                     <div className="md:hidden">
                         <button className={`${props.dark ? 'text-zinc-50' : 'text-zinc-600'} outline-none p-2 rounded-md focus:border-zinc-400 focus:border`}
