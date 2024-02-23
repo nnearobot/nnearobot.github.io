@@ -12,6 +12,11 @@ export const navLinks = [
       title: "Body Health",
       url: "/body-health"
     },
+    {
+      id: "shader",
+      title: "Shader",
+      url: "/shader"
+    },
 ];
 
 export const snsLinks = [
