@@ -44,10 +44,6 @@ export const frameworks = [
     level: 3,
   },
   {
-    title: "jQuery",
-    level: 5,
-  },
-  {
     title: "Express",
     level: 2,
   },
@@ -76,7 +72,7 @@ export const frameworks = [
 export const frontend = [
   {
     title: "React.js",
-    level: 4,
+    level: 5,
   },
   {
     title: "Next.js",
@@ -96,6 +92,10 @@ export const frontend = [
   },
   {
     title: "Sass",
+    level: 4,
+  },
+  {
+    title: "jQuery",
     level: 4,
   },
   {
