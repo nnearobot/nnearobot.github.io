@@ -11,13 +11,12 @@ import { languages, frameworks, frontend, backend, devops, software, os } from '
 export default function AboutPage() {
   return (
     <>
-      <Header />
       <H1 className="!mb-0">Rimma Maksiutova</H1>
       <Container>
-        <p className="text-zinc-400 text-sm mb-10 text-center">(She/Her)</p>
+        <p className="text-zinc-500 text-sm mb-10 text-center">(She/Her)</p>
         <p className="capitalize mb-5 text-center text-md md:text-xl">Full stack software engineer&nbsp;| Engineering manager</p>
-        <p className="text-center text-zinc-600">Translating product goals into software solutions.</p>
-        <p className="mb-10 text-center text-zinc-600">Passionate about continuous learning and professional development.</p>
+        <p className="text-center text-zinc-500">Translating product goals into software solutions.</p>
+        <p className="mb-10 text-center text-zinc-500">Passionate about continuous learning and professional development.</p>
 
         
         <H2>Experience</H2>

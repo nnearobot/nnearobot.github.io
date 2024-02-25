@@ -8,7 +8,7 @@ const H4 = ({...props}) => {
     className = className || "";
 
     return (
-        <h4 className={`mb-1 mt-2 text-zinc-600 text-lg md:text-xl capitalize ${className}`}>{ children }</h4>
+        <h4 className={`mb-1 mt-2 text-zinc-600 dark:text-zinc-400 text-lg md:text-xl capitalize ${className}`}>{ children }</h4>
     );
 };
 

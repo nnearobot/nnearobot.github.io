@@ -1,12 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import InputWithSide from './UI/InputWithSide'
-import RadioButton from './UI/RadioButton'
-import QuestionCircle from './UI/QuestionCircle'
-import FormRow from './UI/FormRow'
-import FormLabel from './UI/FormLabel'
-import GlassPlate from './UI/GlassPlate'
+import InputWithSide from '../../components/UI/InputWithSide'
+import RadioButton from '../../components/UI/RadioButton'
+import QuestionCircle from '../../components/UI/QuestionCircle'
+import FormRow from '../../components/UI/FormRow'
+import FormLabel from '../../components/UI/FormLabel'
+import GlassPlate from '../../components/UI/GlassPlate'
 
 type stateType = {
     female: boolean; // true = female, false = male

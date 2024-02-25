@@ -27,12 +27,12 @@ const TagCloud = ({...props}) => {
                             break;
                         case 4:
                             size = "lg";
-                            additional = "border border-solid border-zinc-300 bg-white/40 rounded-md px-1"
+                            additional = "border border-solid border-zinc-300 dark:border-zinc-500 bg-white/40 dark:bg-zinc-500/40 rounded-md px-1"
                             break;
                         case 5:
                         case "top":
                             size = "xl";
-                            additional = "border border-solid border-zinc-400 bg-white rounded-md px-2"
+                            additional = "border border-solid border-zinc-400 bg-white dark:bg-zinc-500 dark:text-white rounded-md px-2"
                             break;
                         default:
                             size = "base";

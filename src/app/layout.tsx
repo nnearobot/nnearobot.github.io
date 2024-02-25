@@ -4,6 +4,7 @@ import { Roboto } from 'next/font/google'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 
+import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 config.autoAddCss = false
@@ -27,9 +28,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <div className="min-h-screen">
+        <Header />
+        <main className="min-h-screen">
           {children}
-        </div>
+        </main>
         <Footer />
       </body>
     </html>

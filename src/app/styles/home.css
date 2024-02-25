@@ -1,0 +1,8 @@
+:root {
+    --header-color: #a1a1aa;
+    --header-color-hover: #fff;
+}
+
+header {background: #18181b;}
+#hero {background: #18181b;}
+#hero h1 {color: #fff;}
