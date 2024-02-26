@@ -1,4 +1,3 @@
-import Header from '@/components/Header';
 import Container from '@/components/UI/Container';
 import DropCap from '@/components/UI/DropCap';
 import H1 from '@/components/UI/H1';

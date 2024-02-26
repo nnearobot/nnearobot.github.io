@@ -1,4 +1,3 @@
-import Header from '@/components/Header'
 import CalorieCalc from '@/app/body-health/CalorieCalc'
 import BodyFatCalc from '@/app/body-health/BodyFatCalc'
 import Container from '@/components/UI/Container'
