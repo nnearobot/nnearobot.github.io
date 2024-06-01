@@ -1,7 +1,7 @@
 export const languages = [
   {
     title: "Rust",
-    level: 4,
+    level: 5,
   },
   {
     title: "Python",
@@ -17,11 +17,11 @@ export const languages = [
   },
   {
     title: "PHP",
-    level: 5,
+    level: 4,
   },
   {
     title: "Go",
-    level: 4,
+    level: 5,
   },
   {
     title: "Java",
