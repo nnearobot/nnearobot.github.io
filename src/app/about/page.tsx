@@ -4,6 +4,9 @@ import H1 from '@/components/UI/H1';
 import H2 from '@/components/UI/H2';
 import H4 from '@/components/UI/H4';
 import TagCloud from '@/components/UI/TagCloud';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCloudArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { urls } from '@/data/urls';
 
 import { languages, frameworks, frontend, backend, devops, software, os } from '@/data/skills';
 
@@ -17,7 +20,15 @@ export default function AboutPage() {
         <p className="text-center text-zinc-500">Translating product goals into software solutions.</p>
         <p className="mb-10 text-center text-zinc-500">Passionate about continuous learning and professional development.</p>
 
-        
+        <p className="text-center mt-8">
+          <a href={urls.cv.url}
+            title={urls.cv.title}
+            className="border border-zinc-800 rounded-xl px-4 py-2 text-md text-zinc-800 hover:text-zinc-600 hover:border-zinc-600"
+            >
+            <FontAwesomeIcon icon={faCloudArrowDown} className="text-2xl md:text-xl" /> Download CV
+          </a>
+        </p>
+
         <H2>Experience</H2>
         <p><DropCap>12</DropCap> years of web development</p>
         <p><DropCap>3</DropCap> years of engineering management, team leadership, and CTO</p>
