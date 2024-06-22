@@ -25,7 +25,7 @@ export default function AboutPage() {
             title={urls.cv.title}
             className="border border-zinc-800 rounded-xl px-4 py-2 text-md text-zinc-800 hover:text-zinc-600 hover:border-zinc-600"
             >
-            <FontAwesomeIcon icon={faCloudArrowDown} className="text-2xl md:text-xl" /> Download CV
+            <FontAwesomeIcon icon={faCloudArrowDown} className="md:text-xl" /> Download CV
           </a>
         </p>
 

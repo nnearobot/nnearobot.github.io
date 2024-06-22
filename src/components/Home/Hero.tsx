@@ -23,7 +23,7 @@ function Hero() {
               <p className={`max-w-2xl mx-auto text-zinc-300 ${exo2.className} text-sm xs:text-md md:text-lg lg:text-xl capitalize`}>Fullstack software engineer</p>
               <p className="text-center mt-16"><a href="/about" className="text-md underline text-zinc-200 hover:text-white">About me</a></p>
               <p className="text-center mt-8"><a href={urls.cv.url} title={urls.cv.title} className="border border-zinc-200 rounded-xl px-4 py-2 text-md text-zinc-200">
-                <FontAwesomeIcon icon={faCloudArrowDown} className="text-2xl md:text-xl" /> Download CV
+                <FontAwesomeIcon icon={faCloudArrowDown} className="md:text-xl" /> Download CV
               </a></p>
           </div>
       </div>
