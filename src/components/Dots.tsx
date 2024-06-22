@@ -25,7 +25,6 @@ const Dots: React.FC = () => {
         if (typeof window == 'undefined') {
             return;
         }
-
         if (p5InstanceRef.current) {
             p5InstanceRef.current.remove();
         }
@@ -88,11 +87,6 @@ const Dots: React.FC = () => {
 
     useEffect(() => {
         handleRestart();
-        return () => {
-            if (p5InstanceRef.current) {
-                p5InstanceRef.current.remove();
-            }
-        };
     }, []);
 
     return (
