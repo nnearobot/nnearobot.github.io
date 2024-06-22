@@ -66,7 +66,7 @@ const CalorieCalc = function () {
     
     return (
         <>
-            <FormRow className="md:grid-cols-6">
+            <FormRow className="sm:grid-cols-6">
                 <FormLabel className="col-span-2">Your weight</FormLabel>
                 <div className='col-span-2'>
                     <InputWithSide
@@ -77,7 +77,7 @@ const CalorieCalc = function () {
                     />
                 </div>
             </FormRow>
-            <FormRow className="md:grid-cols-6">
+            <FormRow className="sm:grid-cols-6">
                 <FormLabel className="col-span-2">Desired day calories</FormLabel>
                 <div className='col-span-2'>
                     <InputWithSide
@@ -89,10 +89,10 @@ const CalorieCalc = function () {
                     />
                 </div>
             </FormRow>
-            <FormRow className="md:grid-cols-6">
+            <FormRow className="sm:grid-cols-6">
                 <FormLabel className="col-span-2">Proteins:</FormLabel>
-                <div className='text-xl col-span-1'><b className="inline-block">{state.protein}</b> g</div>
-                <div className='text-xl col-span-3'>
+                <div className='sm:text-xl col-span-1'><b className="inline-block">{state.protein}</b> g</div>
+                <div className='sm:text-xl col-span-3 mb-4 sm:mb-0'>
                     <Range
                         min={proteinKoeffRange[0]}
                         max={proteinKoeffRange[1]}
@@ -102,10 +102,10 @@ const CalorieCalc = function () {
                     /> g/kg
                 </div>
             </FormRow>
-            <FormRow className="md:grid-cols-6">
+            <FormRow className="sm:grid-cols-6">
                 <FormLabel className="col-span-2">Fats:</FormLabel>
-                <div className='text-xl col-span-1'><b className="inline-block">{state.fat}</b> g</div>
-                <div className='text-xl col-span-3'>
+                <div className='sm:text-xl col-span-1'><b className="inline-block">{state.fat}</b> g</div>
+                <div className='sm:text-xl col-span-3 mb-4 sm:mb-0'>
                     <Range
                         min={fatKoeffRange[0]}
                         max={fatKoeffRange[1]}
@@ -115,9 +115,9 @@ const CalorieCalc = function () {
                     /> g/kg
                 </div>
             </FormRow>
-            <FormRow className="md:grid-cols-6">
+            <FormRow className="sm:grid-cols-6">
                 <FormLabel className="col-span-2">Carbs:</FormLabel>
-                <div className='text-xl col-span-4'><b>{state.carb}</b> g</div>
+                <div className='sm:text-xl col-span-4'><b>{state.carb}</b> g</div>
             </FormRow>
         </>
     );
