@@ -14,7 +14,7 @@ const SNSLinks = ({...props}) => {
     return (
         snsLinks.map((item, idx) => {
             return (
-                <a key={idx} href={item.url} title={ item.title } className={`block md:inline-block md:ml-4 ${className}`}>
+                <a key={idx} href={item.url} title={ item.title } className={`block md:inline-block md:ml-4 no-underline ${className}`}>
                     <FontAwesomeIcon icon={item.icon} className="text-xl !align-[-.18em]" />{expanded ? ` ${item.label}` : ''}
                 </a>
             )
