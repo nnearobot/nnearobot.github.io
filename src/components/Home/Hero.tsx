@@ -2,6 +2,7 @@ import { Exo_2, Major_Mono_Display } from 'next/font/google';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloudArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { urls } from '@/data/urls';
+import SNSLinks from '../SNSLinks';
 
 const exo2 = Exo_2({
   weight: ['400'],
@@ -25,6 +26,7 @@ function Hero() {
               <p className="mt-8"><a href={urls.cv.url} title={urls.cv.title} className="border border-zinc-200 rounded-xl px-4 pt-2 pb-1 text-md text-zinc-200">
                 <FontAwesomeIcon icon={faCloudArrowDown} className="md:text-xl" /> Download CV
               </a></p>
+              <p className="mt-16"><SNSLinks expanded="1" className="text-zinc-500 hover:text-zinc-200 mb-2" /></p>
           </div>
       </div>
     </section>

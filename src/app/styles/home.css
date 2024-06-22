@@ -3,6 +3,10 @@
     --header-color-hover: #fff;
 }
 
+body {background: #18181b;}
+
 header {background: #18181b;}
 #hero {background: #18181b;}
 #hero h1 {color: #fff;}
+
+footer {color: rgba(113, 113, 122, 1);}
