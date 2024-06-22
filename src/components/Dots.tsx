@@ -22,6 +22,10 @@ const Dots: React.FC = () => {
     const [dotAmount, setDotAmount] = useState(100000);
 
     const handleRestart = () => {
+        if (typeof window == 'undefined') {
+            return;
+        }
+
         if (p5InstanceRef.current) {
             p5InstanceRef.current.remove();
         }

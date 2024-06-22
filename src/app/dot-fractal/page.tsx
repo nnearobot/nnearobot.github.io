@@ -1,17 +1,20 @@
 'use client';
 
+import dynamic from 'next/dynamic';
+
 import H1 from '@/components/UI/H1';
-import Dots from '@/components/Dots';
 import Container from '@/components/UI/Container';
 import H3 from '@/components/UI/H3';
-import H4 from '@/components/UI/H4';
+
+const Dots = dynamic(() => import('@/components/Dots'), { ssr: false });
 
 export default function DotsPage() {
     return (
         <>
             <H1 className="!mb-0">Dot fractal generator</H1>
-            <Container>
-                <p className="text-center mb-10">Vizualization of a fractal drawing using random dot selection</p>
+            <Container className="text-center mb-10">
+                <p>Vizualization of a fractal drawing using random dot selection</p>
+                <p>Utilize <a href="https://p5js.org/">p5.js</a> for real-time graphics rendering.</p>
             </Container>
 
             <Dots />
@@ -28,7 +31,6 @@ export default function DotsPage() {
                 </ol>
 
                 <H3 className="mt-5">Features</H3>
-                <H4>Interactive Control Panel:</H4>
                 <ul>
                     <li>Number of vertex: set the number of initial dots in the shape.</li>
                     <li>Dot size: define the size of the dots.</li>
@@ -36,10 +38,6 @@ export default function DotsPage() {
                     <li>Number of dots: determine the total number of dots to be drawn.</li>
                     <li>Delay: set the delay between drawing new dots.</li>
                 </ul>
-
-                <H4>Dynamic Visualization:</H4>
-                <p>Utilize <a href="https://p5js.org/">p5.js</a> for real-time graphics rendering.</p>
-                <p>Visualize the algorithm step-by-step with a delay, creating an engaging experience.</p>
             </Container>
         </>
     )
