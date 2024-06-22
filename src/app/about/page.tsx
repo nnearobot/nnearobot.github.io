@@ -23,7 +23,7 @@ export default function AboutPage() {
         <p className="text-center mt-8">
           <a href={urls.cv.url}
             title={urls.cv.title}
-            className="border border-zinc-800 rounded-xl px-4 py-2 text-md text-zinc-800 hover:text-zinc-600 hover:border-zinc-600"
+            className="border border-zinc-800 rounded-xl px-4 pt-2 pb-1 text-md text-zinc-800 hover:text-zinc-600 hover:border-zinc-600"
             >
             <FontAwesomeIcon icon={faCloudArrowDown} className="md:text-xl" /> Download CV
           </a>
