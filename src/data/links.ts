@@ -18,12 +18,14 @@ export const snsLinks = [
   {
     id: "linkedin",
     title: "My LinkedIn",
+    label: "rimma-maksiutova",
     url: "https://www.linkedin.com/in/rimma-maksiutova/",
     icon: faLinkedin
   },
   {
     id: "github",
     title: "My GitHub",
+    label: "nnearobot",
     url: "https://github.com/nnearobot",
     icon: faGithub
   },
