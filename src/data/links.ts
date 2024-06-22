@@ -12,6 +12,11 @@ export const navLinks = [
       title: "Body Health",
       url: "/body-health"
     },
+    {
+      id: "dot-fractal",
+      title: "Dot Fractal",
+      url: "/dot-fractal"
+    },
 ];
 
 export const snsLinks = [
