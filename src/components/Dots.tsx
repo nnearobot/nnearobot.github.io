@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useImperativeHandle } from 'react';
+import React, { useRef, useState } from 'react';
 import p5 from 'p5';
 import TextInput from './UI/TextInput';
 import FormRow from './UI/FormRow';
@@ -84,10 +84,6 @@ const Dots: React.FC = () => {
             return dot3;
         };
     };
-
-    useEffect(() => {
-        handleRestart();
-    }, []);
 
     return (
         <div className="flex w-[930px] mx-auto">
