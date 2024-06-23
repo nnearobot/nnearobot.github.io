@@ -148,7 +148,9 @@ const Dots: React.FC = () => {
 
                 <Button onClick={handleRestart} className="mt-2 my-2 mx-auto block">Start</Button>
             </div>
-            <div id="Dots" className="" ref={sketchRef}></div>
+            <div className="w-[640px] h-[640px] bg-white">
+                <div id="Dots" className="" ref={sketchRef}></div>
+            </div>
         </div>
     )
 };
