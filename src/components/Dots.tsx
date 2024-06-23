@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import p5 from 'p5';
 import TextInput from './UI/TextInput';
 import FormRow from './UI/FormRow';
@@ -21,14 +21,13 @@ const Dots: React.FC = () => {
     const [delay, setDelay] = useState(1);
     const [dotAmount, setDotAmount] = useState(100000);
 
-    const handleRestart = () => {
-        if (typeof window == 'undefined') {
-            return;
+    const createP5Instance = () => {
+        if (typeof window !== 'undefined') { // Check if window is available
+            if (p5InstanceRef.current) {
+                p5InstanceRef.current.remove();
+            }
+            p5InstanceRef.current = new p5(sketch, sketchRef.current as HTMLDivElement);
         }
-        if (p5InstanceRef.current) {
-            p5InstanceRef.current.remove();
-        }
-        p5InstanceRef.current = new p5(sketch, sketchRef.current as HTMLDivElement);
     };
 
     const sketch = (p: p5) => {
@@ -84,6 +83,15 @@ const Dots: React.FC = () => {
             return dot3;
         };
     };
+
+    useEffect(() => {
+        createP5Instance();
+        return () => {
+            if (p5InstanceRef.current) {
+                p5InstanceRef.current.remove();
+            }
+        };
+    }, []);
 
     return (
         <div className="flex w-[930px] mx-auto">
@@ -146,7 +154,7 @@ const Dots: React.FC = () => {
                     </div>
                 </FormRow>
 
-                <Button onClick={handleRestart} className="mt-2 my-2 mx-auto block">Start</Button>
+                <Button onClick={() => createP5Instance()} className="mt-2 my-2 mx-auto block">Restart</Button>
             </div>
             <div className="w-[640px] h-[640px] bg-white">
                 <div id="Dots" className="" ref={sketchRef}></div>
