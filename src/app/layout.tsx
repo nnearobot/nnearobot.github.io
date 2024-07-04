@@ -16,8 +16,8 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  title: "nnearobot | Rimma Maksiutova's page",
-  description: 'My experiments in frontend',
+  title: "nnearobot | Rimma Maksiutova",
+  description: 'My frontend experiments',
 }
 
 export default function RootLayout({
