@@ -1,0 +1,16 @@
+{
+  "/_not-found": "/_not-found",
+  "/favicon.ico/route": "/favicon.ico",
+  "/page": "/",
+  "/manifest.webmanifest/route": "/manifest.webmanifest",
+  "/robots.txt/route": "/robots.txt",
+  "/body-health/page": "/body-health",
+  "/dots/page": "/dots",
+  "/dot-fractal/page": "/dot-fractal",
+  "/about/page": "/about",
+  "/icon/apple-icon.png/route": "/icon/apple-icon.png",
+  "/icon/icon2.png/route": "/icon/icon2.png",
+  "/icon/icon3.png/route": "/icon/icon3.png",
+  "/icon/icon1.png/route": "/icon/icon1.png",
+  "/icon/icon4.png/route": "/icon/icon4.png"
+}
