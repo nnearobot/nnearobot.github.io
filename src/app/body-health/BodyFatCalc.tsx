@@ -47,10 +47,10 @@ const BodyFatCalc = function () {
         if (state.waist && state.neck && state.height) {
             if (state.female) {
                 // BF%cal (women) = 19.2 – 0.239H + 0.8A – 0.5N
-                fat1 = 19.2 - 0.239 * parseInt(state.height) +  0.8 * parseInt(state.waist) - 0.5 * parseInt(state.neck);
+                fat1 = 19.2 - 0.239 * parseFloat(state.height) +  0.8 * parseFloat(state.waist) - 0.5 * parseFloat(state.neck);
             } else {
                 // BF%cal (men) = 10.1 – 0.239H + 0.8A – 0.5N
-                fat1 = 10.1 - 0.239 * parseInt(state.height) +  0.8 * parseInt(state.waist) - 0.5 * parseInt(state.neck);
+                fat1 = 10.1 - 0.239 * parseFloat(state.height) +  0.8 * parseFloat(state.waist) - 0.5 * parseFloat(state.neck);
             }
             count++;
         }
@@ -58,16 +58,16 @@ const BodyFatCalc = function () {
         if (state.waist && state.neck && state.height && (!state.female || state.hips)) {
             if (state.female) {
                 //163.205 × log10 [abdomen + hip – neck (in)] – 97.684 x log10 [height (in)] − 78.387
-                fat2 = 163.205 * Math.log10((parseInt(state.waist) + parseInt(state.hips) - parseInt(state.neck)) / 2.54) - 97.684 * Math.log10(parseInt(state.height) / 2.54) - 78.387;
+                fat2 = 163.205 * Math.log10((parseFloat(state.waist) + parseFloat(state.hips) - parseFloat(state.neck)) / 2.54) - 97.684 * Math.log10(parseFloat(state.height) / 2.54) - 78.387;
             } else {
                 // 86.010 × log10 [abdomen – neck (in)] - 70.041 × log10 [height (in)] + 36.76
-                fat2 = 86.010 * Math.log10((parseInt(state.waist) - parseInt(state.neck)) / 2.54) - 70.041 * Math.log10(parseInt(state.height) / 2.54) + 36.76;
+                fat2 = 86.010 * Math.log10((parseFloat(state.waist) - parseFloat(state.neck)) / 2.54) - 70.041 * Math.log10(parseFloat(state.height) / 2.54) + 36.76;
             }
             count++;
         }
 
         if (state.weight && state.height) {
-            let bmi = parseInt(state.weight) / (parseInt(state.height) * parseInt(state.height) / 10000);
+            let bmi = parseFloat(state.weight) / (parseFloat(state.height) * parseFloat(state.height) / 10000);
             if (state.female) {
                 // BF% females = 0.624 × BMI + 21.835
                 fat3 = 0.624 * bmi + 21.835;
