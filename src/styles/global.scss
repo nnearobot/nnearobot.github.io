@@ -1,0 +1,71 @@
+@use "colors" as *;
+@use "variables" as *;
+@use "mixins" as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--background-start);
+    background: linear-gradient(180deg, var(--background-start) 0%, var(--background-end) 100%);
+    line-height: 1.25;
+    color: var(--foreground-color);
+    @include font-body;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.container {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    margin-right: auto;
+    margin-left: auto;
+    @include container-size;
+}
+
+.container-fluid {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+a {
+    text-decoration: underline;
+}
+
+a:hover {
+    color: var(--hover-link-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @include font-accent;
+    color: var(--color-h);
+}
+
+h1 {
+    @include h-size(h1);
+}
+
+h2 {
+    @include h-size(h2);
+}
+
+h3 {
+    @include h-size(h3);
+}
+
+h4 {
+    @include h-size(h4);
+}
+
+p {
+    line-height: 1.5;
+    margin: 0 0 0.5em;
+}

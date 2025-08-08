@@ -1,8 +1,8 @@
-# Nnearobot.io
+# nnearobot.girtub.io
 
-https://www.nnearobot.io
+https://www.nnearobot.github.io
 
-My personal project built with Next.js and Tailwind Css, and deployed with Github Pages.
+My experiments
 
 
 Currently under construction.

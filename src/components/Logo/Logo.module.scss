@@ -1,0 +1,29 @@
+@use "../../styles/variables" as *;
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: .2rem;
+    color: var(--foreground-color);
+
+    .tri {
+        width: 40px;
+        height: 40px;
+        fill: var(--foreground-color);
+        stroke: var(--foreground-color);
+    }
+    .wordmark {
+        font-size: 1.2rem;
+    }
+}
+
+
+
+@media screen and (max-width: $width-sm) {
+    .logo {
+        .tri {
+            width: 32px;
+            height: 32px;
+        }
+    }
+}

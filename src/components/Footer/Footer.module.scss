@@ -1,0 +1,55 @@
+@use "../../styles/variables" as *;
+
+.footer {
+    background: var(--footer-bg);
+    border-top: 1px solid var(--line);
+    margin-top: 4rem;
+
+    .flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+
+    .nav ul {
+        display: flex;
+        gap: 1rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav a {
+        text-decoration: none;
+        color: var(--muted);
+    }
+
+    .nav a:hover {
+        color: var(--foreground-color);
+    }
+
+    .copy {
+        color: var(--muted);
+        font-size: .9rem;
+        justify-self: end;
+    }
+}
+
+@media screen and (max-width: $width-sm) {
+    .footer {
+        .flex {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .copy {
+            justify-self: center;
+        }
+    }
+}

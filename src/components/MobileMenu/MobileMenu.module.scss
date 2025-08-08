@@ -1,0 +1,59 @@
+.backdrop {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .2s ease;
+}
+
+.open {
+    pointer-events: auto;
+    opacity: 1;
+    background: rgba(0, 0, 0, .4);
+}
+
+.panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(86vw, 360px);
+    background: var(--menu-bg);
+    color: var(--foreground-color);
+    box-shadow: -20px 0 40px rgba(0, 0, 0, .2);
+    transform: translateX(100%);
+    transition: transform .2s ease;
+}
+
+.open .panel {
+    transform: translateX(0);
+}
+
+.menu ul {
+    list-style: none;
+    margin: 4rem 0 0;
+    padding: 0;
+}
+
+.menu li {
+    border-bottom: 1px solid var(--line);
+}
+
+.menu a {
+    display: block;
+    padding: 1rem 1.25rem;
+    color: inherit;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    background: var(--gray-100);
+}
+
+.snsWrap {
+    padding: 1rem 1.25rem;
+}
+
+html[data-theme="dark"] .menu a:hover {
+    background: var(--gray-900);
+}
