@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 
-import styles from "./Header.module.scss";
-
-import navLinks from "../../data/navigation";
-
 import Logo from "../Logo/Logo";
 import SNSLinks from "../SNSLinks/SNSLinks";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import MobileMenu from "../MobileMenu/MobileMenu";
+import { Container } from '../../components/UI';
+
+import styles from "./Header.module.scss";
+
+import navLinks from "../../data/navigation";
 
 const Header = () => {
     const [open, setOpen] = useState(false);
@@ -64,7 +65,7 @@ const Header = () => {
 
     return (
         <header className={styles.header}>
-            <div className="container">
+            <Container>
                 <div className={styles.navbar}>
                     <a href="/" className={styles.brand} aria-label="Home">
                         <Logo />
@@ -104,7 +105,7 @@ const Header = () => {
                         )}
                     </div>
                 </div>
-            </div>
+            </Container>
 
             <MobileMenu open={open} onClose={() => setOpen(false)} />
         </header>

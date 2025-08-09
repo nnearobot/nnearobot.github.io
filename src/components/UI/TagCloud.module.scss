@@ -1,0 +1,60 @@
+.tagCloud {
+    .tag {
+        display: inline-block;
+        margin-inline-end: 0.5rem;
+    }
+
+    .sizeXs {
+        font-size: 0.75rem;
+        line-height: 1rem;
+    }
+
+    .sizeSm {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+    }
+
+    .sizeBase {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    .sizeLg {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+    }
+
+    .sizeXl {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+
+    .variantL4 {
+        border: 1px solid #d4d4d8;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 0.375rem;
+        padding-inline: 0.25rem;
+        padding-block: 0;
+        margin-block: 0.25rem;
+
+        :global([data-theme="dark"]) & {
+            border-color: #71717a;
+            background: rgba(113, 113, 122, 0.4);
+        }
+    }
+
+    .variantTop {
+        border: 1px solid #a1a1aa;
+        background: #ffffff;
+        border-radius: 0.375rem;
+        padding-inline: 0.5rem;
+        padding-block: 0;
+        margin-block: 0.25rem;
+
+        :global([data-theme="dark"]) & {
+            background: #71717a;
+            color: #ffffff;
+            border-color: #71717a;
+        }
+    }
+}

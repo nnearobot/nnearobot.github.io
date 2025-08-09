@@ -1,8 +1,8 @@
 @use "../../styles/variables" as *;
 
 .footer {
-    background: var(--footer-bg);
-    border-top: 1px solid var(--line);
+    background: var(--background-end);
+    border-top: 1px solid var(--background-start);
     margin-top: 4rem;
 
     .flex {

@@ -25,7 +25,7 @@ export const languages = [
   },
   {
     title: "Java",
-    level: 3,
+    level: 2,
   },
   {
     title: "Ruby",
@@ -40,31 +40,15 @@ export const frameworks = [
     level: 5,
   },
   {
-    title: "Flask",
+    title: "Laravel",
     level: 3,
   },
   {
-    title: "Express",
-    level: 2,
-  },
-  {
-    title: "Laravel",
+    title: "Gin",
     level: 4,
   },
   {
-    title: "Symfony",
-    level: 5,
-  },
-  {
-    title: "Gin",
-    level: 2,
-  },
-  {
     title: "Cobra",
-    level: 1,
-  },
-  {
-    title: "Ruby on Rails",
     level: 1,
   },
 ];
@@ -114,8 +98,8 @@ export const backend = [
     level: 5,
   },
   {
-    title: "NoSQL",
-    level: 2,
+    title: "MongoDB",
+    level: 3,
   },
   {
     title: "API building",
@@ -145,6 +129,10 @@ export const devops = [
     level: 3,
   },
   {
+    title: "K8s",
+    level: 3,
+  },
+  {
     title: "CI/CD",
     level: 3,
   },
@@ -168,15 +156,23 @@ export const software = [
     level: 5,
   },
   {
+    title: "Inkscape",
+    level: 3,
+  },
+  {
     title: "Slack",
     level: 4,
   },
   {
-    title: "Jira",
+    title: "Asana",
     level: 3,
   },
   {
-    title: "MS Excel",
+    title: "Google Workspace",
+    level: 4,
+  },
+  {
+    title: "Spreadsheet",
     level: 4,
   },
 ];

@@ -1,46 +1,39 @@
-const TagCloud = ({...props}) => {
-    let {
-        tags,
-        className,
-        ...rest
-    } = props;
+import styles from "./TagCloud.module.scss";
 
-    className = className || "";
-
+const TagCloud = ({ tags, className = "", ...rest }) => {
     return (
-        <div className={`tag-cloud ${className}`}>
-            {
-                tags.map((tag, idx) => {
-                    let size = "base";
-                    let additional = "";
-                    switch (tag.level) {
-                        case 1:
-                            size = "xs";
-                            break;
-                        case 2:
-                            size = "sm";
-                            break;
-                        case 3:
-                            size = "base";
-                            break;
-                        case 4:
-                            size = "lg";
-                            additional = "border border-solid border-zinc-300 dark:border-zinc-500 bg-white/40 dark:bg-zinc-500/40 rounded-md px-1 my-1"
-                            break;
-                        case 5:
-                        case "top":
-                            size = "xl";
-                            additional = "border border-solid border-zinc-400 bg-white dark:bg-zinc-500 dark:text-white rounded-md px-2 my-1"
-                            break;
-                        default:
-                            size = "base";
-                    }
+        <div className={`${styles.tagCloud} ${className}`} {...rest}>
+            {tags.map((tag, idx) => {
+                // size by level
+                let sizeClass = styles.sizeBase;
+                switch (tag.level) {
+                    case 1:
+                        sizeClass = styles.sizeXs; break;
+                    case 2:
+                        sizeClass = styles.sizeSm; break;
+                    case 3:
+                        sizeClass = styles.sizeBase; break;
+                    case 4:
+                        sizeClass = styles.sizeLg; break;
+                    case 5:
+                    case "top":
+                        sizeClass = styles.sizeXl; break;
+                    default:
+                        sizeClass = styles.sizeBase;
+                }
 
-                    return (
-                        <span key={idx} className={`inline-block me-2 text-${size} ${additional}`}>{ tag.title }</span>
-                    )
-                })
-            }
+                let variantClass = "";
+                if (tag.level === 4) variantClass = styles.variantL4;
+                if (tag.level === 5 || tag.level === "top") variantClass = styles.variantTop;
+
+                const classNames = [styles.tag, sizeClass, variantClass].filter(Boolean).join(" ");
+
+                return (
+                    <span key={idx} className={classNames}>
+                        {tag.title}
+                    </span>
+                );
+            })}
         </div>
     );
 };

@@ -1,28 +1,21 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloudArrowDown } from '@fortawesome/free-solid-svg-icons'
-
 import { Container, DropCap, TagCloud } from '../../components/UI';
+import DownloadCVBtn from "../../components/DownloadCVBtn";
 
-import urls from '../../data/urls';
 import { languages, frameworks, frontend, backend, devops, software, os } from '../../data/skills';
 
-import './About.module.scss';
+import styles from "./About.module.scss";
 
 const AboutPage = () => {
     return (
-        <>
-            <h1>Rimma Maksiutova</h1>
+        <div className={styles.about}>
+            <h1 className="text-center">Rimma Maksiutova</h1>
             <Container>
-                <p className="pronounce">(She/Her)</p>
-                <p className="title">Full stack software engineer&nbsp;| Engineering manager</p>
-                <p>Translating product goals into software solutions.</p>
-                <p>Passionate about continuous learning and professional development.</p>
-
-                <p className="text-center cv-link">
-                    <a href={urls.cv.url} title={urls.cv.title}>
-                        <FontAwesomeIcon icon={faCloudArrowDown} className="md:text-xl" /> Download CV
-                    </a>
-                </p>
+                <div className="text-center">
+                    <p className="pronounce">(She/Her)</p>
+                    <p className="title">Full stack software engineer&nbsp;| Engineering manager</p>
+                    <p>Translating product goals into software solutions.</p>
+                    <p className={styles.cvBtn}><DownloadCVBtn /></p>
+                </div>
 
                 <h2>Experience</h2>
                 <p><DropCap>12</DropCap> years of web development</p>
@@ -61,7 +54,7 @@ const AboutPage = () => {
                 <p>[Under construction]</p>
 
             </Container>
-        </>
+        </div>
     )
 }
 

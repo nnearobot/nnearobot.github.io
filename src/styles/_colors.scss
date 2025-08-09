@@ -1,7 +1,7 @@
 :root {
     /* base */
     --background-start: #ffffff;
-    --background-end: #f7f7f7;
+    --background-end: #dedede;
 
     /* subtle gradient */
     --foreground-color: #111111;
@@ -11,7 +11,6 @@
 
     /* headings */
     --muted: #6b6b6b;
-    --line: #e6e6e6;
 
     /* links & interactive */
     --link-color: #111111;
@@ -30,32 +29,25 @@
     --gray-800: #424242;
     --gray-900: #212121;
 
-    /* components */
-    --header-bg: #ffffffcc;
-
     /* translucent */
     --menu-bg: #ffffff;
     --card-bg: #ffffff;
-    --footer-bg: #f5f5f5;
     --shadow: 0 10px 30px rgba(0, 0, 0, .06);
 }
 
 /* Dark theme – invert foreground/background, keep grays as grays */
 html[data-theme="dark"] {
-    --background-start: #000000;
-    --background-end: #0a0a0a;
+    --background-start: #161616;
+    --background-end: #000000;
     --foreground-color: #ffffff;
     --color-h: #ffffff;
     --muted: #bfbfbf;
-    --line: #1f1f1f;
 
     --link-color: #ffffff;
     --hover-link-color: #cfcfcf;
     --focus-ring: 0 0 0 3px rgba(255, 255, 255, .25);
 
-    --header-bg: #000000cc;
     --menu-bg: #0d0d0d;
     --card-bg: #0d0d0d;
-    --footer-bg: #0a0a0a;
     --shadow: 0 10px 30px rgba(0, 0, 0, .5);
 }

@@ -1,20 +1,20 @@
-import styles from "./Footer.module.scss";
+import { Container } from '../../components/UI';
 
-import navLinks from "../../data/navigation";
+import styles from "./Footer.module.scss";
 
 import SNSLinks from "../SNSLinks/SNSLinks";
 
 const Footer = () => {
     return (
         <footer className={styles.footer}>
-            <div className="container">
+            <Container>
                 <div className={styles.flex}>
                     <div>
                         <SNSLinks withLabels={true} />
                     </div>
                     <div className={styles.copy}>© 2023—2025 Rimma Maksiutova</div>
                 </div>
-            </div>
+            </Container>
         </footer>
     );
 };

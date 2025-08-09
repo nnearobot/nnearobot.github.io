@@ -33,19 +33,19 @@
 
 @mixin h-size($size) {
     @if $size ==h1 {
-        font-size: 2rem;
+        font-size: 1.75rem;
 
         @media (min-width: $width-sm) {
-            font-size: 2.5rem;
+            font-size: 3rem;
         }
 
         @media (min-width: $width-md) {
-            font-size: 3rem;
+            font-size: 3.5rem;
         }
     }
 
     @else if $size ==h2 {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
 
         @media (min-width: $width-sm) {
             font-size: 2rem;
@@ -57,10 +57,10 @@
     }
 
     @else if $size ==h3 {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
 
         @media (min-width: $width-sm) {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
         }
 
         @media (min-width: $width-md) {
@@ -69,14 +69,14 @@
     }
 
     @else if $size ==h4 {
-        font-size: 1.25rem;
+        font-size: 1.05rem;
 
         @media (min-width: $width-sm) {
-            font-size: 1.5rem;
+            font-size: 1.15rem;
         }
 
         @media (min-width: $width-md) {
-            font-size: 1.75rem;
+            font-size: 1.25rem;
         }
     }
 }

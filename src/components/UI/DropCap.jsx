@@ -1,4 +1,4 @@
-import './DropCap.module.scss';
+import styles from "./DropCap.module.scss"
 
 const DropCap = ({ ...props }) => {
 
@@ -11,7 +11,7 @@ const DropCap = ({ ...props }) => {
     className = className || ""
 
     return (
-        <span className="drop-cap">{children}</span>
+        <span className={styles.dropCap}>{children}</span>
     );
 };
 
