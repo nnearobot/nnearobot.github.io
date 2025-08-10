@@ -3,13 +3,22 @@
     padding: .5rem 1rem;
     border-radius: 10px;
     text-decoration: none;
-    color: var(--color-foreground);
+    color: var(--color-link);
     box-shadow: var(--shadow);
     display: inline-flex;
     align-items: center;
     gap: .5rem;
 
     &:hover {
-        background: var(--color-accent-100);
+        color: var(--color-link-hover);
+        background: var(--color-accent-50);
+    }
+}
+
+html[data-theme="dark"] {
+    .cvBtn {
+        &:hover {
+            background: var(--color-accent-700);
+        }
     }
 }

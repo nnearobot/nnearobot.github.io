@@ -29,31 +29,35 @@
     transform: translateX(0);
 }
 
-.menu ul {
-    list-style: none;
-    margin: 4rem 0 0;
-    padding: 0;
-}
+.menu {
+    ul {
+        list-style: none;
+        margin: 4rem 0 0;
+        padding: 0;
+    }
 
-.menu li {
-    border-bottom: 1px solid var(--color-divider);
-}
+    li {
+        border-bottom: 1px solid var(--color-divider);
+    }
 
-.menu a {
-    display: block;
-    padding: 1rem 1.25rem;
-    color: inherit;
-    text-decoration: none;
-}
+    a {
+        display: block;
+        padding: 1rem 1.25rem;
+        color: inherit;
+        text-decoration: none;
 
-.menu a:hover {
-    background: var(--color-accent-100);
+        &:hover {
+            background: var(--color-accent-100);
+        }
+    }
 }
 
 .snsWrap {
     padding: 1rem 1.25rem;
 }
 
-html[data-theme="dark"] .menu a:hover {
-    background: var(--color-accent-900);
+html[data-theme="dark"] {
+    .menu a:hover {
+        background: var(--color-accent-900);
+    }
 }
