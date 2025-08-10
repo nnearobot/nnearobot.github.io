@@ -3,7 +3,7 @@
 
 /* 1) Base: color map per theme */
 $colors: (
-    light: (color-background-start: #ffffff,
+    root: (color-background-start: #ffffff,
         color-background-end: #cccccc,
         color-foreground: #111111,
         color-h: #0d0d0d,
@@ -12,7 +12,7 @@ $colors: (
         color-hover-link: #666666,
         color-menu-bg: #ffffff,
         color-divider: #cecece,
-        shadow: 0 10px 30px rgba(0, 0, 0, .06)),
+        shadow: 0 10px 30px rgba(0, 0, 0, .06),
 
         color-accent-50: #fafafa,
         color-accent-100: #f5f5f5,
@@ -24,6 +24,7 @@ $colors: (
         color-accent-700: #616161,
         color-accent-800: #424242,
         color-accent-900: #212121,
+    ),
 
     dark: (color-background-start: #333333,
         color-background-end: #000000,
@@ -34,7 +35,8 @@ $colors: (
         color-hover-link: #cfcfcf,
         color-menu-bg: #0d0d0d,
         color-divider: #8d8d8d,
-        shadow: 0 10px 30px rgba(0, 0, 0, .5))
+        shadow: 0 10px 30px rgba(0, 0, 0, .5),
+    ),
 );
 
 /* 2) Derived tokens: same rules for all themes */
@@ -80,5 +82,6 @@ This way, even before CSS variables are applied at runtime, the compiled CSS alr
     $theme-map: map.get($colors, $theme);
     $derived-map: derive-tokens($theme-map);
     $value: if(map.has-key($theme-map, $name), map.get($theme-map, $name), map.get($derived-map, $name));
+
     @return unquote("var(--#{$name}, #{$value})");
 }

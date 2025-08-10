@@ -6,7 +6,7 @@ const HealthPage = () => {
   return (
     <>
       <h1>Healthy Body, Healthy Mind</h1>
-      <Container className="flex flex-col items-center">
+      <Container>
         <p className="md:text-md text-center">Here are some useful tools for calculating health parameters.</p>
 
         <h2>Daily Calorie Calculator</h2>

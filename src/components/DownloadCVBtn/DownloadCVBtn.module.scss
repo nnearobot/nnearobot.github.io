@@ -1,15 +1,15 @@
 .cvBtn {
-    border: 1px solid var(--gray-300);
+    border: 1px solid var(--color-accent-400);
     padding: .5rem 1rem;
     border-radius: 10px;
     text-decoration: none;
-    color: var(--foreground-color);
+    color: var(--color-foreground);
     box-shadow: var(--shadow);
-    gap: .5rem;
     display: inline-flex;
     align-items: center;
+    gap: .5rem;
 
     &:hover {
-        background: var(--gray-100);
+        background: var(--color-accent-100);
     }
 }
