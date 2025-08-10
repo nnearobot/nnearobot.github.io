@@ -20,13 +20,14 @@
 
     a {
         color: var(--color-foreground);
+
         &:hover {
             color: var(--color-link-hover);
         }
     }
 
     html[data-theme="dark"] .cta:hover {
-        background: var(--color-accent-900);
+        background: var(--color-gray-900);
     }
 
     .snsRow {

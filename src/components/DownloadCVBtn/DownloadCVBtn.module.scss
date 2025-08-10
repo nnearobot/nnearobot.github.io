@@ -1,5 +1,5 @@
 .cvBtn {
-    border: 1px solid var(--color-accent-400);
+    border: 1px solid var(--color-gray-400);
     padding: .5rem 1rem;
     border-radius: 10px;
     text-decoration: none;
@@ -11,14 +11,14 @@
 
     &:hover {
         color: var(--color-link-hover);
-        background: var(--color-accent-50);
+        background: var(--color-gray-50);
     }
 }
 
 html[data-theme="dark"] {
     .cvBtn {
         &:hover {
-            background: var(--color-accent-700);
+            background: var(--color-gray-700);
         }
     }
 }

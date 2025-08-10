@@ -1,4 +1,4 @@
-import './Button.module.scss';
+import styles from "./Button.module.scss"
 
 const Button = ({ ...props }) => {
 
@@ -11,7 +11,7 @@ const Button = ({ ...props }) => {
     className = className || "";
 
     return (
-        <button {...props} className={`btn ${className}`}>
+        <button {...rest} className={`${styles.button} ${className}`}>
             {props.children}
         </button>
     );

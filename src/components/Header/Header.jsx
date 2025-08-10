@@ -4,7 +4,7 @@ import Logo from "../Logo/Logo";
 import SNSLinks from "../SNSLinks/SNSLinks";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import MobileMenu from "../MobileMenu/MobileMenu";
-import { Container } from '../../components/UI';
+import { Container, Button } from '../../components/UI';
 
 import styles from "./Header.module.scss";
 
@@ -67,7 +67,7 @@ const Header = () => {
         <header className={styles.header}>
             <Container>
                 <div className={styles.navbar}>
-                    <a href="/" className={styles.brand} aria-label="Home">
+                    <a href="/" className={styles.logo} aria-label="Home">
                         <Logo />
                     </a>
 
@@ -89,7 +89,7 @@ const Header = () => {
                             </div>
                         )}
                         {isNarrow && (
-                            <button
+                            <Button
                                 type="button"
                                 className={`${styles.menuBtn} ${open ? styles.open : ""}`}
                                 onClick={toggleMenu}
@@ -101,7 +101,7 @@ const Header = () => {
                                 <span></span>
                                 <span></span>
                                 <span></span>
-                            </button>
+                            </Button>
                         )}
                     </div>
                 </div>

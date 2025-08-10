@@ -47,7 +47,7 @@
         text-decoration: none;
 
         &:hover {
-            background: var(--color-accent-100);
+            background: var(--color-gray-100);
         }
     }
 }
@@ -58,6 +58,6 @@
 
 html[data-theme="dark"] {
     .menu a:hover {
-        background: var(--color-accent-900);
+        background: var(--color-gray-900);
     }
 }

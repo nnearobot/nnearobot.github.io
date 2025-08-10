@@ -1,8 +1,8 @@
-button {
-    background-color: var(--color-accent-700);
-    color: #fff;
+.button {
+    background-color: transparent;
+    color: var(--color-foreground);
     text-transform: capitalize;
-    padding: .25rem 0;
+    padding: .25rem;
     border-width: 1px;
     border-radius: .375rem;
     display: block;
@@ -10,12 +10,32 @@ button {
     font-size: 1.25rem;
     font-weight: bold;
     transition: background-color 0.3s;
+    min-height: 30px;
+    min-width: 30px;
 
     &:hover {
-        background-color: var(--color-accent-600);
+        background-color: var(--color-gray-300);
     }
 
     &:active {
-        background-color: var(--color-accent-200);
+        background-color: var(--color-gray-400);
+    }
+
+    &.primary {
+        background-color: var(--color-gray-200);
+        color: var(--color-foreground);
+        border: 1px solid var(--color-gray-300);
+    }
+}
+
+html[data-theme="dark"] {
+    .button {
+        &:hover {
+            background-color: var(--color-gray-600);
+        }
+
+        &:active {
+            background-color: var(--color-gray-500);
+        }
     }
 }
