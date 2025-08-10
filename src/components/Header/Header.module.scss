@@ -5,7 +5,6 @@
     top: 0;
     z-index: 50;
     backdrop-filter: blur(6px);
-    background: var(--background-start);
     overflow: hidden;
 }
 
@@ -35,12 +34,12 @@
 
 .nav a {
     text-decoration: none;
-    color: var(--foreground-color);
+    color: var(--color-foreground);
     font-weight: 500;
 }
 
 .nav a:hover {
-    color: var(--hover-link-color);
+    color: var(--color-hover-link);
 }
 
 .actions {
@@ -60,7 +59,7 @@
     position: relative;
     width: 44px;
     height: 44px;
-    border: 1px solid var(--gray-300);
+    border: 1px solid var(--color-accent-300);
     background: transparent;
     border-radius: 8px;
     cursor: pointer;
@@ -72,11 +71,11 @@
 }
 
 .menuBtn:hover {
-    background: var(--gray-100);
+    background: var(--color-accent-100);
 }
 
 html[data-theme="dark"] .menuBtn:hover {
-    background: var(--gray-900);
+    background: var(--color-accent-900);
 }
 
 .menuBtn span {
@@ -84,7 +83,6 @@ html[data-theme="dark"] .menuBtn:hover {
     width: 22px;
     height: 2px;
     background: currentColor;
-    /* наследует цвет темы */
     border-radius: 2px;
     transition: transform .3s ease, opacity .3s ease;
 }

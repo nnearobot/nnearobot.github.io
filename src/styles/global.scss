@@ -4,15 +4,23 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+    @include theme-vars(light);
+}
+
+html[data-theme="dark"] {
+    @include theme-vars(dark);
+}
+
 body {
     margin: 0;
     padding: 0;
-    background: var(--background-start);
+    background: var(--color-background-start);
     background: linear-gradient(to bottom,
             transparent,
-            var(--background-end)) var(--background-start);
+            var(--color-background-end)) var(--color-background-start);
     line-height: 1.25;
-    color: var(--foreground-color);
+    color: var(--color-foreground);
     @include font-body;
     font-weight: normal;
     font-size: 16px;
@@ -38,7 +46,7 @@ a {
 }
 
 a:hover {
-    color: var(--hover-link-color);
+    color: var(--color-hover-link);
 }
 
 h1,

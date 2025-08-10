@@ -1,8 +1,8 @@
+@use "sass:color";
 @use "../../styles/variables" as *;
 
 .footer {
-    background: var(--background-end);
-    border-top: 1px solid var(--background-start);
+    border-top: 1px solid var(--color-footer-border);
     margin-top: 4rem;
 
     .flex {
@@ -28,11 +28,11 @@
     }
 
     .nav a:hover {
-        color: var(--foreground-color);
+        color: var(--color-foreground);
     }
 
     .copy {
-        color: var(--muted);
+        color: var(--color-muted);
         font-size: .9rem;
         justify-self: end;
     }

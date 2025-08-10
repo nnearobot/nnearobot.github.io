@@ -4,13 +4,13 @@
     display: inline-flex;
     align-items: center;
     gap: .2rem;
-    color: var(--foreground-color);
+    color: var(--color-foreground);
 
     .tri {
         width: 40px;
         height: 40px;
-        fill: var(--foreground-color);
-        stroke: var(--foreground-color);
+        fill: var(--color-foreground);
+        stroke: var(--color-foreground);
     }
     .wordmark {
         font-size: 1.2rem;

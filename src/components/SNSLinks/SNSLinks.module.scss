@@ -13,18 +13,18 @@
             display: inline-flex;
             align-items: center;
             gap: .2rem;
-            color: var(--foreground-color);
+            color: var(--color-foreground);
             text-decoration: none;
             /* icons only in header */
 
             &:hover {
-                color: var(--hover-link-color);
+                color: var(--color-hover-link);
             }
         }
     }
 
     .label {
         font-size: .95rem;
-        color: var(--muted);
+        color: var(--color-muted);
     }
 }
