@@ -4,7 +4,7 @@ import navLinks from "../../data/navigation";
 
 import SNSLinks from "../SNSLinks/SNSLinks";
 
-const MobileMenu = ({ open, onClose }) => {
+const MobileMenu = ({ basename, open, onClose }) => {
     return (
         <div className={`${styles.backdrop} ${open ? styles.open : ""}`} aria-hidden={!open}>
             <aside id="mobile-menu" className={styles.panel} role="dialog" aria-modal="true" aria-label="Main menu">
@@ -12,7 +12,7 @@ const MobileMenu = ({ open, onClose }) => {
                     <ul>
                         {navLinks.map((l) => (
                             <li key={l.id}>
-                                <a href={l.url} onClick={onClose}>{l.title}</a>
+                                <a href={`${basename}${l.url}`} onClick={onClose}>{l.title}</a>
                             </li>
                         ))}
                     </ul>

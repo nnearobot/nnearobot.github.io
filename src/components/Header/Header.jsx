@@ -3,14 +3,14 @@ import { useEffect, useState } from "react";
 import Logo from "../Logo/Logo";
 import SNSLinks from "../SNSLinks/SNSLinks";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
-import MobileMenu from "../MobileMenu/MobileMenu";
+import MobileMenu from "./MobileMenu";
 import { Container, Button } from '../../components/UI';
 
 import styles from "./Header.module.scss";
 
 import navLinks from "../../data/navigation";
 
-const Header = () => {
+const Header = ({ basename }) => {
     const [open, setOpen] = useState(false);
     const [isNarrow, setIsNarrow] = useState(false);
 
@@ -75,7 +75,7 @@ const Header = () => {
                         <nav className={styles.nav} aria-label="main menu">
                             <ul>
                                 {navLinks.map((l) => (
-                                    <li key={l.id}><a href={l.url}>{l.title}</a></li>
+                                    <li key={l.id}><a href={`${basename}${l.url}`}>{l.title}</a></li>
                                 ))}
                             </ul>
                         </nav>
@@ -107,7 +107,7 @@ const Header = () => {
                 </div>
             </Container>
 
-            <MobileMenu open={open} onClose={() => setOpen(false)} />
+            <MobileMenu basename={basename} open={open} onClose={() => setOpen(false)} />
         </header>
     );
 };
