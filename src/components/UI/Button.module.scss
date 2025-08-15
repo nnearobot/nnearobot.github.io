@@ -6,12 +6,8 @@
     border-width: 1px;
     border-radius: .375rem;
     display: block;
-    margin: 0.5rem auto;
-    font-size: 1.25rem;
     font-weight: bold;
     transition: background-color 0.3s;
-    min-height: 30px;
-    min-width: 30px;
 
     &:hover {
         background-color: var(--color-gray-300);

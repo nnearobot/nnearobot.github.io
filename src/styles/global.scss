@@ -41,6 +41,15 @@ body {
     margin-left: auto;
 }
 
+@media screen and (max-width: $width-sm) {
+
+    .container,
+    .container-fluid {
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+    }
+}
+
 a {
     text-decoration: underline;
 }

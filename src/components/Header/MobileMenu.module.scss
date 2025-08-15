@@ -1,16 +1,19 @@
+@use "../../styles/variables" as *;
+
 .backdrop {
     position: fixed;
     inset: 0;
     pointer-events: none;
     opacity: 0;
     transition: opacity .2s ease;
+
+    &.open {
+        pointer-events: auto;
+        opacity: 1;
+        background: rgba(0, 0, 0, .4);
+    }
 }
 
-.open {
-    pointer-events: auto;
-    opacity: 1;
-    background: rgba(0, 0, 0, .4);
-}
 
 .panel {
     position: fixed;
@@ -23,41 +26,62 @@
     box-shadow: -20px 0 40px rgba(0, 0, 0, .2);
     transform: translateX(100%);
     transition: transform .2s ease;
-}
 
-.open .panel {
-    transform: translateX(0);
-}
-
-.menu {
-    ul {
-        list-style: none;
-        margin: 4rem 0 0;
-        padding: 0;
+    .close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        border: none;
+        color: var(--color-gray-500);
+        cursor: pointer;
+        font-size: 1.5rem;
+        min-height: 36px;
+        min-width: 36px;
     }
 
-    li {
-        border-bottom: 1px solid var(--color-divider);
+    .menu {
+        ul {
+            list-style: none;
+            margin: 3rem 0 0;
+            padding: 0;
+        }
+
+        li {
+            border-bottom: 1px solid var(--color-divider);
+        }
+
+        a {
+            display: block;
+            padding: 1rem 1.25rem;
+            color: inherit;
+            text-decoration: none;
+
+            &:hover {
+                background: var(--color-gray-100);
+            }
+        }
     }
 
-    a {
-        display: block;
-        padding: 1rem 1.25rem;
-        color: inherit;
-        text-decoration: none;
+    .snsWrap {
+        padding: 0 1.25rem;
+        margin-top: 2.5rem;
 
-        &:hover {
-            background: var(--color-gray-100);
+        ul {
+            flex-direction: column;
         }
     }
 }
 
-.snsWrap {
-    padding: 1rem 1.25rem;
+.open {
+    .panel {
+        transform: translateX(0);
+    }
 }
 
 html[data-theme="dark"] {
-    .menu a:hover {
-        background: var(--color-gray-900);
+    .panel {
+        .menu a:hover {
+            background: var(--color-gray-900);
+        }
     }
 }

@@ -12,19 +12,19 @@
         li a {
             display: inline-flex;
             align-items: center;
-            gap: .2rem;
+            gap: .25rem;
             color: var(--color-foreground);
             text-decoration: none;
-            /* icons only in header */
+            font-size: 1.2rem;
 
             &:hover {
                 color: var(--color-link-hover);
             }
-        }
-    }
 
-    .label {
-        font-size: .95rem;
-        color: var(--color-muted);
+            .label {
+                font-size: .95rem;
+                color: var(--color-muted);
+            }
+        }
     }
 }

@@ -1,13 +1,20 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+
 import styles from "./MobileMenu.module.scss";
 
 import navLinks from "../../data/navigation";
 
-import SNSLinks from "../SNSLinks/SNSLinks";
+import SNSLinks from "../SNSLinks";
+import { Button } from '../../components/UI';
 
 const MobileMenu = ({ basename, open, onClose }) => {
     return (
         <div className={`${styles.backdrop} ${open ? styles.open : ""}`} aria-hidden={!open}>
             <aside id="mobile-menu" className={styles.panel} role="dialog" aria-modal="true" aria-label="Main menu">
+                <Button className={styles.close} onClick={onClose} aria-label="Close menu">
+                    <FontAwesomeIcon icon={faXmark} />
+                </Button>
                 <nav className={styles.menu}>
                     <ul>
                         {navLinks.map((l) => (

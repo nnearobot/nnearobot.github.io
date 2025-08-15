@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 import Logo from "../Logo/Logo";
 import SNSLinks from "../SNSLinks/SNSLinks";
@@ -13,6 +15,8 @@ import navLinks from "../../data/navigation";
 const Header = ({ basename }) => {
     const [open, setOpen] = useState(false);
     const [isNarrow, setIsNarrow] = useState(false);
+
+    let menuRef = useRef(null);
 
     useEffect(() => {
         const handler = () => setIsNarrow(window.innerWidth < 768);
@@ -82,12 +86,12 @@ const Header = ({ basename }) => {
                     )}
 
                     <div className={styles.actions}>
-                        <ThemeToggle />
                         {!isNarrow && (
                             <div className={styles.sns}>
                                 <SNSLinks />
                             </div>
                         )}
+                        <ThemeToggle />
                         {isNarrow && (
                             <Button
                                 type="button"
@@ -98,9 +102,7 @@ const Header = ({ basename }) => {
                                 aria-controls="mobile-menu"
                                 title={open ? "Close" : "Menu"}
                             >
-                                <span></span>
-                                <span></span>
-                                <span></span>
+                                <FontAwesomeIcon icon={faBars} />
                             </Button>
                         )}
                     </div>
