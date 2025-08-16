@@ -33,7 +33,11 @@
 
 @mixin h-size($size) {
     @if $size ==h1 {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
+
+        @media (min-width: $width-mobile) {
+            font-size: 1.75rem;
+        }
 
         @media (min-width: $width-sm) {
             font-size: 3rem;
@@ -45,7 +49,11 @@
     }
 
     @else if $size ==h2 {
-        font-size: 1.5rem;
+        font-size: 1.35rem;
+
+        @media (min-width: $width-mobile) {
+            font-size: 1.5rem;
+        }
 
         @media (min-width: $width-sm) {
             font-size: 2rem;
