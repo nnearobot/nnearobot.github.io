@@ -1,8 +1,8 @@
-import { Container } from '../../components/UI';
+import { Container } from '@/components/UI';
 
 import Fractal from './Fractal';
 
-export default function DotsPage() {
+const DotsPage = () => {
     return (
         <>
             <H1 className="!mb-0">Dot fractal generator</H1>
@@ -35,4 +35,6 @@ export default function DotsPage() {
             </Container>
         </>
     )
-}
+};
+
+export default DotsPage;

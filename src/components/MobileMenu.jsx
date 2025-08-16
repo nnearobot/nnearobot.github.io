@@ -3,10 +3,10 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./MobileMenu.module.scss";
 
-import navLinks from "../../data/navigation";
+import navLinks from "../data/navigation";
 
-import SNSLinks from "../SNSLinks";
-import { Button } from '../../components/UI';
+import SNSLinks from "./SNSLinks";
+import { Button } from './UI';
 
 const MobileMenu = ({ basename, open, onClose }) => {
     return (

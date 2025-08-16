@@ -1,8 +1,7 @@
-import { Container } from '../../components/UI';
+import SNSLinks from "./SNSLinks";
+import { Container } from './UI';
 
 import styles from "./Footer.module.scss";
-
-import SNSLinks from "../SNSLinks/SNSLinks";
 
 const Footer = () => {
     return (

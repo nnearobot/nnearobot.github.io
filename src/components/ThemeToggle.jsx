@@ -3,8 +3,8 @@ import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./ThemeToggle.module.scss";
 
-import { useTheme } from "../../theme/ThemeProvider";
-import { Button } from "../../components/UI";
+import { useTheme } from "../theme/ThemeProvider";
+import { Button } from "./UI";
 
 const ThemeToggle = () => {
     const { theme, toggle } = useTheme();

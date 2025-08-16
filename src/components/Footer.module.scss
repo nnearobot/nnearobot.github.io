@@ -1,5 +1,5 @@
 @use "sass:color";
-@use "../../styles/variables" as *;
+@use "@/styles/variables" as *;
 
 .footer {
     border-top: 1px solid var(--color-footer-border);

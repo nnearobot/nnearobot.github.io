@@ -2,15 +2,15 @@ import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-import Logo from "../Logo/Logo";
-import SNSLinks from "../SNSLinks/SNSLinks";
-import ThemeToggle from "../ThemeToggle/ThemeToggle";
+import Logo from "./Logo";
+import SNSLinks from "./SNSLinks";
+import ThemeToggle from "./ThemeToggle";
 import MobileMenu from "./MobileMenu";
-import { Container, Button } from '../../components/UI';
+import { Container, Button } from './UI';
 
 import styles from "./Header.module.scss";
 
-import navLinks from "../../data/navigation";
+import navLinks from "@/data/navigation";
 
 const Header = ({ basename }) => {
     const [open, setOpen] = useState(false);

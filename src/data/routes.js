@@ -1,33 +1,30 @@
-import {
-    Home, About, Projects, Dots, BodyHealth,
-    //    Blog
-} from '../pages';
+import AboutPage from "@/pages/About/AboutPage";
+import HomePage from "@/pages/Home/HomePage";
+import ProjectsPage from "@/pages/Projects/ProjectsPage";
+import DotsPage from "@/pages/Dots/DotsPage";
+import BodyHealthPage from "@/pages/BodyHealth/BodyHealthPage";
 
 const routes = {
     home: {
         path: "/",
-        element: Home,
+        element: HomePage,
     },
     about: {
         path: "/about",
-        element: About,
+        element: AboutPage,
     },
     projects: {
         path: "/projects",
-        element: Projects,
+        element: ProjectsPage,
     },
     bodyHealth: {
         path: "/projects/body-health",
-        element: BodyHealth,
+        element: BodyHealthPage,
     },
     dots: {
         path: "/projects/dots",
-        element: Dots,
+        element: DotsPage,
     },
-    // blog: {
-    //     path: "/blog",
-    //     element: Blog,
-    // },
 };
 
 export default routes;

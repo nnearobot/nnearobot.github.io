@@ -66,6 +66,7 @@ h3 {
 }
 
 h1 {
+    text-align: center;
     @include h-size(h1);
 }
 
@@ -84,16 +85,4 @@ h4 {
 p {
     line-height: 1.5;
     margin: 0 0 0.5em;
-}
-
-.text-center {
-    text-align: center;
-}
-
-.text-left {
-    text-align: left;
-}
-
-.text-right {
-    text-align: right;
 }

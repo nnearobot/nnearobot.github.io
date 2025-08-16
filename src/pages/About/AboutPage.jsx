@@ -1,16 +1,16 @@
-import { Container, DropCap, TagCloud } from '../../components/UI';
-import DownloadCVBtn from "../../components/DownloadCVBtn";
+import { Container, DropCap, TagCloud } from '@/components/UI';
+import { DownloadCVBtn } from "@/components";
 
-import { languages, frameworks, frontend, backend, devops, software, os } from '../../data/skills';
+import { languages, frameworks, frontend, backend, devops, software, os } from '@/data/skills';
 
-import styles from "./About.module.scss";
+import styles from "./AboutPage.module.scss";
 
 const AboutPage = () => {
     return (
         <div className={styles.about}>
-            <h1 className="text-center">Rimma Maksiutova</h1>
+            <h1>Rimma Maksiutova</h1>
             <Container>
-                <div className="text-center">
+                <div className={styles.info}>
                     <p className="pronounce">(She/Her)</p>
                     <p className="title">Full stack software engineer&nbsp;| Engineering manager</p>
                     <p>Translating product goals into software solutions.</p>
@@ -48,10 +48,6 @@ const AboutPage = () => {
 
                 <h4>OS:</h4>
                 <TagCloud tags={os} />
-
-
-                <h2>Projects</h2>
-                <p>[Under construction]</p>
 
             </Container>
         </div>

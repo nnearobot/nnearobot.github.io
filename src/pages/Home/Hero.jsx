@@ -1,6 +1,5 @@
 import { Container } from '@/components/UI';
-import SNSLinks from "@/components/SNSLinks";
-import DownloadCVBtn from "@/components/DownloadCVBtn";
+import { SNSLinks, DownloadCVBtn } from "@/components";
 
 import styles from "./Hero.module.scss";
 

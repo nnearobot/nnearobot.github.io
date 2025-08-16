@@ -3,7 +3,7 @@ import { faCloudArrowDown } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./DownloadCVBtn.module.scss";
 
-import urls from '../../data/urls';
+import urls from '../data/urls';
 
 const DownloadCVBtn = () => {
     return (

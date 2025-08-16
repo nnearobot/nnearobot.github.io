@@ -8,8 +8,6 @@ import routes from './data/routes';
 const BASE_NAME = '/nnearobot'
 
 const App = () => {
-
-
     return (
         <BrowserRouter basename={BASE_NAME}>
             <Header basename={BASE_NAME} />

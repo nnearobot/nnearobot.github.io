@@ -3,7 +3,7 @@ import p5 from 'p5';
 
 import { Button, TextInput, FormRow, FormLabel } from '@/components/UI';
 
-function Fractal() {
+const Fractal = () => {
     const sketchRef = useRef < HTMLDivElement > (null);
     const p5InstanceRef = useRef < p5 | null > (null); // Use useRef to persist p5 instance between re-renders
     const canvasSize = 620;

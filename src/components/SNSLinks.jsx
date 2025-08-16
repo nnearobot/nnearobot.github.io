@@ -2,9 +2,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import styles from "./SNSLinks.module.scss";
 
-import snsLinks from "../../data/sns";
+import snsLinks from "@/data/sns";
 
-const SNSLinks =({ withLabels = false }) => {
+const SNSLinks = ({ withLabels = false }) => {
     return (
         <nav className={styles.sns} aria-label="social links">
             <ul>
