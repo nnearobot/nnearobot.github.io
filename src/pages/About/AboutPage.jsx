@@ -1,4 +1,4 @@
-import { Container, DropCap, TagCloud } from '@/components/UI';
+import { Container, TagCloud } from '@/components/UI';
 import { DownloadCVBtn } from "@/components";
 
 import { languages, frameworks, frontend, backend, devops, software, os } from '@/data/skills';
@@ -18,8 +18,8 @@ const AboutPage = () => {
                 </div>
 
                 <h2>Experience</h2>
-                <p><DropCap>12</DropCap> years of web development</p>
-                <p><DropCap>3</DropCap> years of engineering management, team leadership, and CTO</p>
+                <p><span className={styles.dropCap}>20</span> years of web development</p>
+                <p><span className={styles.dropCap}>4</span> years of engineering management, team leadership, and CTO</p>
 
                 <h2>Languages</h2>
                 <p><b>Russian:</b> native</p>

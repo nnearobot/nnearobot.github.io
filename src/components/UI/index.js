@@ -1,6 +1,5 @@
 import Button from "./Button";
 import Container from "./Container";
-import DropCap from "./DropCap";
 import FormLabel from "./FormLabel";
 import FormRow from "./FormRow";
 import GlassPlate from "./GlassPlate";
@@ -14,7 +13,6 @@ import TextInput from "./TextInput";
 export {
     Button,
     Container,
-    DropCap,
     FormLabel,
     FormRow,
     GlassPlate,

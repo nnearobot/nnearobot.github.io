@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
-import styles from "./ThemeToggle.module.scss";
-
-import { useTheme } from "../theme/ThemeProvider";
+import { useTheme } from "@/theme/ThemeProvider";
 import { Button } from "./UI";
+
+import styles from "./ThemeToggle.module.scss";
 
 const ThemeToggle = () => {
     const { theme, toggle } = useTheme();

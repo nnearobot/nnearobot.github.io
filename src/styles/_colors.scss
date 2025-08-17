@@ -8,12 +8,13 @@ $colors: (
         color-foreground: #111111,
         color-h: #0d0d0d,
         color-muted: #6b6b6b,
-        color-link: #111111,
-        color-link-hover: #666666,
+        color-link: #444444,
+        color-link-hover: #111111,
         color-menu-bg: #ffffff,
         color-divider: #cecece,
-        shadow: 0 10px 30px rgba(0, 0, 0, .06),
+        shadow: 0 6px 20px rgba(0, 0, 0, 0.1),
 
+        color-white: #fffff,
         color-gray-50: #fafafa,
         color-gray-100: #f5f5f5,
         color-gray-200: #eeeeee,
@@ -24,18 +25,19 @@ $colors: (
         color-gray-700: #616161,
         color-gray-800: #424242,
         color-gray-900: #212121,
+        color-gray-black: #000000,
     ),
 
     dark: (color-background-start: #333333,
         color-background-end: #000000,
-        color-foreground: #ffffff,
+        color-foreground: #cecece,
         color-h: #ffffff,
         color-muted: #bfbfbf,
-        color-link: #ffffff,
-        color-link-hover: #cfcfcf,
+        color-link: #cfcfcf,
+        color-link-hover: #ffffff,
         color-menu-bg: #0d0d0d,
-        color-divider: #8d8d8d,
-        shadow: 0 10px 30px rgba(0, 0, 0, .5),
+        color-divider: #666666,
+        shadow: 0 6px 20px rgba(0, 0, 0, 0.3),
     ),
 );
 
@@ -47,7 +49,7 @@ $colors: (
     );
 
 /* Example: --color-footer-border = color-background-end lightened by 15% */
-$out: map.set($out, color-footer-border, color.scale($color-background-end, $lightness: 15%));
+$out: map.set($out, color-footer-border, color.scale($color-background-end, $lightness: 10%));
 
 @return $out;
 }

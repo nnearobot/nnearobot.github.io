@@ -3,8 +3,7 @@ import styles from "./TagCloud.module.scss";
 const TagCloud = ({ tags, className = "", ...rest }) => {
     return (
         <div className={`${styles.tagCloud} ${className}`} {...rest}>
-            {tags.map((tag, idx) => {
-                // size by level
+            {tags.sort((a, b) => a.title.localeCompare(b.title)).map((tag, idx) => {
                 let sizeClass = styles.sizeBase;
                 switch (tag.level) {
                     case 1:

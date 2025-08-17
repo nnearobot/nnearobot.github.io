@@ -1,22 +1,25 @@
 import TextInput from "./TextInput";
+import styles from "./InputWithSide.module.scss";
 
-const InputWithSide = ({...props}) => {
-    let {
-        side,
-        sideLabel,
-        ...rest
-    } = props
-
-    side = side || 'right';
+const InputWithSide = ({ side = "right", sideLabel, className = "", ...rest }) => {
+    const inputRounded =
+        side === "left" ? styles.inputRoundedRight : styles.inputRoundedLeft;
 
     return (
-        <div className="flex items-center text-zinc-500">
-            {side == 'left' ? <div className={`px-3 py-2 rounded-l-lg bg-zinc-100 border-l border-y border-zinc-200 shadow-sm`}>{sideLabel}</div> : ''}
-            <TextInput 
-                type="text" {...rest} 
-                className={`z-[1] ${side == 'left' ? 'rounded-none rounded-r-lg' : 'rounded-none rounded-l-lg'}`}
+        <div className={`${styles.wrapper} ${className}`}>
+            {side === "left" && (
+                <div className={`${styles.side} ${styles.sideLeft}`}>{sideLabel}</div>
+            )}
+
+            <TextInput
+                type="text"
+                {...rest}
+                className={`${styles.input} ${inputRounded}`}
             />
-            {side == 'right' ? <div className={`px-3 py-2 rounded-r-md bg-zinc-100 dark:bg-zinc-400 text-zinc-500 dark:text-zinc-700 border-r border-y border-zinc-200 shadow-sm`}>{sideLabel}</div> : ''}
+
+            {side === "right" && (
+                <div className={`${styles.side} ${styles.sideRight}`}>{sideLabel}</div>
+            )}
         </div>
     );
 };

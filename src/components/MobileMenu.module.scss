@@ -60,6 +60,12 @@
                 background: var(--color-gray-100);
             }
         }
+
+        :global([data-theme="dark"]) & {
+            a:hover {
+                background: var(--color-gray-800);
+            }
+        }
     }
 
     .snsWrap {
@@ -75,13 +81,5 @@
 .open {
     .panel {
         transform: translateX(0);
-    }
-}
-
-html[data-theme="dark"] {
-    .panel {
-        .menu a:hover {
-            background: var(--color-gray-900);
-        }
     }
 }

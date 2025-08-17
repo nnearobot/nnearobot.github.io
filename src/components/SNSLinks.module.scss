@@ -13,17 +13,16 @@
             display: inline-flex;
             align-items: center;
             gap: .25rem;
-            color: var(--color-foreground);
             text-decoration: none;
             font-size: 1.2rem;
-
-            &:hover {
-                color: var(--color-link-hover);
-            }
 
             .label {
                 font-size: .95rem;
                 color: var(--color-muted);
+
+                &:hover {
+                    color: var(--color-link-hover);
+                }
             }
         }
     }

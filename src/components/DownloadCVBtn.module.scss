@@ -1,24 +1,30 @@
 .cvBtn {
+    background: var(--color-gray-100);
     border: 1px solid var(--color-gray-400);
+    color: var(--color-gray-700);
     padding: .5rem 1rem;
-    border-radius: 10px;
+    border-radius: 0.325rem;
     text-decoration: none;
-    color: var(--color-link);
     box-shadow: var(--shadow);
     display: inline-flex;
     align-items: center;
     gap: .5rem;
 
     &:hover {
-        color: var(--color-link-hover);
-        background: var(--color-gray-50);
+        background-color: var(--color-gray-white);
+        border-color: var(--color-gray-600);
+        color: var(--color-gray-900);
     }
-}
 
-html[data-theme="dark"] {
-    .cvBtn {
+    :global([data-theme="dark"]) & {
+        background-color: var(--color-gray-800);
+        border-color: var(--color-gray-600);
+        color: var(--color-gray-400);
+
         &:hover {
-            background: var(--color-gray-700);
+            background-color: var(--color-gray-700);
+            border-color: var(--color-gray-200);
+            color: var(--color-gray-100);
         }
     }
 }

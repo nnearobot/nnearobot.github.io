@@ -20,18 +20,6 @@
         margin: 0 0 2.5rem;
     }
 
-    a {
-        color: var(--color-foreground);
-
-        &:hover {
-            color: var(--color-link-hover);
-        }
-    }
-
-    html[data-theme="dark"] .cta:hover {
-        background: var(--color-gray-900);
-    }
-
     .snsRow {
         display: flex;
         align-items: center;

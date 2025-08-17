@@ -32,6 +32,7 @@
 
             &:hover {
                 color: var(--color-link-hover);
+                text-decoration: underline;
             }
         }
     }
@@ -68,22 +69,15 @@
         justify-content: center;
         border: none;
         color: var(--color-gray-500);
-    }
-}
 
-
-
-html[data-theme="dark"] {
-    .header {
-        .menuBtn {
+        :global([data-theme="dark"]) & {
             &:active {
-                span {
-                    background: var(--color-gray-400);
-                }
+                color: var(--color-gray-400);
             }
         }
     }
 }
+
 
 @media screen and (max-width: $width-sm) {
     .header {
