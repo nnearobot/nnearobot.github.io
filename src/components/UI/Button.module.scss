@@ -1,10 +1,14 @@
+@use "@/styles/_mixins" as *;
+
 .button {
     background-color: transparent;
     color: var(--color-link);
     padding: 0.25rem;
     border-width: 1px;
-    border-radius: 0.325rem;
     transition: background-color 0.3s;
+    height: 2rem;
+
+    @include border-radius(2rem);
 
     &:hover {
         color: var(--color-link-hover);

@@ -1,14 +1,12 @@
 const Container = ({ ...props }) => {
     let {
         children,
-        className,
+        className = "",
         ...rest
     } = props;
 
-    className = className || "";
-
     return (
-        <div {...props} className={`container ${className}`}>
+        <div {...rest} className={`container ${className}`}>
             {children}
         </div>
     );

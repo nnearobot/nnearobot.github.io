@@ -1,9 +1,8 @@
+@use "@/styles/_mixins" as *;
+
 .toggle {
     appearance: none;
     background: transparent;
     border: none;
-    padding: .5rem .6rem;
-    border-radius: 8px;
-    font-size: 1.4rem;
     cursor: pointer;
 }

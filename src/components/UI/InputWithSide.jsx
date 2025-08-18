@@ -2,23 +2,23 @@ import TextInput from "./TextInput";
 import styles from "./InputWithSide.module.scss";
 
 const InputWithSide = ({ side = "right", sideLabel, className = "", ...rest }) => {
-    const inputRounded =
-        side === "left" ? styles.inputRoundedRight : styles.inputRoundedLeft;
+    const inputStyle =
+        side === "left" ? styles.right : styles.left;
 
     return (
         <div className={`${styles.wrapper} ${className}`}>
             {side === "left" && (
-                <div className={`${styles.side} ${styles.sideLeft}`}>{sideLabel}</div>
+                <div className={`${styles.side} ${styles.left}`}>{sideLabel}</div>
             )}
 
             <TextInput
                 type="text"
                 {...rest}
-                className={`${styles.input} ${inputRounded}`}
+                className={`${styles.input} ${inputStyle}`}
             />
 
             {side === "right" && (
-                <div className={`${styles.side} ${styles.sideRight}`}>{sideLabel}</div>
+                <span className={`${styles.side} ${styles.right}`}>{sideLabel}</span>
             )}
         </div>
     );

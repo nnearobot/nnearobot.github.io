@@ -1,6 +1,35 @@
+@use "@/styles/_variables" as *;
+
 .about {
+    h1 {
+        margin-bottom: 0.2rem;
+    }
+
     .info {
         text-align: center;
+
+        .pronounce {
+            color: var(--color-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .title {
+            font-weight: bold;
+            font-size: 1.4rem;
+
+            @media screen and (max-width: $width-lg) {
+                font-size: 1.3rem;
+            }
+
+            @media screen and (max-width: $width-md) {
+                font-size: 1.2rem;
+            }
+
+            @media screen and (max-width: $width-sm) {
+                font-size: 1.1rem;
+            }
+        }
     }
 
     .cvBtn {

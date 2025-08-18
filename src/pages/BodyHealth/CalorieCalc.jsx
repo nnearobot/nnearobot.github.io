@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { InputWithSide, Range, FormRow, FormLabel, GlassPlate } from '../../components/UI';
+import { InputWithSide, TextInput, Range, FormRow, FormLabel, GlassPlate } from '../../components/UI';
 
 const CalorieCalc = function () {
     const proteinKoeffRange = [1.0, 3.0]; // g/kg

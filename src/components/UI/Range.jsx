@@ -18,7 +18,7 @@ const Range = function({...props}) {
 
     return (
         <>
-            <input {...props} type="range" onChange={handleSlide} className="input-range" /> <span>{value}</span>
+            <input {...rest} type="range" onChange={handleSlide} className="input-range" /> <span>{value}</span>
         </>
     );
 }

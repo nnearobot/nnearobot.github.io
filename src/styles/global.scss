@@ -26,27 +26,42 @@ body {
     font-size: 16px;
 }
 
-.container {
-    padding-right: 1rem;
-    padding-left: 1rem;
-    margin-right: auto;
-    margin-left: auto;
-    @include container-size;
+main {
+    margin-top: 5rem;
+
+    @media screen and (max-width: $width-lg) {
+        margin-top: 4rem;
+    }
+
+    @media screen and (max-width: $width-md) {
+        margin-top: 3rem;
+    }
+
+    @media screen and (max-width: $width-sm) {
+        margin-top: 2rem;
+    }
 }
 
+.container,
 .container-fluid {
     padding-right: 1rem;
     padding-left: 1rem;
     margin-right: auto;
     margin-left: auto;
-}
 
-@media screen and (max-width: $width-sm) {
-    .container,
-    .container-fluid {
+    @media screen and (max-width: $width-sm) {
         padding-right: 0.5rem;
         padding-left: 0.5rem;
     }
+}
+
+.container {
+    @include container-size;
+}
+
+.container-fluid {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 a {
@@ -72,6 +87,7 @@ h1 {
 
 h2 {
     @include h-size(h2);
+    text-transform: lowercase;
 }
 
 h3 {

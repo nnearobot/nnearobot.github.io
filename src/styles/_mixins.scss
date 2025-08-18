@@ -32,8 +32,18 @@
 }
 
 @mixin h-size($size) {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    // h1
     @if $size ==h1 {
         font-size: 1.5rem;
+
+        margin-bottom: 3rem;
 
         @media (min-width: $width-mobile) {
             font-size: 1.75rem;
@@ -48,6 +58,7 @@
         }
     }
 
+    // h2
     @else if $size ==h2 {
         font-size: 1.35rem;
 
@@ -64,6 +75,7 @@
         }
     }
 
+    // h3
     @else if $size ==h3 {
         font-size: 1.25rem;
 
@@ -76,6 +88,7 @@
         }
     }
 
+    // h4
     @else if $size ==h4 {
         font-size: 1.05rem;
 
@@ -89,6 +102,7 @@
     }
 }
 
+
 @mixin font-body {
     font-family: "Noto Sans", sans-serif;
     font-optical-sizing: auto;
@@ -101,4 +115,13 @@
     font-family: "Major Mono Display", monospace;
     font-weight: 400;
     font-style: normal;
+}
+
+
+@function calc-border-radius($boxHeight: $border-radius * 2) {
+    @return $boxHeight / 2;
+}
+
+@mixin border-radius($boxHeight: $border-radius * 2) {
+    border-radius: calc-border-radius($boxHeight);
 }

@@ -1,0 +1,23 @@
+@use "@/styles/_variables" as *;
+
+.input {
+    font-size: 1.2rem;
+    color: var(--color-gray-800);
+    border: 1px solid var(--color-gray-400);
+    background: var(--color-gray-50);
+    margin-block: 0.35rem;
+    padding-inline: 1rem;
+    padding-block: 0;
+    box-sizing: content-box;
+
+    line-height: $input-height;
+    height: $input-height;
+    border-radius: $input-border-radius;
+
+    &:focus {
+        color: var(--bs-body-color);
+        background-color: var(--color-white);
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(159, 159, 159, 0.2);
+    }
+}

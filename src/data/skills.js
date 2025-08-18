@@ -5,7 +5,7 @@ export const languages = [
   },
   {
     title: "Python",
-    level: 5,
+    level: 4,
   },
   {
     title: "Javascript",
@@ -13,7 +13,7 @@ export const languages = [
   },
   {
     title: "Typescript",
-    level: 2,
+    level: 3,
   },
   {
     title: "PHP",
@@ -22,10 +22,6 @@ export const languages = [
   {
     title: "Go",
     level: 5,
-  },
-  {
-    title: "Java",
-    level: 2,
   },
   {
     title: "Ruby",
@@ -68,11 +64,11 @@ export const frontend = [
   },
   {
     title: "Less",
-    level: 5,
+    level: 3,
   },
   {
     title: "Sass",
-    level: 4,
+    level: 5,
   },
   {
     title: "jQuery",

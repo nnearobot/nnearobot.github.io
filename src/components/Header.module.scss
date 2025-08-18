@@ -1,4 +1,5 @@
 @use "@/styles/variables" as *;
+@use "@/styles/_mixins" as *;
 
 .header {
     .navbar {
@@ -45,8 +46,12 @@
 
         button {
             font-size: 1.25rem;
-            min-height: 30px;
-            min-width: 30px;
+            height: 2rem;
+            width: 2rem;
+            padding: 0;
+            border: none;
+
+            @include border-radius(2rem);
         }
 
         .sns {
@@ -86,8 +91,10 @@
 
             button {
                 font-size: 1.5rem;
-                min-height: 36px;
-                min-width: 36px;
+                height: 2.4rem;
+                width: 2.4rem;
+
+                @include border-radius(2.4rem);
             }
         }
     }

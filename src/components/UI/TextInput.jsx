@@ -1,6 +1,14 @@
-const TextInput = ({...props}) => {
+import styles from "./TextInput.module.scss";
+
+const TextInput = ({ ...props }) => {
+    let {
+        className = "",
+        type = "text",
+        ...rest
+    } = props;
+
     return (
-        <input type="text" {...props} className="input-text" />
+        <input type="text" {...rest} className={`${styles.input} ${className}`} />
     );
 };
 

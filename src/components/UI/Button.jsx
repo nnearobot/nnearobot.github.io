@@ -4,11 +4,9 @@ const Button = ({ ...props }) => {
 
     let {
         children,
-        className,
+        className = "",
         ...rest
     } = props;
-
-    className = className || "";
 
     return (
         <button {...rest} className={`${styles.button} ${className}`}>

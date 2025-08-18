@@ -7,7 +7,7 @@ import styles from "./BodyHealthPage.module.scss";
 const BodyHealthPage = () => {
   return (
     <div className={styles.bodyHealth}>
-      <h1>Healthy Body, Healthy Mind</h1>
+      <h1>Body Health</h1>
       <Container>
         <h2>Daily Calorie Calculator</h2>
         <CalorieCalc />
