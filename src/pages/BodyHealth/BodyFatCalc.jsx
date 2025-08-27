@@ -1,6 +1,8 @@
 import { useState } from 'react'
 
-import { InputWithSide, RadioButton, QuestionCircle, FormRow, FormLabel, GlassPlate } from '../../components/UI'
+import { InputWithSide, RadioButton, QuestionCircle, FormRow, FormLabel } from '../../components/UI'
+
+import styles from "./BodyHealthPage.module.scss";
 
 const BodyFatCalc = function () {
 
@@ -21,6 +23,11 @@ const BodyFatCalc = function () {
     }
 
     const handleOnchange = (name, value) => {
+        // only digits and dot are allowed:
+        if (!/^\d*\.?\d*$/.test(value)) {
+            return;
+        }
+
         calc({ ...state, [name]: value });
     }
 
@@ -74,7 +81,7 @@ const BodyFatCalc = function () {
     }
 
     return (
-        <>
+        <div className={styles.bodyFatCalc}>
             <FormRow className="md:grid-cols-3">
                 <FormLabel>Your sex</FormLabel>
                 <div className='col-span-2'>
@@ -94,6 +101,8 @@ const BodyFatCalc = function () {
                 <FormLabel>Your weight</FormLabel>
                 <div className='col-span-2'>
                     <InputWithSide
+                        id="body-fat-weight"
+                        className={styles.inputDigital}
                         value={state.weight}
                         onChange={(event) => handleOnchange('weight', event.currentTarget.value)}
                         placeholder="Weight"
@@ -105,6 +114,8 @@ const BodyFatCalc = function () {
                 <FormLabel>Your height</FormLabel>
                 <div className='col-span-2'>
                     <InputWithSide
+                        id="body-fat-height"
+                        className={styles.inputDigital}
                         value={state.height}
                         onChange={(event) => handleOnchange('height', event.currentTarget.value)}
                         placeholder="Height"
@@ -121,6 +132,8 @@ const BodyFatCalc = function () {
                 </FormLabel>
                 <div className='col-span-2'>
                     <InputWithSide
+                        id="body-fat-waist"
+                        className={styles.inputDigital}
                         value={state.waist}
                         onChange={(event) => handleOnchange('waist', event.currentTarget.value)}
                         placeholder="Waist"
@@ -132,6 +145,8 @@ const BodyFatCalc = function () {
                 <FormLabel>Your neck <QuestionCircle title="measured right below the voicebox and rounded up" /></FormLabel>
                 <div className='col-span-2'>
                     <InputWithSide
+                        id="body-fat-neck"
+                        className={styles.inputDigital}
                         value={state.neck}
                         onChange={(event) => handleOnchange('neck', event.currentTarget.value)}
                         placeholder="Neck"
@@ -139,23 +154,27 @@ const BodyFatCalc = function () {
                     />
                 </div>
             </FormRow>
-            <FormRow className={`md:grid-cols-3 ${state.female ? "flex" : "hidden"}`}>
-                <FormLabel>Your hips <QuestionCircle title="measured at the largest protrusion of the buttocks" /></FormLabel>
-                <div className='col-span-2'>
-                    <InputWithSide
-                        value={state.hips}
-                        onChange={(event) => handleOnchange('hips', event.currentTarget.value)}
-                        placeholder="Hips"
-                        sideLabel="cm"
-                    />
-                </div>
-            </FormRow>
+            {state.female && (
+                <FormRow className={`md:grid-cols-3`}>
+                    <FormLabel>Your hips <QuestionCircle title="measured at the largest protrusion of the buttocks" /></FormLabel>
+                    <div className='col-span-2'>
+                        <InputWithSide
+                            id="body-fat-hips"
+                            className={styles.inputDigital}
+                            value={state.hips}
+                            onChange={(event) => handleOnchange('hips', event.currentTarget.value)}
+                            placeholder="Hips"
+                            sideLabel="cm"
+                        />
+                    </div>
+                </FormRow>
+            )}
             <FormRow className="md:grid-cols-3">
-                <FormLabel>Yor body fat:</FormLabel>
-                <div className='text-xl font-bold col-span-2'>{state.bodyFat}%</div>
+                <FormLabel>Your body fat:</FormLabel>
+                <div className={styles.result}>{state.bodyFat}%</div>
             </FormRow>
-        </>
+        </div>
     );
 };
 
-export default GlassPlate(BodyFatCalc, 'body-fat-calc w-[600px] max-w-full');
+export default BodyFatCalc;

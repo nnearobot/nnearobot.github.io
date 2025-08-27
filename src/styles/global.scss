@@ -75,9 +75,17 @@ a:hover {
 
 h1,
 h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-h);
+}
+
+h1,
+h2,
 h3 {
     @include font-accent;
-    color: var(--color-h);
 }
 
 h1 {
@@ -92,10 +100,16 @@ h2 {
 
 h3 {
     @include h-size(h3);
+    text-transform: lowercase;
 }
 
 h4 {
     @include h-size(h4);
+}
+
+h5,
+h6 {
+    font-size: 1rem;
 }
 
 p {

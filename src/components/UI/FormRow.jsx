@@ -1,14 +1,12 @@
 const FormRow = ({...props}) => {
     let {
         children,
-        className,
+        className = "",
         ...rest
     } = props
 
-    className = className || ""
-
     return (
-        <div className="form-row">{ children }</div>
+        <div className={`formRow ${className}`} {...rest}>{ children }</div>
     );
 };
 

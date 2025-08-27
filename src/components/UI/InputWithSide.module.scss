@@ -11,13 +11,16 @@
 
     .input,
     .side {
-        border: 1px solid var(--color-gray-400);
         border-radius: 0;
-        padding-inline: 1em;
-        padding-block: 0;
         line-height: $input-height;
         height: $input-height;
         box-sizing: content-box;
+
+        border: 1px solid var(--color-light-60);
+
+        :global([data-theme="dark"]) & {
+            border-color: var(--color-light-30);
+        }
     }
 
     .input {
@@ -26,13 +29,14 @@
 
     .side {
         font-size: 1rem;
-        color: var(--color-gray-600);
-        background: var(--color-gray-200);
+        color: var(--color-light-40);
+        background: var(--color-light-90);
+        padding-inline: 1em;
+        padding-block: 0;
 
-        :global(.dark) & {
-            background: #a1a1aa;
-            color: #3f3f46;
-            border-color: #a1a1aa;
+        :global([data-theme="dark"]) & {
+            background-color: var(--color-light-30);
+            color: var(--color-light-60);
         }
 
         &.left {

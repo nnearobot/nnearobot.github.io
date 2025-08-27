@@ -1,3 +1,5 @@
+@use "@/styles/_mixins" as *;
+
 .bodyHealth {
     .info {
         text-align: center;
@@ -6,4 +8,22 @@
     .cvBtn {
         margin: 2.5rem 0 0;
     }
+}
+
+.inputDigital {
+    input {
+        @include font-digital;
+        font-size: 1.4rem;
+    }
+}
+
+.result {
+    @include font-digital;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.glassPlate {
+    width: 600px;
+    margin: 0 auto;
 }

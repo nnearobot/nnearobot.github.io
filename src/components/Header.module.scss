@@ -73,11 +73,11 @@
         align-items: center;
         justify-content: center;
         border: none;
-        color: var(--color-gray-500);
+        color: var(--color-light-50);
 
         :global([data-theme="dark"]) & {
             &:active {
-                color: var(--color-gray-400);
+                color: var(--color-light-60);
             }
         }
     }

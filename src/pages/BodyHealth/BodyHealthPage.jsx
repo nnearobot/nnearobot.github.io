@@ -1,4 +1,4 @@
-import { Container } from '@/components/UI'
+import { Container, GlassPlate } from '@/components/UI'
 import CalorieCalc from './CalorieCalc'
 import BodyFatCalc from './BodyFatCalc'
 
@@ -10,10 +10,14 @@ const BodyHealthPage = () => {
       <h1>Body Health</h1>
       <Container>
         <h2>Daily Calorie Calculator</h2>
-        <CalorieCalc />
+        <GlassPlate className={styles.glassPlate}>
+          <CalorieCalc />
+        </GlassPlate>
 
         <h2>Body Fat Percentage Calculator</h2>
-        <BodyFatCalc />
+        <GlassPlate className={styles.glassPlate}>
+          <BodyFatCalc />
+        </GlassPlate>
       </Container>
     </div>
   )

@@ -1,23 +1,43 @@
 @use "@/styles/_variables" as *;
 
 .input {
-    font-size: 1.2rem;
-    color: var(--color-gray-800);
-    border: 1px solid var(--color-gray-400);
-    background: var(--color-gray-50);
+    font-size: 1.25rem;
     margin-block: 0.35rem;
-    padding-inline: 1rem;
+    padding-inline: 0.75rem;
     padding-block: 0;
     box-sizing: content-box;
+
+    color: var(--color-light-20);
+    border: 1px solid var(--color-light-60);
+    background: var(--color-light-95);
 
     line-height: $input-height;
     height: $input-height;
     border-radius: $input-border-radius;
 
     &:focus {
-        color: var(--bs-body-color);
-        background-color: var(--color-white);
         outline: 0;
-        box-shadow: 0 0 0 0.25rem rgba(159, 159, 159, 0.2);
+        color: var(--bs-body-color);
+        background-color: var(--color-light-100);
+        box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.15);
+    }
+
+    &::placeholder {
+        color: var(--color-light-70);
+    }
+
+    :global([data-theme="dark"]) & {
+        color: var(--color-light-70);
+        border-color: var(--color-light-30);
+        background-color: var(--color-light-10);
+
+        &:focus {
+            background-color: var(--color-light-5);
+            box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.15);
+        }
+
+        &::placeholder {
+            color: var(--color-light-20);
+        }
     }
 }

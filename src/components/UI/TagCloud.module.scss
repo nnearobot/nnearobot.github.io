@@ -36,12 +36,12 @@
 
         @include border-radius(2rem);
 
-        background: var(--color-gray-100);
-        border: 1px solid var(--color-gray-100);
+        background: var(--color-light-90);
+        border: 1px solid var(--color-light-90);
 
         :global([data-theme="dark"]) & {
-            background-color: var(--color-gray-800);
-            border-color: var(--color-gray-800);
+            background-color: var(--color-light-20);
+            border-color: var(--color-light-20);
         }
     }
 
@@ -52,13 +52,13 @@
 
         @include border-radius(2.2rem);
 
-        background: var(--color-white);
-        border: 1px solid var(--color-gray-500);
+        background: var(--color-light-100);
+        border: 1px solid var(--color-light-50);
 
         :global([data-theme="dark"]) & {
             color: #eeeeee;
-            background-color: var(--color-gray-800);
-            border-color: var(--color-gray-400);
+            background-color: var(--color-light-20);
+            border-color: var(--color-light-60);
         }
     }
 }

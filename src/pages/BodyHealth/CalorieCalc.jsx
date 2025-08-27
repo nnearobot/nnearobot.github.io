@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 
-import { InputWithSide, TextInput, Range, FormRow, FormLabel, GlassPlate } from '../../components/UI';
+import { InputWithSide, Range, FormRow, FormLabel } from '../../components/UI';
+
+import styles from "./BodyHealthPage.module.scss";
 
 const CalorieCalc = function () {
     const proteinKoeffRange = [1.0, 3.0]; // g/kg
@@ -24,11 +26,14 @@ const CalorieCalc = function () {
 
     useEffect(() => {
         calc(initialState);
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleOnchange = (name, value) => {
+        // only digits and dot are allowed:
+        if (!/^\d*\.?\d*$/.test(value)) {
+            return;
+        }
+
         let newState = calc({ ...state, [name]: value });
 
         setState(newState);
@@ -50,11 +55,13 @@ const CalorieCalc = function () {
     }
 
     return (
-        <>
+        <div className={styles.calorieCalc}>
             <FormRow className="sm:grid-cols-6">
                 <FormLabel className="col-span-2">Your weight</FormLabel>
                 <div className='col-span-2'>
                     <InputWithSide
+                        id="calorie-calc-weight"
+                        className={styles.inputDigital}
                         value={state.weight}
                         onChange={(event) => handleOnchange('weight', event.currentTarget.value)}
                         placeholder="Weight"
@@ -66,6 +73,8 @@ const CalorieCalc = function () {
                 <FormLabel className="col-span-2">Desired day calories</FormLabel>
                 <div className='col-span-2'>
                     <InputWithSide
+                        id="calorie-calc-calories"
+                        className={styles.inputDigital}
                         value={state.calorie}
                         onChange={(event) => handleOnchange('calorie', event.currentTarget.value)}
                         type="text"
@@ -76,7 +85,7 @@ const CalorieCalc = function () {
             </FormRow>
             <FormRow className="sm:grid-cols-6">
                 <FormLabel className="col-span-2">Proteins:</FormLabel>
-                <div className='sm:text-xl col-span-1'><b className="inline-block">{state.protein}</b> g</div>
+                <div className='sm:text-xl col-span-1'><span className={styles.result}>{state.protein}</span>&thinsp;g</div>
                 <div className='sm:text-xl col-span-3 mb-4 sm:mb-0'>
                     <Range
                         min={proteinKoeffRange[0]}
@@ -84,12 +93,12 @@ const CalorieCalc = function () {
                         step={0.1}
                         value={state.proteinKoeff}
                         onChange={(event) => handleOnchange('proteinKoeff', event.currentTarget.value)}
-                    /> g/kg
+                    />&thinsp;g/kg
                 </div>
             </FormRow>
             <FormRow className="sm:grid-cols-6">
                 <FormLabel className="col-span-2">Fats:</FormLabel>
-                <div className='sm:text-xl col-span-1'><b className="inline-block">{state.fat}</b> g</div>
+                <div className='sm:text-xl col-span-1'><span className={styles.result}>{state.fat}</span>&thinsp;g</div>
                 <div className='sm:text-xl col-span-3 mb-4 sm:mb-0'>
                     <Range
                         min={fatKoeffRange[0]}
@@ -97,15 +106,15 @@ const CalorieCalc = function () {
                         step={0.1}
                         value={state.fatKoeff}
                         onChange={(event) => handleOnchange('fatKoeff', event.currentTarget.value)}
-                    /> g/kg
+                    />&thinsp;g/kg
                 </div>
             </FormRow>
             <FormRow className="sm:grid-cols-6">
                 <FormLabel className="col-span-2">Carbs:</FormLabel>
-                <div className='sm:text-xl col-span-4'><b>{state.carb}</b> g</div>
+                <div className={styles.result}><b>{state.carb}</b>&thinsp;g</div>
             </FormRow>
-        </>
+        </div>
     );
 };
 
-export default GlassPlate(CalorieCalc, 'calorie-calc w-[600px] max-w-full');
+export default CalorieCalc

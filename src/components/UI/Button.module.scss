@@ -12,21 +12,21 @@
 
     &:hover {
         color: var(--color-link-hover);
-        background-color: var(--color-gray-300);
+        background-color: var(--color-light-70);
     }
 
     &:active {
         color: var(--color-link-hover);
-        background-color: var(--color-gray-200);
+        background-color: var(--color-light-80);
     }
 
     :global([data-theme="dark"]) & {
         &:hover {
-            background-color: var(--color-gray-700);
+            background-color: var(--color-light-30);
         }
 
         &:active {
-            background-color: var(--color-gray-600);
+            background-color: var(--color-light-40);
         }
     }
 }

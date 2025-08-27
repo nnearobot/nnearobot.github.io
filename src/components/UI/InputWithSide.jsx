@@ -1,4 +1,5 @@
 import TextInput from "./TextInput";
+
 import styles from "./InputWithSide.module.scss";
 
 const InputWithSide = ({ side = "right", sideLabel, className = "", ...rest }) => {
