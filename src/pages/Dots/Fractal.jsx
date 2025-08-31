@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import p5 from 'p5';
 
-import { Button, TextInput, FormRow, FormLabel } from '@/components/UI';
+import { Button, TextInput, FormRow, FormCell } from '@/components/UI';
 
 const Fractal = () => {
     const sketchRef = useRef < HTMLDivElement > (null);
@@ -90,7 +90,7 @@ const Fractal = () => {
         <div className="flex w-[930px] mx-auto">
             <div id="settings" className="w-[300px] mx-2">
                 <FormRow className="xs:grid-cols-3">
-                    <FormLabel>Number of vertex</FormLabel>
+                    <FormCell>Number of vertex</FormCell>
                     <div className='col-span-2'>
                         <TextInput
                             type="number"
@@ -101,7 +101,7 @@ const Fractal = () => {
                     </div>
                 </FormRow>
                 <FormRow className="xs:grid-cols-3">
-                    <FormLabel>Dot size</FormLabel>
+                    <FormCell>Dot size</FormCell>
                     <div className='col-span-2'>
                         <TextInput
                             type="number"
@@ -112,7 +112,7 @@ const Fractal = () => {
                     </div>
                 </FormRow>
                 <FormRow className="xs:grid-cols-3">
-                    <FormLabel>Ratio</FormLabel>
+                    <FormCell>Ratio</FormCell>
                     <div className='col-span-2'>
                         <TextInput
                             type="number"
@@ -125,7 +125,7 @@ const Fractal = () => {
                     </div>
                 </FormRow>
                 <FormRow className="xs:grid-cols-3">
-                    <FormLabel>Number of dots</FormLabel>
+                    <FormCell>Number of dots</FormCell>
                     <div className='col-span-2'>
                         <TextInput
                             type="number"
@@ -136,7 +136,7 @@ const Fractal = () => {
                     </div>
                 </FormRow>
                 <FormRow className="xs:grid-cols-3">
-                    <FormLabel>Delay, ms</FormLabel>
+                    <FormCell>Delay, ms</FormCell>
                     <div className='col-span-2'>
                         <TextInput
                             type="number"

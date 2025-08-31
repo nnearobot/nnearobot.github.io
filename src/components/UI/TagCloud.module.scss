@@ -37,10 +37,10 @@
         @include border-radius(2rem);
 
         background: var(--color-light-90);
-        border: 1px solid var(--color-light-90);
+        border: 1px solid var(--color-light-70);
 
         :global([data-theme="dark"]) & {
-            background-color: var(--color-light-20);
+            background-color: var(--color-light-10);
             border-color: var(--color-light-20);
         }
     }

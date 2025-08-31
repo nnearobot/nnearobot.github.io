@@ -14,16 +14,21 @@
     input {
         @include font-digital;
         font-size: 1.4rem;
+        width: 150px;
     }
 }
 
 .result {
-    @include font-digital;
-    font-size: 2rem;
-    font-weight: bold;
+    text-align: end;
+    font-size: 1.5rem;
+    span {
+        @include font-digital;
+        font-weight: bold;
+        font-size: 2rem;
+    }
 }
 
 .glassPlate {
-    width: 600px;
+    width: 500px;
     margin: 0 auto;
 }

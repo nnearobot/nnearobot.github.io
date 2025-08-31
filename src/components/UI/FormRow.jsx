@@ -1,12 +1,21 @@
-const FormRow = ({...props}) => {
-    let {
-        children,
-        className = "",
-        ...rest
-    } = props
+import styles from "./Form.module.scss";
+
+const FormRow = ({
+    align,
+    justify,
+    className,
+    children,
+    ...rest
+}) => {
+    const mergedStyle = {
+        alignItems: align,
+        justifyContent: justify,
+    };
 
     return (
-        <div className={`formRow ${className}`} {...rest}>{ children }</div>
+        <div className={`${styles.row}${className ? " " + className : ""}`} style={mergedStyle} {...rest}>
+            {children}
+        </div>
     );
 };
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { InputWithSide, RadioButton, QuestionCircle, FormRow, FormLabel } from '../../components/UI'
+import { InputWithSide, RadioButton, QuestionCircle, FormRow, FormCell } from '@/components/UI'
 
 import styles from "./BodyHealthPage.module.scss";
 
@@ -82,24 +82,24 @@ const BodyFatCalc = function () {
 
     return (
         <div className={styles.bodyFatCalc}>
-            <FormRow className="md:grid-cols-3">
-                <FormLabel>Your sex</FormLabel>
-                <div className='col-span-2'>
-                    <div className="mb-2"><label><RadioButton
+            <FormRow>
+                <FormCell sm={4}>Your sex</FormCell>
+                <FormCell sm={4} className={styles.radioGroup}>
+                    <label><RadioButton
                         value={1}
                         checked={state.female ? "checked" : ""}
                         onChange={(event) => handleOnSexCheck(event.currentTarget.value)}
-                    /> Female</label></div>
-                    <div className="mb-2"><label><RadioButton
+                    /> Female</label>
+                    <label><RadioButton
                         value={0}
                         checked={!state.female ? "checked" : ""}
                         onChange={(event) => handleOnSexCheck(event.currentTarget.value)}
-                    /> Male</label></div>
-                </div>
+                    /> Male</label>
+                </FormCell>
             </FormRow>
-            <FormRow className="md:grid-cols-3">
-                <FormLabel>Your weight</FormLabel>
-                <div className='col-span-2'>
+            <FormRow>
+                <FormCell sm={4}>Your weight</FormCell>
+                <FormCell sm={4}>
                     <InputWithSide
                         id="body-fat-weight"
                         className={styles.inputDigital}
@@ -108,11 +108,11 @@ const BodyFatCalc = function () {
                         placeholder="Weight"
                         sideLabel="kg"
                     />
-                </div>
+                </FormCell>
             </FormRow>
-            <FormRow className="md:grid-cols-3">
-                <FormLabel>Your height</FormLabel>
-                <div className='col-span-2'>
+            <FormRow>
+                <FormCell sm={4}>Your height</FormCell>
+                <FormCell sm={4}>
                     <InputWithSide
                         id="body-fat-height"
                         className={styles.inputDigital}
@@ -121,16 +121,16 @@ const BodyFatCalc = function () {
                         placeholder="Height"
                         sideLabel="cm"
                     />
-                </div>
+                </FormCell>
             </FormRow>
-            <FormRow className="md:grid-cols-3">
-                <FormLabel>
+            <FormRow>
+                <FormCell sm={4}>
                     Your waist <QuestionCircle title={state.female
                         ? "measured at the natural waistline (or the smallest waist circumference) and rounded down"
                         : "measured at the navel and rounded down"
                     } />
-                </FormLabel>
-                <div className='col-span-2'>
+                </FormCell>
+                <FormCell sm={4}>
                     <InputWithSide
                         id="body-fat-waist"
                         className={styles.inputDigital}
@@ -139,11 +139,11 @@ const BodyFatCalc = function () {
                         placeholder="Waist"
                         sideLabel="cm"
                     />
-                </div>
+                </FormCell>
             </FormRow>
-            <FormRow className="md:grid-cols-3">
-                <FormLabel>Your neck <QuestionCircle title="measured right below the voicebox and rounded up" /></FormLabel>
-                <div className='col-span-2'>
+            <FormRow>
+                <FormCell sm={4}>Your neck <QuestionCircle title="measured right below the voicebox and rounded up" /></FormCell>
+                <FormCell sm={4}>
                     <InputWithSide
                         id="body-fat-neck"
                         className={styles.inputDigital}
@@ -152,12 +152,12 @@ const BodyFatCalc = function () {
                         placeholder="Neck"
                         sideLabel="cm"
                     />
-                </div>
+                </FormCell>
             </FormRow>
             {state.female && (
-                <FormRow className={`md:grid-cols-3`}>
-                    <FormLabel>Your hips <QuestionCircle title="measured at the largest protrusion of the buttocks" /></FormLabel>
-                    <div className='col-span-2'>
+                <FormRow>
+                    <FormCell sm={4}>Your hips <QuestionCircle title="measured at the largest protrusion of the buttocks" /></FormCell>
+                    <FormCell sm={4}>
                         <InputWithSide
                             id="body-fat-hips"
                             className={styles.inputDigital}
@@ -166,12 +166,12 @@ const BodyFatCalc = function () {
                             placeholder="Hips"
                             sideLabel="cm"
                         />
-                    </div>
+                    </FormCell>
                 </FormRow>
             )}
-            <FormRow className="md:grid-cols-3">
-                <FormLabel>Your body fat:</FormLabel>
-                <div className={styles.result}>{state.bodyFat}%</div>
+            <FormRow>
+                <FormCell sm={4}>Your body fat:</FormCell>
+                <FormCell sm={8} className={styles.result}><span>{state.bodyFat}%</span></FormCell>
             </FormRow>
         </div>
     );

@@ -1,6 +1,6 @@
 import Button from "./Button";
 import Container from "./Container";
-import FormLabel from "./FormLabel";
+import FormCell from "./FormCell";
 import FormRow from "./FormRow";
 import GlassPlate from "./GlassPlate";
 import InputWithSide from "./InputWithSide";
@@ -13,7 +13,7 @@ import TextInput from "./TextInput";
 export {
     Button,
     Container,
-    FormLabel,
+    FormCell,
     FormRow,
     GlassPlate,
     InputWithSide,

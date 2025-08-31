@@ -1,9 +1,6 @@
 @use "@/styles/_mixins" as *;
 
 .cvBtn {
-    background: var(--color-light-90);
-    border: 1px solid var(--color-light-60);
-    color: var(--color-light-30);
     padding: 0 1rem;
     text-decoration: none;
     display: inline-flex;
@@ -13,25 +10,29 @@
     height: 40px;
     @include border-radius(40px);
 
-    span {
-        white-space: nowrap;
-    }
+    background: var(--color-light-95);
+    border: 1px solid var(--color-light-60);
+    color: var(--color-light-20);
 
     &:hover {
-        background-color: var(--color-gray-white);
+        background-color: var(--color-light-100);
         border-color: var(--color-light-40);
         color: var(--color-light-10);
     }
 
     :global([data-theme="dark"]) & {
         background-color: var(--color-light-20);
-        border-color: var(--color-light-40);
-        color: var(--color-light-60);
+        border-color: var(--color-light-50);
+        color: var(--color-light-70);
 
         &:hover {
             background-color: var(--color-light-30);
             border-color: var(--color-light-80);
             color: var(--color-light-90);
         }
+    }
+
+    span {
+        white-space: nowrap;
     }
 }

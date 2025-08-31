@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { InputWithSide, Range, FormRow, FormLabel } from '../../components/UI';
+import { InputWithSide, Range, FormRow, FormCell } from '@/components/UI';
 
 import styles from "./BodyHealthPage.module.scss";
 
@@ -56,9 +56,9 @@ const CalorieCalc = function () {
 
     return (
         <div className={styles.calorieCalc}>
-            <FormRow className="sm:grid-cols-6">
-                <FormLabel className="col-span-2">Your weight</FormLabel>
-                <div className='col-span-2'>
+            <FormRow>
+                <FormCell sm={4}>Your weight</FormCell>
+                <FormCell sm={5}>
                     <InputWithSide
                         id="calorie-calc-weight"
                         className={styles.inputDigital}
@@ -67,11 +67,11 @@ const CalorieCalc = function () {
                         placeholder="Weight"
                         sideLabel="kg"
                     />
-                </div>
+                </FormCell>
             </FormRow>
-            <FormRow className="sm:grid-cols-6">
-                <FormLabel className="col-span-2">Desired day calories</FormLabel>
-                <div className='col-span-2'>
+            <FormRow>
+                <FormCell sm={4}>Desired day calories</FormCell>
+                <FormCell sm={5}>
                     <InputWithSide
                         id="calorie-calc-calories"
                         className={styles.inputDigital}
@@ -81,12 +81,11 @@ const CalorieCalc = function () {
                         placeholder="Calories"
                         sideLabel="kcal"
                     />
-                </div>
+                </FormCell>
             </FormRow>
-            <FormRow className="sm:grid-cols-6">
-                <FormLabel className="col-span-2">Proteins:</FormLabel>
-                <div className='sm:text-xl col-span-1'><span className={styles.result}>{state.protein}</span>&thinsp;g</div>
-                <div className='sm:text-xl col-span-3 mb-4 sm:mb-0'>
+            <FormRow>
+                <FormCell sm={4}>Proteins:</FormCell>
+                <FormCell sm={5}>
                     <Range
                         min={proteinKoeffRange[0]}
                         max={proteinKoeffRange[1]}
@@ -94,12 +93,12 @@ const CalorieCalc = function () {
                         value={state.proteinKoeff}
                         onChange={(event) => handleOnchange('proteinKoeff', event.currentTarget.value)}
                     />&thinsp;g/kg
-                </div>
+                </FormCell>
+                <FormCell sm={3} className={styles.result}><span>{state.protein}</span>&thinsp;g</FormCell>
             </FormRow>
-            <FormRow className="sm:grid-cols-6">
-                <FormLabel className="col-span-2">Fats:</FormLabel>
-                <div className='sm:text-xl col-span-1'><span className={styles.result}>{state.fat}</span>&thinsp;g</div>
-                <div className='sm:text-xl col-span-3 mb-4 sm:mb-0'>
+            <FormRow>
+                <FormCell sm={4}>Fats:</FormCell>
+                <FormCell sm={5}>
                     <Range
                         min={fatKoeffRange[0]}
                         max={fatKoeffRange[1]}
@@ -107,11 +106,12 @@ const CalorieCalc = function () {
                         value={state.fatKoeff}
                         onChange={(event) => handleOnchange('fatKoeff', event.currentTarget.value)}
                     />&thinsp;g/kg
-                </div>
+                </FormCell>
+                <FormCell sm={3} className={styles.result}><span>{state.fat}</span>&thinsp;g</FormCell>
             </FormRow>
-            <FormRow className="sm:grid-cols-6">
-                <FormLabel className="col-span-2">Carbs:</FormLabel>
-                <div className={styles.result}><b>{state.carb}</b>&thinsp;g</div>
+            <FormRow>
+                <FormCell sm={9}>Carbs:</FormCell>
+                <FormCell sm={3} className={styles.result}><span>{state.carb}</span>&thinsp;g</FormCell>
             </FormRow>
         </div>
     );

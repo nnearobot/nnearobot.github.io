@@ -8,6 +8,7 @@
     flex-wrap: nowrap;
     flex-direction: row;
     justify-content: flex-start;
+    width: 100%;
 
     .input,
     .side {
@@ -16,7 +17,6 @@
         height: $input-height;
         box-sizing: content-box;
 
-        border: 1px solid var(--color-light-60);
 
         :global([data-theme="dark"]) & {
             border-color: var(--color-light-30);
@@ -31,11 +31,12 @@
         font-size: 1rem;
         color: var(--color-light-40);
         background: var(--color-light-90);
+        border: 1px solid var(--color-light-85);
         padding-inline: 1em;
         padding-block: 0;
 
         :global([data-theme="dark"]) & {
-            background-color: var(--color-light-30);
+            background-color: var(--color-light-20);
             color: var(--color-light-60);
         }
 
