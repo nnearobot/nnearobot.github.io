@@ -1,20 +1,9 @@
 @use 'sass:color';
 @use "@/styles/_variables" as *;
 
-@custom-media --mobile (min-width: $width-mobile);
-@custom-media --xs (min-width: $width-xs);
-@custom-media --sm (min-width: $width-sm);
-@custom-media --md (min-width: $width-md);
-@custom-media --lg (min-width: $width-lg);
-@custom-media --xl (min-width: $width-xl);
-@custom-media --xxl (min-width: $width-xxl);
-
 .row {
     display: grid;
     grid-template-columns: repeat($formGrid-columns, minmax(0, 1fr));
-    gap: $formGrid-gap;
-
-    align-items: center;
 }
 
 
@@ -22,44 +11,38 @@
     grid-column: span var(--fc-col, $formGrid-columns);
 }
 
-@media (min-width: $width-mobile) {
-    .cell {
-        grid-column: span var(--fc-mobile, var(--fc-col, $formGrid-columns));
-    }
-}
-
 @media (min-width: $width-xs) {
     .cell {
-        grid-column: span var(--fc-col-xs, var(--fc-mobile, var(--fc-col, $formGrid-columns)));
+        grid-column: span var(--fc-col-xs, var(--fc-col, $formGrid-columns));
     }
 }
 
 @media (min-width: $width-sm) {
     .cell {
-        grid-column: span var(--fc-col-sm, var(--fc-col-xs, var(--fc-mobile, var(--fc-col, $formGrid-columns))));
+        grid-column: span var(--fc-col-sm, var(--fc-col-xs, var(--fc-col, $formGrid-columns)));
     }
 }
 
 @media (min-width: $width-md) {
     .cell {
-        grid-column: span var(--fc-col-md, var(--fc-col-sm, var(--fc-col-xs, var(--fc-mobile, var(--fc-col, $formGrid-columns)))));
+        grid-column: span var(--fc-col-md, var(--fc-col-sm, var(--fc-col-xs, var(--fc-col, $formGrid-columns))));
     }
 }
 
 @media (min-width: $width-lg) {
     .cell {
-        grid-column: span var(--fc-col-lg, var(--fc-col-md, var(--fc-col-sm, var(--fc-col-xs, var(--fc-mobile, var(--fc-col, $formGrid-columns))))));
+        grid-column: span var(--fc-col-lg, var(--fc-col-md, var(--fc-col-sm, var(--fc-col-xs, var(--fc-col, $formGrid-columns)))));
     }
 }
 
 @media (min-width: $width-xl) {
     .cell {
-        grid-column: span var(--fc-col-xl, var(--fc-col-lg, var(--fc-col-md, var(--fc-col-sm, var(--fc-col-xs, var(--fc-mobile, var(--fc-col, $formGrid-columns)))))));
+        grid-column: span var(--fc-col-xl, var(--fc-col-lg, var(--fc-col-md, var(--fc-col-sm, var(--fc-col-xs, var(--fc-col, $formGrid-columns))))));
     }
 }
 
 @media (min-width: $width-xxl) {
     .cell {
-        grid-column: span var(--fc-col-xxl, var(--fc-col-xl, var(--fc-col-lg, var(--fc-col-md, var(--fc-col-sm, var(--fc-col-xs, var(--fc-mobile, var(--fc-col, $formGrid-columns))))))));
+        grid-column: span var(--fc-col-xxl, var(--fc-col-xl, var(--fc-col-lg, var(--fc-col-md, var(--fc-col-sm, var(--fc-col-xs, var(--fc-col, $formGrid-columns)))))));
     }
 }

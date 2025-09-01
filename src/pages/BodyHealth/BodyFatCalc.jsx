@@ -81,10 +81,9 @@ const BodyFatCalc = function () {
     }
 
     return (
-        <div className={styles.bodyFatCalc}>
+        <form className={`form-horizontal ${styles.bodyFatCalc}`}>
             <FormRow>
-                <FormCell sm={4}>Your sex</FormCell>
-                <FormCell sm={4} className={styles.radioGroup}>
+                <FormCell className={styles.radioGroup}>
                     <label><RadioButton
                         value={1}
                         checked={state.female ? "checked" : ""}
@@ -98,8 +97,8 @@ const BodyFatCalc = function () {
                 </FormCell>
             </FormRow>
             <FormRow>
-                <FormCell sm={4}>Your weight</FormCell>
-                <FormCell sm={4}>
+                <FormCell sm={4} as="label" htmlFor="body-fat-weight">Weight</FormCell>
+                <FormCell sm={8}>
                     <InputWithSide
                         id="body-fat-weight"
                         className={styles.inputDigital}
@@ -111,8 +110,8 @@ const BodyFatCalc = function () {
                 </FormCell>
             </FormRow>
             <FormRow>
-                <FormCell sm={4}>Your height</FormCell>
-                <FormCell sm={4}>
+                <FormCell sm={4} as="label" htmlFor="body-fat-height">Height</FormCell>
+                <FormCell sm={8}>
                     <InputWithSide
                         id="body-fat-height"
                         className={styles.inputDigital}
@@ -124,13 +123,13 @@ const BodyFatCalc = function () {
                 </FormCell>
             </FormRow>
             <FormRow>
-                <FormCell sm={4}>
-                    Your waist <QuestionCircle title={state.female
+                <FormCell sm={4} as="label" htmlFor="body-fat-waist">
+                    Waist <QuestionCircle title={state.female
                         ? "measured at the natural waistline (or the smallest waist circumference) and rounded down"
                         : "measured at the navel and rounded down"
                     } />
                 </FormCell>
-                <FormCell sm={4}>
+                <FormCell sm={8}>
                     <InputWithSide
                         id="body-fat-waist"
                         className={styles.inputDigital}
@@ -142,8 +141,8 @@ const BodyFatCalc = function () {
                 </FormCell>
             </FormRow>
             <FormRow>
-                <FormCell sm={4}>Your neck <QuestionCircle title="measured right below the voicebox and rounded up" /></FormCell>
-                <FormCell sm={4}>
+                <FormCell sm={4} as="label" htmlFor="body-fat-neck">Neck <QuestionCircle title="measured right below the voicebox and rounded up" /></FormCell>
+                <FormCell sm={8}>
                     <InputWithSide
                         id="body-fat-neck"
                         className={styles.inputDigital}
@@ -156,8 +155,8 @@ const BodyFatCalc = function () {
             </FormRow>
             {state.female && (
                 <FormRow>
-                    <FormCell sm={4}>Your hips <QuestionCircle title="measured at the largest protrusion of the buttocks" /></FormCell>
-                    <FormCell sm={4}>
+                    <FormCell sm={4} as="label" htmlFor="body-fat-hips">Hips <QuestionCircle title="measured at the largest protrusion of the buttocks" /></FormCell>
+                    <FormCell sm={8}>
                         <InputWithSide
                             id="body-fat-hips"
                             className={styles.inputDigital}
@@ -169,11 +168,11 @@ const BodyFatCalc = function () {
                     </FormCell>
                 </FormRow>
             )}
-            <FormRow>
-                <FormCell sm={4}>Your body fat:</FormCell>
-                <FormCell sm={8} className={styles.result}><span>{state.bodyFat}%</span></FormCell>
+            <FormRow className={styles.resultRow}>
+                <FormCell col={6} className={styles.resultLabel}>Body fat:</FormCell>
+                <FormCell col={6} className={styles.result}><span>{state.bodyFat}%</span></FormCell>
             </FormRow>
-        </div>
+        </form>
     );
 };
 

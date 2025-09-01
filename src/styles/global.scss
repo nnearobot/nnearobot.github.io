@@ -1,6 +1,7 @@
 @use "colors" as *;
 @use "variables" as *;
 @use "mixins" as *;
+@use "reset" as *;
 
 @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
@@ -115,4 +116,24 @@ h6 {
 p {
     line-height: 1.5;
     margin: 0 0 0.5em;
+}
+
+.form-horizontal .form-row,
+.form-row.form-horizontal {
+    gap: 0.2rem 1rem;
+    margin-bottom: 1rem;
+    align-items: center;
+
+    label {
+        vertical-align: bottom;
+    }
+
+    @media (min-width: $width-sm) {
+        gap: 1rem 1rem;
+
+        label {
+            text-align: right;
+            vertical-align: middle;
+        }
+    }
 }

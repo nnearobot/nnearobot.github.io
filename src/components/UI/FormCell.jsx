@@ -26,7 +26,7 @@ const FormCell = ({
     };
 
     return (
-        <Tag className={`${s.cell}${className ? " " + className : ""}`} style={mergedStyle} {...rest}>
+        <Tag className={`form-cell ${s.cell}${className ? " " + className : ""}`} style={mergedStyle} {...rest}>
             {children}
         </Tag>
     );

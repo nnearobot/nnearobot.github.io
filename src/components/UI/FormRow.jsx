@@ -13,7 +13,7 @@ const FormRow = ({
     };
 
     return (
-        <div className={`${styles.row}${className ? " " + className : ""}`} style={mergedStyle} {...rest}>
+        <div className={`form-row ${styles.row}${className ? " " + className : ""}`} style={mergedStyle} {...rest}>
             {children}
         </div>
     );

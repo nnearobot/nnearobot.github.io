@@ -55,10 +55,10 @@ const CalorieCalc = function () {
     }
 
     return (
-        <div className={styles.calorieCalc}>
+        <form className={`form-horizontal ${styles.calorieCalc}`}>
             <FormRow>
-                <FormCell sm={4}>Your weight</FormCell>
-                <FormCell sm={5}>
+                <FormCell as="label" htmlFor="calorie-calc-weight" sm={4}>Weight</FormCell>
+                <FormCell sm={8}>
                     <InputWithSide
                         id="calorie-calc-weight"
                         className={styles.inputDigital}
@@ -70,8 +70,8 @@ const CalorieCalc = function () {
                 </FormCell>
             </FormRow>
             <FormRow>
-                <FormCell sm={4}>Desired day calories</FormCell>
-                <FormCell sm={5}>
+                <FormCell as="label" htmlFor="calorie-calc-calories" sm={4}>Desired day calories</FormCell>
+                <FormCell sm={8}>
                     <InputWithSide
                         id="calorie-calc-calories"
                         className={styles.inputDigital}
@@ -84,8 +84,8 @@ const CalorieCalc = function () {
                 </FormCell>
             </FormRow>
             <FormRow>
-                <FormCell sm={4}>Proteins:</FormCell>
-                <FormCell sm={5}>
+                <FormCell as="label" sm={4}>Protein rate</FormCell>
+                <FormCell sm={8}>
                     <Range
                         min={proteinKoeffRange[0]}
                         max={proteinKoeffRange[1]}
@@ -94,11 +94,10 @@ const CalorieCalc = function () {
                         onChange={(event) => handleOnchange('proteinKoeff', event.currentTarget.value)}
                     />&thinsp;g/kg
                 </FormCell>
-                <FormCell sm={3} className={styles.result}><span>{state.protein}</span>&thinsp;g</FormCell>
             </FormRow>
             <FormRow>
-                <FormCell sm={4}>Fats:</FormCell>
-                <FormCell sm={5}>
+                <FormCell as="label" sm={4}>Fat rate</FormCell>
+                <FormCell sm={8}>
                     <Range
                         min={fatKoeffRange[0]}
                         max={fatKoeffRange[1]}
@@ -107,13 +106,20 @@ const CalorieCalc = function () {
                         onChange={(event) => handleOnchange('fatKoeff', event.currentTarget.value)}
                     />&thinsp;g/kg
                 </FormCell>
-                <FormCell sm={3} className={styles.result}><span>{state.fat}</span>&thinsp;g</FormCell>
             </FormRow>
-            <FormRow>
-                <FormCell sm={9}>Carbs:</FormCell>
-                <FormCell sm={3} className={styles.result}><span>{state.carb}</span>&thinsp;g</FormCell>
+            <FormRow className={styles.resultRow}>
+                <FormCell col={5} className={styles.resultLabel}>Proteins:</FormCell>
+                <FormCell col={7} className={styles.result}><span>{state.protein}</span>&thinsp;g</FormCell>
             </FormRow>
-        </div>
+            <FormRow className={styles.resultRow}>
+                <FormCell col={5} className={styles.resultLabel}>Fats:</FormCell>
+                <FormCell col={7} className={styles.result}><span>{state.fat}</span>&thinsp;g</FormCell>
+            </FormRow>
+            <FormRow className={styles.resultRow}>
+                <FormCell col={5} className={styles.resultLabel}>Carbs:</FormCell>
+                <FormCell col={7} className={styles.result}><span>{state.carb}</span>&thinsp;g</FormCell>
+            </FormRow>
+        </form>
     );
 };
 

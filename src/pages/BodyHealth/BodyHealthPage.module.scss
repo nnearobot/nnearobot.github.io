@@ -1,4 +1,5 @@
 @use "@/styles/_mixins" as *;
+@use "@/styles/_variables" as *;
 
 .bodyHealth {
     .info {
@@ -8,27 +9,49 @@
     .cvBtn {
         margin: 2.5rem 0 0;
     }
-}
 
-.inputDigital {
-    input {
-        @include font-digital;
-        font-size: 1.4rem;
-        width: 150px;
+    .bodyFatCalc,
+    .calorieCalc {
+        .inputDigital {
+            input {
+                @include font-digital;
+                font-size: 1.4rem;
+                width: 150px;
+            }
+        }
+
+        .resultRow {
+            margin: 0.5rem 0 0;
+            min-height: 0;
+
+            .resultLabel {
+                text-align: end;
+                font-size: 1.3rem;
+            }
+
+            .result {
+                font-size: 1.5rem;
+
+                span {
+                    @include font-digital;
+                    font-weight: bold;
+                    font-size: 2rem;
+                }
+            }
+        }
+
+        .radioGroup {
+            display: flex;
+            justify-content: space-evenly;
+        }
     }
-}
 
-.result {
-    text-align: end;
-    font-size: 1.5rem;
-    span {
-        @include font-digital;
-        font-weight: bold;
-        font-size: 2rem;
+    .glassPlate {
+        width: 300px;
+        margin: 0 auto;
+
+        @media (min-width: $width-sm) {
+            width: 500px;
+        }
     }
-}
-
-.glassPlate {
-    width: 500px;
-    margin: 0 auto;
 }

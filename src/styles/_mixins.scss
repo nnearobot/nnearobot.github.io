@@ -4,8 +4,6 @@
     width: 100%;
     box-sizing: border-box;
 
-    max-width: $container-width-xxl;
-
     @media (min-width: $width-xs) {
         max-width: $container-width-xs;
     }
@@ -45,7 +43,7 @@
 
         margin-bottom: 3rem;
 
-        @media (min-width: $width-mobile) {
+        @media (min-width: $width-xs) {
             font-size: 1.75rem;
         }
 
@@ -62,7 +60,7 @@
     @else if $size ==h2 {
         font-size: 1.35rem;
 
-        @media (min-width: $width-mobile) {
+        @media (min-width: $width-xs) {
             font-size: 1.5rem;
         }
 
