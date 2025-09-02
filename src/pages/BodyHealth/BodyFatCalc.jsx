@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { InputWithSide, RadioButton, QuestionCircle, FormRow, FormCell } from '@/components/UI'
+import { InputWithSide, RadioGroup, QuestionCircle, FormRow, FormCell } from '@/components/UI'
 
 import styles from "./BodyHealthPage.module.scss";
 
@@ -83,17 +83,18 @@ const BodyFatCalc = function () {
     return (
         <form className={`form-horizontal ${styles.bodyFatCalc}`}>
             <FormRow>
-                <FormCell className={styles.radioGroup}>
-                    <label><RadioButton
-                        value={1}
-                        checked={state.female ? "checked" : ""}
-                        onChange={(event) => handleOnSexCheck(event.currentTarget.value)}
-                    /> Female</label>
-                    <label><RadioButton
-                        value={0}
-                        checked={!state.female ? "checked" : ""}
-                        onChange={(event) => handleOnSexCheck(event.currentTarget.value)}
-                    /> Male</label>
+                <FormCell>
+                    <RadioGroup
+                        name="sexx"
+                        value={state.female ? 1 : 0}
+                        onChange={(e) => handleOnSexCheck(e.target.value)}
+                        options={[
+                            { value: "1", label: "Female" },
+                            { value: "0", label: "Male" },
+                        ]}
+                        className={styles.radioGroup}
+                        aria-label="Sex selection"
+                    />
                 </FormCell>
             </FormRow>
             <FormRow>

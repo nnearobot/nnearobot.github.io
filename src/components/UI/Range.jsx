@@ -1,26 +1,27 @@
-import { useState } from 'react';
+import styles from "./Range.module.scss";
 
-const Range = function({...props}) {
-    let {
-        className,
-        ...rest
-    } = props
-
-    className = className || ""
-
-
-    const [value, setValue] = useState(props.value)
-
-    function handleSlide(event) {
-        setValue(event.currentTarget.value);
-        props.onChange(event);
-    }
+const Range = ({ label, min = 0, max = 100, step = 1, value, onChange, className, ...aria }) => {
+    const pct = Math.max(0, Math.min(100, ((value - min) / (max - min)) * 100));
 
     return (
-        <>
-            <input {...rest} type="range" onChange={handleSlide} className="input-range" /> <span>{value}</span>
-        </>
+        <div className={`${styles.rng} ${className ?? ""}`}>
+            <span className={styles.label}>
+                {value}
+                {label && <span>{label}</span>}
+            </span>
+            <input
+                type="range"
+                className={styles.input}
+                min={min}
+                max={max}
+                step={step}
+                value={value}
+                onChange={onChange}
+                style={{ "--rng-fill": `${pct}%` }}
+                {...aria}
+            />
+        </div>
     );
-}
+};
 
 export default Range;

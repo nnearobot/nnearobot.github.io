@@ -5,7 +5,7 @@ import FormRow from "./FormRow";
 import GlassPlate from "./GlassPlate";
 import InputWithSide from "./InputWithSide";
 import QuestionCircle from "./QuestionCircle";
-import RadioButton from "./RadioButton";
+import RadioGroup from "./Radio";
 import Range from "./Range";
 import TagCloud from "./TagCloud";
 import TextInput from "./TextInput";
@@ -18,7 +18,7 @@ export {
     GlassPlate,
     InputWithSide,
     QuestionCircle,
-    RadioButton,
+    RadioGroup,
     Range,
     TagCloud,
     TextInput,
