@@ -8,8 +8,8 @@ const Hero = () => {
         <section className={styles.hero}>
             <h1 className={styles.name}>Rimma Maksiutova</h1>
             <Container>
-                <p className={styles.subtitle}>Full‑stack software engineer</p>
-                <p><a href="/about">About me</a></p>
+                <p className={styles.title}>Full‑stack software engineer</p>
+                <p className={styles.aboutLink}><a href="/about">About me</a></p>
                 <p><DownloadCVBtn /></p>
                 <div className={styles.snsRow}>
                     <SNSLinks withLabels={true} />

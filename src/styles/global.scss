@@ -17,9 +17,7 @@ body {
     margin: 0;
     padding: 0;
     background: var(--color-background-start);
-    background: linear-gradient(to bottom,
-            transparent,
-            var(--color-background-end)) var(--color-background-start);
+    background: linear-gradient(to bottom, transparent, var(--color-background-end)) var(--color-background-start);
     line-height: 1.25;
     color: var(--color-foreground);
     @include font-body;
@@ -62,7 +60,6 @@ main {
 
 .container-fluid {
     width: 100%;
-    box-sizing: border-box;
 }
 
 a {

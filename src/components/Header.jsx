@@ -69,7 +69,7 @@ const Header = ({ basename }) => {
 
     return (
         <header className={styles.header}>
-            <Container>
+            <Container className={styles.container}>
                 <div className={styles.navbar}>
                     <a href="/" className={styles.logo} aria-label="Home">
                         <Logo />

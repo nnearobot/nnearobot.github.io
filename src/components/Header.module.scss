@@ -63,6 +63,18 @@
                 }
             }
         }
+
+        @media screen and (max-width: $width-sm) {
+            gap: 0.5rem;
+
+            button {
+                font-size: 1.5rem;
+                height: 2.4rem;
+                width: 2.4rem;
+
+                @include border-radius(2.4rem);
+            }
+        }
     }
 
     .menuBtn {
@@ -81,21 +93,12 @@
             }
         }
     }
-}
 
-
-@media screen and (max-width: $width-sm) {
-    .header {
-        .actions {
-            gap: 0.5rem;
-
-            button {
-                font-size: 1.5rem;
-                height: 2.4rem;
-                width: 2.4rem;
-
-                @include border-radius(2.4rem);
-            }
+    @media screen and (max-width: $width-md) {
+        .container {
+            width: 100%;
+            max-width: unset;
+            min-width: 260px;
         }
     }
 }
