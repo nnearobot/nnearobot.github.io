@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 
 import routes from './data/routes';
 
-const BASE_NAME = '/nnearobot'
+const BASE_NAME = '';
 
 const App = () => {
     return (

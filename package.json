@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/nnearobot/nnearobot.github.io/issues"
   },
-  "homepage": "https://github.com/nnearobot/nnearobot.github.io#readme",
+  "homepage": "https://nnearobot.github.io",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-brands-svg-icons": "^6.7.2",

@@ -5,7 +5,7 @@ import path from 'path';
 // Base URL for GitHub Pages
 export default defineConfig({
   plugins: [react()],
-  base: '/nnearobot/',
+  base: '/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
