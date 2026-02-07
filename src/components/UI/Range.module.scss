@@ -65,7 +65,6 @@ $thumb-margin-top: 0 - math.div($form-control-circle - $track-height, 2);
             linear-gradient(180deg, var(--color-light-100), var(--color-light-90));
         box-shadow: var(--rng-thumb-shadow);
         cursor: grab;
-        transition: transform 0.12s var($ease), box-shadow 0.12s var($ease);
     }
 
     &:active::-webkit-slider-thumb {
@@ -102,7 +101,6 @@ $thumb-margin-top: 0 - math.div($form-control-circle - $track-height, 2);
             radial-gradient(circle at 35% 35%, rgba(255, 255, 255, .9), rgba(255, 255, 255, 0) 60%),
             linear-gradient(180deg, var(--color-light-100), var(--color-light-90));
         box-shadow: var(--rng-thumb-shadow);
-        transition: transform cubic-bezier(0.55, 0.085, 0.68, 0.53) var($ease), box-shadow 0.12s var($ease);
     }
 
     &:focus-visible::-moz-range-thumb {}

@@ -7,8 +7,7 @@
     border-width: 1px;
     transition: background-color 0.3s;
     height: 2rem;
-
-    @include border-radius(2rem);
+    border-radius: 0.2rem;
 
     &:hover {
         color: var(--color-link-hover);
@@ -28,5 +27,11 @@
         &:active {
             background-color: var(--color-light-40);
         }
+    }
+
+    // Disabled state
+    &.disabled, &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
     }
 }
