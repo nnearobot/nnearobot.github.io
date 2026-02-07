@@ -1,7 +1,6 @@
 import AboutPage from "@/pages/About/AboutPage";
 import HomePage from "@/pages/Home/HomePage";
 import ProjectsPage from "@/pages/Projects/ProjectsPage";
-import DotsPage from "@/pages/Dots/DotsPage";
 import BodyHealthPage from "@/pages/BodyHealth/BodyHealthPage";
 import ConwayLifePage from "@/pages/ConwayLife/ConwayLifePage";
 
@@ -21,10 +20,6 @@ const routes = {
     bodyHealth: {
         path: "/projects/body-health",
         element: BodyHealthPage,
-    },
-    dots: {
-        path: "/projects/dots",
-        element: DotsPage,
     },
     conwayLife: {
         path: "/conway-life",
