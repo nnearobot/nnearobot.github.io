@@ -7,7 +7,8 @@ const ProjectsPage = () => {
     <div className={styles.projects}>
       <h1>My Projects</h1>
       <Container>
-        <p>[Under construction]</p>
+        <h4><a href="/body-health">Body Health</a></h4>
+        <h4><a href="/conway-life">Conway's Game of Life</a></h4>
       </Container>
     </div>
   )
