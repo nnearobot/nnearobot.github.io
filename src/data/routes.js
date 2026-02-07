@@ -3,6 +3,7 @@ import HomePage from "@/pages/Home/HomePage";
 import ProjectsPage from "@/pages/Projects/ProjectsPage";
 import DotsPage from "@/pages/Dots/DotsPage";
 import BodyHealthPage from "@/pages/BodyHealth/BodyHealthPage";
+import ConwayLifePage from "@/pages/ConwayLife/ConwayLifePage";
 
 const routes = {
     home: {
@@ -24,6 +25,10 @@ const routes = {
     dots: {
         path: "/projects/dots",
         element: DotsPage,
+    },
+    conwayLife: {
+        path: "/conway-life",
+        element: ConwayLifePage,
     },
 };
 

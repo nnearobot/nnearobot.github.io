@@ -1,0 +1,74 @@
+@use "@/styles/_variables" as *;
+@use "@/styles/_mixins" as *;
+
+.layout {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* ===== Controls ===== */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 300px;
+}
+
+.controlLabel {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.inputsRow {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.radioGroup {
+    display: flex;
+    gap: 20px;
+}
+
+.rangeInput {
+    flex: 1;
+}
+
+.buttonsRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    width: 65px;
+}
+
+.metadataRow {
+    margin: 20px 0 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+}
+
+/* ===== Board ===== */
+.boardColumn {
+    min-width: 300px;
+}
+
+.boardWrapper {
+    border: 1px solid var(--color-light-60);
+    box-sizing: content-box;
+    overflow: auto;
+    background: #fff;
+    width: min(100%, 2000px, 98vw);
+    height: min(100%, 2000px, 98vw);
+}
+
+.canvas {
+    display: block;
+    touch-action: none;
+    cursor: crosshair;
+}
