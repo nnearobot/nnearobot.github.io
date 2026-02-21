@@ -18,7 +18,7 @@ const routes = {
         element: ProjectsPage,
     },
     bodyHealth: {
-        path: "/projects/body-health",
+        path: "/body-health",
         element: BodyHealthPage,
     },
     conwayLife: {
