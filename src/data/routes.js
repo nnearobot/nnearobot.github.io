@@ -3,7 +3,7 @@ import HomePage from "@/pages/Home/HomePage";
 import ProjectsPage from "@/pages/Projects/ProjectsPage";
 import BodyHealthPage from "@/pages/BodyHealth/BodyHealthPage";
 import ConwayLifePage from "@/pages/ConwayLife/ConwayLifePage";
-import BinaryBirthdaysPage from "@/pages/BinaryBirthdays/BinaryBirthdaysPage";
+import BinaryBirthdayPage from "@/pages/BinaryBirthday/BinaryBirthdayPage";
 
 const routes = {
     home: {
@@ -26,9 +26,9 @@ const routes = {
         path: "/conway-life",
         element: ConwayLifePage,
     },
-    binaryBirthdays: {
-        path: "/projects/binary-birthdays",
-        element: DotsPage,
+    binaryBirthday: {
+        path: "/binary-birthday",
+        element: BinaryBirthdayPage,
     },
 };
 
