@@ -41,7 +41,6 @@ const RadioGroup = ({ name, value, options, onChange, className, ...aria }) => {
               disabled={opt.disabled}
               onChange={onChange}
             />
-            <span className={styles.control} aria-hidden />
             <span className={styles.label}>{opt.label}</span>
           </label>
         );

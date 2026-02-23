@@ -28,7 +28,7 @@
 
         a {
             text-decoration: none;
-            color: var(--color-foreground);
+            color: var(--color-text);
             font-weight: 500;
 
             &:hover {
@@ -85,13 +85,7 @@
         align-items: center;
         justify-content: center;
         border: none;
-        color: var(--color-light-50);
-
-        :global([data-theme="dark"]) & {
-            &:active {
-                color: var(--color-light-60);
-            }
-        }
+        color: var(--color-contrast-80);
     }
 
     @media screen and (max-width: $width-md) {

@@ -7,6 +7,7 @@
         margin-block-end: 0.5rem;
         vertical-align: middle;
         white-space: nowrap;
+        box-sizing: content-box;
     }
 
     .sizeXs {
@@ -34,15 +35,10 @@
         height: 2rem;
         line-height: 2rem;
 
-        @include border-radius(2rem);
+        @include border-radius(1rem);
 
-        background: var(--color-light-90);
-        border: 1px solid var(--color-light-70);
-
-        :global([data-theme="dark"]) & {
-            background-color: var(--color-light-10);
-            border-color: var(--color-light-20);
-        }
+        background: var(--color-contrast-20);
+        color: var(--color-contrast-70)
     }
 
     .variantTop {
@@ -50,15 +46,9 @@
         height: 2.2rem;
         line-height: 2.2rem;
 
-        @include border-radius(2.2rem);
+        @include border-radius(1.2rem);
 
-        background: var(--color-light-100);
-        border: 1px solid var(--color-light-50);
-
-        :global([data-theme="dark"]) & {
-            color: #eeeeee;
-            background-color: var(--color-light-20);
-            border-color: var(--color-light-60);
-        }
+        background: var(--color-contrast-60);
+        color: var(--color-contrast-0)
     }
 }

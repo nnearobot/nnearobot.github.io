@@ -16,10 +16,9 @@ html[data-theme="dark"] {
 body {
     margin: 0;
     padding: 0;
-    background: var(--color-background-start);
-    background: linear-gradient(to bottom, transparent, var(--color-background-end)) var(--color-background-start);
+    background: var(--color-background);
     line-height: 1.25;
-    color: var(--color-foreground);
+    color: var(--color-text);
     @include font-body;
     font-weight: normal;
     font-size: 16px;

@@ -2,7 +2,7 @@
 @use "@/styles/variables" as *;
 
 .footer {
-    border-top: 1px solid var(--color-footer-border);
+    border-top: 1px solid var(--color-divider);
     margin-top: 4rem;
 
     .container {
@@ -28,7 +28,7 @@
     }
 
     .nav a:hover {
-        color: var(--color-foreground);
+        color: var(--color-text);
     }
 
     .copy {

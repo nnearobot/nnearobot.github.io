@@ -1,32 +1,19 @@
-@use "@/styles/_mixins" as *;
+@use "@/styles/_variables" as *;
 
 .button {
-    background-color: transparent;
-    color: var(--color-link);
     padding: 0.25rem;
-    border-width: 1px;
+    background-color: var(--color-contrast-10);
+    border: 1px solid var(--color-contrast-30);
+    border-radius: $input-border-radius;
     transition: background-color 0.3s;
-    height: 2rem;
-    border-radius: 0.2rem;
+    color: var(--color-text);
 
     &:hover {
-        color: var(--color-link-hover);
-        background-color: var(--color-light-70);
+        background-color: var(--color-contrast-30);
     }
 
     &:active {
-        color: var(--color-link-hover);
-        background-color: var(--color-light-80);
-    }
-
-    :global([data-theme="dark"]) & {
-        &:hover {
-            background-color: var(--color-light-30);
-        }
-
-        &:active {
-            background-color: var(--color-light-40);
-        }
+        background-color: var(--color-contrast-50);
     }
 
     // Disabled state

@@ -1,35 +1,27 @@
 @use 'sass:math';
 @use "@/styles/_variables" as *;
 
-$ease: cubic-bezier(.2, .7, .2, 1);
 $label-height: 1.8rem;
 $track-height: 0.4rem;
-$thumb-margin-top: 0 - math.div($form-control-circle - $track-height, 2);
+$thumb-height: 2rem;
+$thumb-width: 0.2rem;
+$thumb-margin-top: 0 - math.div($thumb-height - $track-height, 2);
 
-:global(:root) {
-    --rng-progress: var(--color-light-90);
-    --rng-progress-start: var(--color-light-80);
-    --rng-progress-end: var(--color-light-30);
-    --rng-thumb-shadow: 0 0.25rem 1rem rgba(128, 128, 128, 0.35);
-
-}
-
-:global([data-theme="dark"]) {
-    --rng-progress: var(--color-light-10);
-    --rng-progress-start: var(--color-light-40);
-    --rng-progress-end: var(--color-light-90);
-    --rng-thumb-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.8);
-}
+$progress: var(--color-contrast-5);
+$progress-start: var(--color-contrast-10);
+$progress-end: var(--color-contrast-40);
+$thumb-color: var(--color-contrast-70);
+$border-radius: 0.2rem;
 
 .rng {
     display: grid;
     gap: 0;
     justify-items: end;
-    color: var(--color-foreground);
+    color: var(--color-text);
 }
 
 .label {
-    color: var(--color-foreground);
+    color: var(--color-text);
     height: $label-height;
 }
 
@@ -37,7 +29,6 @@ $thumb-margin-top: 0 - math.div($form-control-circle - $track-height, 2);
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
-    /* space to host the thumb comfortably */
     background: transparent;
     padding: 0;
     margin: 0 0 $label-height;
@@ -46,9 +37,9 @@ $thumb-margin-top: 0 - math.div($form-control-circle - $track-height, 2);
     &::-webkit-slider-runnable-track {
         height: $track-height;
         background:
-            linear-gradient(90deg, var(--rng-progress-start), var(--rng-progress-end)) 0/var(--rng-fill, 40%) 100% no-repeat,
-            linear-gradient(var(--rng-progress), var(--rng-progress)) 0/100% 100% no-repeat;
-        border-radius: $form-control-circle;
+            linear-gradient(90deg, $progress-start, $progress-end) 0/var(--rng-fill, 40%) 100% no-repeat,
+            linear-gradient($progress, $progress) 0/100% 100% no-repeat;
+        border-radius: 0.2rem;
         box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
     }
 
@@ -57,13 +48,10 @@ $thumb-margin-top: 0 - math.div($form-control-circle - $track-height, 2);
         -webkit-appearance: none;
         appearance: none;
         margin-top: $thumb-margin-top;
-        width: $form-control-circle;
-        height: $form-control-circle;
-        border-radius: 999px;
-        background:
-            radial-gradient(circle at 35% 35%, rgba(255, 255, 255, .9), rgba(255, 255, 255, 0) 60%),
-            linear-gradient(180deg, var(--color-light-100), var(--color-light-90));
-        box-shadow: var(--rng-thumb-shadow);
+        width: $thumb-width;
+        height: $thumb-height;
+        border-radius: $border-radius;
+        background-color: $thumb-color;
         cursor: grab;
     }
 
@@ -79,28 +67,26 @@ $thumb-margin-top: 0 - math.div($form-control-circle - $track-height, 2);
     /* Firefox track */
     &::-moz-range-track {
         height: $track-height;
-        background: linear-gradient(var(--rng-progress), var(--rng-progress));
-        border-radius: $form-control-circle;
+        background: linear-gradient($progress, $progress);
+        border-radius: $border-radius;
         box-shadow: inset 0 1px 2px rgba(0, 0, 0, .12);
     }
 
     /* Firefox progress (filled part) */
     &::-moz-range-progress {
         height: $track-height;
-        background: linear-gradient(90deg, var(--rng-progress-start), var(--rng-progress-end));
-        border-radius: $form-control-circle;
+        background: linear-gradient(90deg, $progress-start, $progress-end);
+        border-radius: $border-radius;
     }
 
     /* Firefox thumb */
     &::-moz-range-thumb {
-        width: $form-control-circle;
-        height: $form-control-circle;
-        border-radius: 999px;
-        border: 1px solid rgba(0, 0, 0, .08);
-        background:
-            radial-gradient(circle at 35% 35%, rgba(255, 255, 255, .9), rgba(255, 255, 255, 0) 60%),
-            linear-gradient(180deg, var(--color-light-100), var(--color-light-90));
-        box-shadow: var(--rng-thumb-shadow);
+        margin-top: $thumb-margin-top;
+        width: $thumb-width;
+        height: $thumb-height;
+        border-radius: $border-radius;
+        background-color: $thumb-color;
+        cursor: grab;
     }
 
     &:focus-visible::-moz-range-thumb {}

@@ -3,57 +3,70 @@
 
 /* 1) Base: color map per theme */
 $colors: (
-    default: (color-background-start: lab(100% 0 0),
-        color-background-end: lab(80% 0 0),
-        color-foreground: lab(10% 0 0),
+    default: (
+        color-background: lab(100% 0 0),
+        color-text: lab(10% 0 0),
         color-h: lab(5% 0 0),
         color-muted: lab(40% 0 0),
         color-link: lab(20% 0 0),
         color-link-hover: lab(0% 0 0),
-        color-menu-bg: lab(90% 0 0),
         color-divider: lab(80% 0 0),
 
-        color-light-100: lab(100% 0 0),
-        color-light-95: lab(95% 0 0),
-        color-light-90: lab(90% 0 0),
-        color-light-85: lab(85% 0 0),
-        color-light-80: lab(80% 0 0),
-        color-light-70: lab(70% 0 0),
-        color-light-60: lab(60% 0 0),
-        color-light-50: lab(50% 0 0),
-        color-light-40: lab(40% 0 0),
-        color-light-30: lab(30% 0 0),
-        color-light-20: lab(20% 0 0),
-        color-light-15: lab(15% 0 0),
-        color-light-10: lab(10% 0 0),
-        color-light-5: lab(5% 0 0),
-        color-light-0: lab(0% 0 0),
+        color-contrast-0: lab(100% 0 0),
+        color-contrast-5: lab(95% 0 0),
+        color-contrast-10: lab(90% 0 0),
+        color-contrast-15: lab(85% 0 0),
+        color-contrast-20: lab(80% 0 0),
+        color-contrast-25: lab(75% 0 0),
+        color-contrast-30: lab(70% 0 0),
+        color-contrast-35: lab(65% 0 0),
+        color-contrast-40: lab(60% 0 0),
+        color-contrast-45: lab(55% 0 0),
+        color-contrast-50: lab(50% 0 0),
+        color-contrast-55: lab(45% 0 0),
+        color-contrast-60: lab(40% 0 0),
+        color-contrast-65: lab(35% 0 0),
+        color-contrast-70: lab(30% 0 0),
+        color-contrast-75: lab(25% 0 0),
+        color-contrast-80: lab(20% 0 0),
+        color-contrast-85: lab(15% 0 0),
+        color-contrast-90: lab(10% 0 0),
+        color-contrast-95: lab(5% 0 0),
+        color-contrast-100: lab(0% 0 0),
     ),
 
-    dark: (color-background-start: lab(20% 0 0),
-        color-background-end: lab(0% 0 0),
-        color-foreground: lab(90% 0 0),
+    dark: (
+        color-background: lab(2% 0 0),
+        color-text: lab(90% 0 0),
         color-h: lab(95% 0 0),
         color-muted: lab(70% 0 0),
         color-link: lab(80% 0 0),
         color-link-hover: lab(100% 0 0),
-        color-menu-bg: lab(10% 0 0),
         color-divider: lab(40% 0 0),
+
+        color-contrast-0: lab(0% 0 0),
+        color-contrast-5: lab(5% 0 0),
+        color-contrast-10: lab(10% 0 0),
+        color-contrast-15: lab(15% 0 0),
+        color-contrast-20: lab(20% 0 0),
+        color-contrast-25: lab(25% 0 0),
+        color-contrast-30: lab(30% 0 0),
+        color-contrast-35: lab(35% 0 0),
+        color-contrast-40: lab(40% 0 0),
+        color-contrast-45: lab(45% 0 0),
+        color-contrast-50: lab(50% 0 0),
+        color-contrast-55: lab(55% 0 0),
+        color-contrast-60: lab(60% 0 0),
+        color-contrast-65: lab(65% 0 0),
+        color-contrast-70: lab(70% 0 0),
+        color-contrast-75: lab(75% 0 0),
+        color-contrast-80: lab(80% 0 0),
+        color-contrast-85: lab(85% 0 0),
+        color-contrast-90: lab(90% 0 0),
+        color-contrast-95: lab(95% 0 0),
+        color-contrast-100: lab(100% 0 0),
     ),
 );
-
-/* 2) Derived tokens: same rules for all themes */
-@function derive-tokens($base) {
-    $color-background-end: map.get($base, color-background-end);
-
-    $out: (
-    );
-
-/* Example: --color-footer-border = color-background-end lightened by 15% */
-$out: map.set($out, color-footer-border, color.scale($color-background-end, $lightness: 10%));
-
-@return $out;
-}
 
 /* 3) Export CSS custom properties (base + derived) */
 @mixin theme-vars($theme) {
@@ -63,28 +76,4 @@ $out: map.set($out, color-footer-border, color.scale($color-background-end, $lig
     @each $name, $value in $base {
         --#{$name}: #{$value};
     }
-
-    /* Derived tokens */
-    $derived: derive-tokens($base);
-
-    @each $name, $value in $derived {
-        --#{$name}: #{$value};
-    }
-}
-
-/* 4) Helper: get var() with fallback from a specific theme
-
-token($theme, $name) returns a CSS variable with a fallback:
-
-color: token(light, color-link); // → var(--color-link, #111111)
-border-color: token(light, color-footer-border); // → var(--color-footer-border, #e6e6e6)
-
-This way, even before CSS variables are applied at runtime, the compiled CSS already has a usable value.
-*/
-@function token($theme, $name) {
-    $theme-map: map.get($colors, $theme);
-    $derived-map: derive-tokens($theme-map);
-    $value: if(map.has-key($theme-map, $name), map.get($theme-map, $name), map.get($derived-map, $name));
-
-    @return unquote("var(--#{$name}, #{$value})");
 }
