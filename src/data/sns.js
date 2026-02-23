@@ -1,4 +1,4 @@
-import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faLinkedin, faGithub, faInstagram, faXTwitter } from '@fortawesome/free-brands-svg-icons'
 
 const snsLinks = [
     {
@@ -13,6 +13,20 @@ const snsLinks = [
         title: "My GitHub",
         url: "https://github.com/nnearobot",
         icon: faGithub,
+        label: "nnearobot",
+    },
+    {
+        id: "instagram",
+        title: "My Instagram",
+        url: "https://www.instagram.com/nnearobot",
+        icon: faInstagram,
+        label: "nnearobot",
+    },
+    {
+        id: "x",
+        title: "My X",
+        url: "https://www.x.com/nnearobot",
+        icon: faXTwitter,
         label: "nnearobot",
     },
 ];

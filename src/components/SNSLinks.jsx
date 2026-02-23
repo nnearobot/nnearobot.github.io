@@ -4,9 +4,11 @@ import styles from "./SNSLinks.module.scss";
 
 import snsLinks from "@/data/sns";
 
-const SNSLinks = ({ withLabels = false }) => {
+const SNSLinks = ({ withLabels = false, className }) => {
+    const classes = [styles.sns, className].filter(Boolean).join(" ");
+
     return (
-        <nav className={styles.sns} aria-label="social links">
+        <nav className={classes} aria-label="social links">
             <ul>
                 {snsLinks.map((s) => (
                     <li key={s.id}>
