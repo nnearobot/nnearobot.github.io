@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
@@ -19,7 +19,7 @@ const DEFAULT_BASIS = {
     k: { x: 0, y: 0, z: 1 },
 };
 
-const INITIAL_VECTOR_FORM = { x: "1", y: "1", z: "1" };
+const INITIAL_VECTOR_FORM = { x: "", y: "", z: "" };
 const INITIAL_BASIS_FORM = {
     i: { x: "1", y: "0", z: "0" },
     j: { x: "0", y: "1", z: "0" },
@@ -369,6 +369,10 @@ const VectorSpacePage = () => {
         );
     };
 
+    const handleRemoveVector = (vectorId) => {
+        setVectors((prev) => prev.filter((vector) => vector.id !== vectorId));
+    };
+
     return (
         <div className={styles.vectorSpace}>
             <h1>Vector Space</h1>
@@ -448,29 +452,37 @@ const VectorSpacePage = () => {
                                     {vectors.length === 0 ? (
                                         <p className={styles.emptyState}>No vectors added yet.</p>
                                     ) : (
-                                                    vectors.map((vector, index) => (
-                                                        <div key={vector.id} className={styles.vectorRow}>
-                                                            <label
-                                                                className={styles.vectorSwatch}
-                                                                style={{ backgroundColor: vector.color }}
-                                                            >
-                                                                <input
-                                                                    type="color"
-                                                                    value={vector.color}
-                                                                    className={styles.vectorColorInput}
-                                                                    onChange={(event) =>
-                                                                        handleVectorColorChange(
-                                                                            vector.id,
-                                                                            event.currentTarget.value
-                                                                        )
-                                                                    }
-                                                                    aria-label={`Change color of vector ${index + 1}`}
-                                                                />
-                                                            </label>
-                                                            <span>
-                                                                v{index + 1} = (
-                                                                {vector.coordinates.x}, {vector.coordinates.y}, {vector.coordinates.z})
+                                        vectors.map((vector, index) => (
+                                            <div key={vector.id} className={styles.vectorRow}>
+                                                <label
+                                                    className={styles.vectorSwatch}
+                                                    style={{ backgroundColor: vector.color }}
+                                                >
+                                                    <input
+                                                        type="color"
+                                                        value={vector.color}
+                                                        className={styles.vectorColorInput}
+                                                        onChange={(event) =>
+                                                            handleVectorColorChange(
+                                                                vector.id,
+                                                                event.currentTarget.value
+                                                            )
+                                                        }
+                                                        aria-label={`Change color of vector ${index + 1}`}
+                                                    />
+                                                </label>
+                                                <span>
+                                                    v{index + 1} = (
+                                                    {vector.coordinates.x}, {vector.coordinates.y}, {vector.coordinates.z})
                                                 </span>
+                                                <button
+                                                    type="button"
+                                                    className={styles.removeVectorButton}
+                                                    onClick={() => handleRemoveVector(vector.id)}
+                                                    aria-label={`Remove vector ${index + 1}`}
+                                                >
+                                                    <FontAwesomeIcon icon={faXmark} />
+                                                </button>
                                             </div>
                                         ))
                                     )}

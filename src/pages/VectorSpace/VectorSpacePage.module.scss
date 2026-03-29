@@ -126,7 +126,15 @@ $canvas-height: 800px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     gap: 0.4rem;
+    padding: 0.4rem;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: $border-radius;
+}
+
+.vectorRow>span:nth-child(2) {
+    flex: 1 1 auto;
 }
 
 .vectorSwatch {
@@ -148,6 +156,15 @@ $canvas-height: 800px;
     height: 100%;
     border: 0;
     padding: 0;
+}
+
+.removeVectorButton {
+    border: none;
+    background: transparent;
+    color: var(--color-contrast-50);
+    cursor: pointer;
+    line-height: 1;
+    width: auto;
 }
 
 .emptyState {
