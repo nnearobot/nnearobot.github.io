@@ -1,6 +1,8 @@
+import { forwardRef } from "react";
+
 import styles from "./TextInput.module.scss";
 
-const TextInput = ({ ...props }) => {
+const TextInput = forwardRef(({ ...props }, ref) => {
     let {
         className = "",
         type = "text",
@@ -8,8 +10,8 @@ const TextInput = ({ ...props }) => {
     } = props;
 
     return (
-        <input type="text" {...rest} className={`${styles.input} ${className}`} />
+        <input ref={ref} type="text" {...rest} className={`${styles.input} ${className}`} />
     );
-};
+});
 
 export default TextInput;

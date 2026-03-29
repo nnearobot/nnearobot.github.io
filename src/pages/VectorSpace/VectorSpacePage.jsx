@@ -82,6 +82,7 @@ const createPlaneGrid = (basisA, basisB, size, color) => {
 
 const VectorSpacePage = () => {
     const mountRef = useRef(null);
+    const vectorXInputRef = useRef(null);
     const sceneRef = useRef(null);
     const rendererRef = useRef(null);
     const cameraRef = useRef(null);
@@ -357,6 +358,12 @@ const VectorSpacePage = () => {
         ]);
 
         setVectorForm(INITIAL_VECTOR_FORM);
+        vectorXInputRef.current?.focus();
+    };
+
+    const handleVectorSubmit = (event) => {
+        event.preventDefault();
+        handleAddVector();
     };
 
     const handleVectorColorChange = (vectorId, color) => {
@@ -423,13 +430,14 @@ const VectorSpacePage = () => {
                                     <span>{vectors.length}/{MAX_VECTORS}</span>
                                 </div>
 
-                                <div className={styles.newVectorForm}>
+                                <form className={styles.newVectorForm} onSubmit={handleVectorSubmit}>
                                     {["x", "y", "z"].map((axis) => (
                                         <InputWithSide
                                             key={axis}
                                             id={`vector-${axis}`}
                                             className={styles.field}
                                             value={vectorForm[axis]}
+                                            ref={axis === "x" ? vectorXInputRef : undefined}
                                             onChange={(event) => handleVectorInputChange(axis, event.currentTarget.value)}
                                             placeholder={axis}
                                             sideLabel={axis}
@@ -437,16 +445,16 @@ const VectorSpacePage = () => {
                                         />
                                     ))}
 
-                                </div>
-                                <div className={styles.addRow}>
-                                    <Button
-                                        className={styles.primaryButton}
-                                        disabled={!canAddVector}
-                                        onClick={handleAddVector}
-                                    >
-                                        Add
-                                    </Button>
-                                </div>
+                                    <div className={styles.addRow}>
+                                        <Button
+                                            type="submit"
+                                            className={styles.primaryButton}
+                                            disabled={!canAddVector}
+                                        >
+                                            Add
+                                        </Button>
+                                    </div>
+                                </form>
 
                                 <div className={styles.vectorList}>
                                     {vectors.length === 0 ? (

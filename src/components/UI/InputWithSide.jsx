@@ -1,8 +1,10 @@
+import { forwardRef } from "react";
+
 import TextInput from "./TextInput";
 
 import styles from "./InputWithSide.module.scss";
 
-const InputWithSide = ({ side = "right", sideLabel, className = "", ...rest }) => {
+const InputWithSide = forwardRef(({ side = "right", sideLabel, className = "", ...rest }, ref) => {
     const inputStyle =
         side === "left" ? styles.right : styles.left;
 
@@ -15,6 +17,7 @@ const InputWithSide = ({ side = "right", sideLabel, className = "", ...rest }) =
             <TextInput
                 type="text"
                 {...rest}
+                ref={ref}
                 className={`${styles.input} ${inputStyle}`}
             />
 
@@ -23,6 +26,6 @@ const InputWithSide = ({ side = "right", sideLabel, className = "", ...rest }) =
             )}
         </div>
     );
-};
+});
 
 export default InputWithSide;
