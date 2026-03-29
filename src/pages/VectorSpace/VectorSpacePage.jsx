@@ -359,6 +359,16 @@ const VectorSpacePage = () => {
         setVectorForm(INITIAL_VECTOR_FORM);
     };
 
+    const handleVectorColorChange = (vectorId, color) => {
+        setVectors((prev) =>
+            prev.map((vector) =>
+                vector.id === vectorId
+                    ? { ...vector, color }
+                    : vector
+            )
+        );
+    };
+
     return (
         <div className={styles.vectorSpace}>
             <h1>Vector Space</h1>
@@ -438,15 +448,28 @@ const VectorSpacePage = () => {
                                     {vectors.length === 0 ? (
                                         <p className={styles.emptyState}>No vectors added yet.</p>
                                     ) : (
-                                        vectors.map((vector, index) => (
-                                            <div key={vector.id} className={styles.vectorRow}>
-                                                <span
-                                                    className={styles.vectorSwatch}
-                                                    style={{ backgroundColor: vector.color }}
-                                                />
-                                                <span>
-                                                    v{index + 1} = (
-                                                    {vector.coordinates.x}, {vector.coordinates.y}, {vector.coordinates.z})
+                                                    vectors.map((vector, index) => (
+                                                        <div key={vector.id} className={styles.vectorRow}>
+                                                            <label
+                                                                className={styles.vectorSwatch}
+                                                                style={{ backgroundColor: vector.color }}
+                                                            >
+                                                                <input
+                                                                    type="color"
+                                                                    value={vector.color}
+                                                                    className={styles.vectorColorInput}
+                                                                    onChange={(event) =>
+                                                                        handleVectorColorChange(
+                                                                            vector.id,
+                                                                            event.currentTarget.value
+                                                                        )
+                                                                    }
+                                                                    aria-label={`Change color of vector ${index + 1}`}
+                                                                />
+                                                            </label>
+                                                            <span>
+                                                                v{index + 1} = (
+                                                                {vector.coordinates.x}, {vector.coordinates.y}, {vector.coordinates.z})
                                                 </span>
                                             </div>
                                         ))
