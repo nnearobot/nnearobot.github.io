@@ -22,13 +22,6 @@ const snsLinks = [
         icon: faInstagram,
         label: "nnearobot",
     },
-    {
-        id: "x",
-        title: "My X",
-        url: "https://www.x.com/nnearobot",
-        icon: faXTwitter,
-        label: "nnearobot",
-    },
 ];
 
 export default snsLinks;
