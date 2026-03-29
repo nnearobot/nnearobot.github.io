@@ -4,6 +4,7 @@ import ProjectsPage from "@/pages/Projects/ProjectsPage";
 import BodyHealthPage from "@/pages/BodyHealth/BodyHealthPage";
 import ConwayLifePage from "@/pages/ConwayLife/ConwayLifePage";
 import BinaryBirthdayPage from "@/pages/BinaryBirthday/BinaryBirthdayPage";
+import VectorSpacePage from "@/pages/VectorSpace/VectorSpacePage";
 
 const routes = {
     home: {
@@ -29,6 +30,10 @@ const routes = {
     binaryBirthday: {
         path: "/binary-birthday",
         element: BinaryBirthdayPage,
+    },
+    vectorSpace: {
+        path: "/vector-space",
+        element: VectorSpacePage,
     },
 };
 
