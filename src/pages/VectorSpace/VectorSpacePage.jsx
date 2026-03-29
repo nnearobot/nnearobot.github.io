@@ -9,18 +9,6 @@ import styles from "./VectorSpacePage.module.scss";
 const MAX_VECTORS = 10;
 const CANVAS_WIDTH = 1400;
 const CANVAS_HEIGHT = 800;
-const VECTOR_COLORS = [
-    "#ff6b6b",
-    "#4dabf7",
-    "#51cf66",
-    "#ffd43b",
-    "#845ef7",
-    "#f06595",
-    "#ffa94d",
-    "#63e6be",
-    "#74c0fc",
-    "#ced4da",
-];
 
 const DEFAULT_BASIS = {
     i: { x: 1, y: 0, z: 0 },
@@ -40,6 +28,12 @@ const isCompleteNumericInput = (value) => /^-?\d+(\.\d+)?$/.test(value);
 const parseCoordinate = (value) => {
     const parsed = Number(value);
     return Number.isFinite(parsed) ? parsed : 0;
+};
+
+const generateRandomVectorColor = () => {
+    const color = new THREE.Color();
+    color.setHSL(Math.random(), Math.random() * 0.9 + 0.5, Math.random() * 0.6 + 0.2);
+    return `#${color.getHexString()}`;
 };
 
 const disposeGroupChildren = (group) => {
@@ -354,7 +348,7 @@ const VectorSpacePage = () => {
             {
                 id: crypto.randomUUID(),
                 coordinates,
-                color: VECTOR_COLORS[prev.length % VECTOR_COLORS.length],
+                color: generateRandomVectorColor(),
             },
         ]);
 
