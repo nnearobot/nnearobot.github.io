@@ -17,10 +17,8 @@
     .side {
         font-size: 1rem;
         color: var(--color-contrast-60);
-        background: var(--color-contrast-10);
+        background-color: var(--color-contrast-10);
         border: 1px solid transparent;
-        padding-inline: 1em;
-        padding-block: 0;
 
         &.left {
             border-right: none;
@@ -37,7 +35,9 @@
         line-height: $input-height;
         height: $input-height;
         box-sizing: content-box;
-        border-color: var(--color-contrast-30);
+        border-color: var(--color-contrast-20);
+        padding-inline: 0.6rem;
+        padding-block: 0;
     }
 
     .left {

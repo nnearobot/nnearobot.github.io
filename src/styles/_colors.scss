@@ -3,8 +3,7 @@
 
 /* 1) Base: color map per theme */
 $colors: (
-    default: (
-        color-background: lab(100% 0 0),
+    default: (color-background: lab(100% 0 0),
         color-text: lab(10% 0 0),
         color-h: lab(5% 0 0),
         color-muted: lab(40% 0 0),
@@ -14,6 +13,7 @@ $colors: (
 
         color-contrast-0: lab(100% 0 0),
         color-contrast-5: lab(95% 0 0),
+        color-contrast-05: lab(95% 0 0),
         color-contrast-10: lab(90% 0 0),
         color-contrast-15: lab(85% 0 0),
         color-contrast-20: lab(80% 0 0),
@@ -35,8 +35,7 @@ $colors: (
         color-contrast-100: lab(0% 0 0),
     ),
 
-    dark: (
-        color-background: lab(2% 0 0),
+    dark: (color-background: lab(2% 0 0),
         color-text: lab(90% 0 0),
         color-h: lab(95% 0 0),
         color-muted: lab(70% 0 0),
@@ -46,6 +45,7 @@ $colors: (
 
         color-contrast-0: lab(0% 0 0),
         color-contrast-5: lab(5% 0 0),
+        color-contrast-05: lab(5% 0 0),
         color-contrast-10: lab(10% 0 0),
         color-contrast-15: lab(15% 0 0),
         color-contrast-20: lab(20% 0 0),
