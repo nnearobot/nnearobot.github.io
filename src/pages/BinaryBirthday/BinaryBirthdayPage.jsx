@@ -47,7 +47,7 @@ const BinaryBirthdayPage = () => {
         <section className={styles.binaryBirthday}>
             <Container>
                 <h1>Binary Birthday Timeline</h1>
-                <p className={styles.lead}>Each year is marked by a photo of a cake where candles encode my age in binary.</p>
+                <p className="lead">Each year is marked by a photo of a cake where candles encode my age in binary.</p>
 
                 <ol className={styles.timeline} aria-label="Binary Birthday Timeline">
                     {years.map((year) => {

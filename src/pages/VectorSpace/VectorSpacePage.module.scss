@@ -1,77 +1,95 @@
 @use "@/styles/_variables" as *;
 @use "@/styles/_mixins" as *;
 
-.page {
+$canvas-width: 1400px;
+$canvas-height: 800px;
+
+.vectorSpace {
     padding-bottom: 40px;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.header {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.subtitle {
-    margin: 0;
-    max-width: 680px;
-    color: var(--color-muted);
 }
 
 .layout {
     display: flex;
     flex-direction: column;
+    position: relative;
+    width: $canvas-width;
+    height: $canvas-height;
+    margin: 0 auto;
     gap: 20px;
 }
 
-.canvasSection {
-    width: 100%;
-}
-
 .canvasFrame {
+    position: relative;
     width: 100%;
     overflow-x: auto;
-    padding-bottom: 10px;
 }
 
 .canvasMount {
-    width: 1400px;
-    height: 800px;
-    margin: 20px auto;
+    width: $canvas-width;
+    height: $canvas-height;
+    margin: 0 auto;
     border: 1px solid var(--color-contrast-20);
     border-radius: $border-radius;
     overflow: hidden;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(235, 241, 248, 0.98) 100%);
 }
 
 .canvasMount :global(canvas) {
     display: block;
 }
 
-.controlsRow {
+.overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding-top: 10px;
+    z-index: 2;
     display: flex;
-    gap: 16px;
-    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $formGrid-gap;
+    backdrop-filter: blur(3px);
+    border: 1px solid var(--color-contrast-20);
+    border-radius: $border-radius;
+    bottom: 0;
+    overflow-y: scroll;
+}
+
+.controlsPanel {
+    display: flex;
+    flex-direction: column;
+    gap: $formGrid-gap;
+}
+
+.toggleButton {
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font: inherit;
+    color: var(--color-contrast-80);
+    background: transparent;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
 }
 
 .panel {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: $formGrid-gap;
     padding: 20px;
-    border: 1px solid var(--color-contrast-20);
-    border-radius: $border-radius;
 }
 
 .panelHeader {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    gap: 12px;
+    gap: $formGrid-gap;
 }
 
 .panelHeader h2,
@@ -82,46 +100,33 @@
 .newVectorForm {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 0.4rem;
+}
+
+.addRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
 .field {
     input {
         @include font-digital;
-        font-size: 1.4rem;
-        width: 50px;
+        width: 3rem;
     }
-}
-
-.primaryButton {
-    border: none;
-    border-radius: 14px;
-    padding: 12px 16px;
-    font: inherit;
-    color: #fff;
-    background: #1f6feb;
-    cursor: pointer;
-    transition: opacity 0.2s ease;
-}
-
-.primaryButton:disabled {
-    opacity: 0.45;
-    cursor: not-allowed;
 }
 
 .vectorList {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.4rem;
 }
 
 .vectorRow {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 10px;
-    padding: 10px 12px;
-    border-radius: 12px;
-    background: rgba(148, 163, 184, 0.12);
+    gap: 0.4rem;
 }
 
 .vectorSwatch {
@@ -139,19 +144,19 @@
 .basisBlock {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.4rem;
 }
 
 .basisTable {
     display: flex;
     flex-direction: row;
-    gap: 12px;
+    gap: 0.4rem;
 }
 
 .basisCoordinates {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.4rem;
     width: auto;
 }
 
