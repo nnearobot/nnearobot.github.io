@@ -47,11 +47,40 @@ const disposeGroupChildren = (group) => {
         const child = group.children[0];
         group.remove(child);
 
+        if (child.geometry) child.geometry.dispose();
+        if (Array.isArray(child.material)) {
+            child.material.forEach((material) => material.dispose());
+        } else if (child.material) {
+            child.material.dispose();
+        }
         if (child.line?.geometry) child.line.geometry.dispose();
         if (child.line?.material) child.line.material.dispose();
         if (child.cone?.geometry) child.cone.geometry.dispose();
         if (child.cone?.material) child.cone.material.dispose();
     }
+};
+
+const createPlaneGrid = (basisA, basisB, size, color) => {
+    const points = [];
+
+    for (let step = -size; step <= size; step += 1) {
+        const fixedAStart = basisA.clone().multiplyScalar(step).add(basisB.clone().multiplyScalar(-size));
+        const fixedAEnd = basisA.clone().multiplyScalar(step).add(basisB.clone().multiplyScalar(size));
+        points.push(fixedAStart, fixedAEnd);
+
+        const fixedBStart = basisB.clone().multiplyScalar(step).add(basisA.clone().multiplyScalar(-size));
+        const fixedBEnd = basisB.clone().multiplyScalar(step).add(basisA.clone().multiplyScalar(size));
+        points.push(fixedBStart, fixedBEnd);
+    }
+
+    const geometry = new THREE.BufferGeometry().setFromPoints(points);
+    const material = new THREE.LineBasicMaterial({
+        color,
+        transparent: true,
+        opacity: 0.3,
+    });
+
+    return new THREE.LineSegments(geometry, material);
 };
 
 const VectorSpacePage = () => {
@@ -60,6 +89,7 @@ const VectorSpacePage = () => {
     const rendererRef = useRef(null);
     const cameraRef = useRef(null);
     const controlsRef = useRef(null);
+    const spaceGroupRef = useRef(null);
     const vectorGroupRef = useRef(null);
     const basisGroupRef = useRef(null);
     const vectorsRef = useRef([]);
@@ -100,17 +130,14 @@ const VectorSpacePage = () => {
         const directionalLight = new THREE.DirectionalLight("#ffffff", 1.4);
         directionalLight.position.set(8, 10, 6);
 
-        const gridHelper = new THREE.GridHelper(20, 20, "#b4b9c7", "#dde1ea");
-        const axesHelper = new THREE.AxesHelper(4);
-
+        const spaceGroup = new THREE.Group();
         const vectorGroup = new THREE.Group();
         const basisGroup = new THREE.Group();
 
         scene.add(camera);
         scene.add(ambientLight);
         scene.add(directionalLight);
-        scene.add(gridHelper);
-        scene.add(axesHelper);
+        scene.add(spaceGroup);
         scene.add(vectorGroup);
         scene.add(basisGroup);
 
@@ -120,6 +147,7 @@ const VectorSpacePage = () => {
         rendererRef.current = renderer;
         cameraRef.current = camera;
         controlsRef.current = controls;
+        spaceGroupRef.current = spaceGroup;
         vectorGroupRef.current = vectorGroup;
         basisGroupRef.current = basisGroup;
 
@@ -158,6 +186,25 @@ const VectorSpacePage = () => {
             mountNode.removeChild(renderer.domElement);
         };
     }, []);
+
+    const redrawSpaceGroup = (currentBasis) => {
+        if (!spaceGroupRef.current) return;
+
+        const group = spaceGroupRef.current;
+        disposeGroupChildren(group);
+
+        const basisI = new THREE.Vector3(currentBasis.i.x, currentBasis.i.y, currentBasis.i.z);
+        const basisJ = new THREE.Vector3(currentBasis.j.x, currentBasis.j.y, currentBasis.j.z);
+        const basisK = new THREE.Vector3(currentBasis.k.x, currentBasis.k.y, currentBasis.k.z);
+
+        const planeGrids = [
+            createPlaneGrid(basisI, basisK, 10, "#d8a2a3"),
+            createPlaneGrid(basisI, basisJ, 10, "#96b9d5"),
+            createPlaneGrid(basisJ, basisK, 10, "#a3c78c"),
+        ];
+
+        planeGrids.forEach((grid) => group.add(grid));
+    };
 
     const redrawBasisGroup = (currentBasis) => {
         if (!basisGroupRef.current) return;
@@ -220,6 +267,10 @@ const VectorSpacePage = () => {
     };
 
     useEffect(() => {
+        redrawSpaceGroup(basis);
+    }, [basis]);
+
+    useEffect(() => {
         redrawBasisGroup(basis);
     }, [basis]);
 
@@ -240,6 +291,7 @@ const VectorSpacePage = () => {
     };
 
     const handleBasisTransformationChange = (nextBasis) => {
+        redrawSpaceGroup(nextBasis);
         redrawBasisGroup(nextBasis);
         redrawVectorGroup(vectorsRef.current, nextBasis);
 
