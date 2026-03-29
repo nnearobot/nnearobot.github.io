@@ -93,13 +93,13 @@ h1 {
 }
 
 h2 {
-    @include h-size(h2);
     text-transform: lowercase;
+    @include h-size(h2);
 }
 
 h3 {
-    @include h-size(h3);
     text-transform: lowercase;
+    @include h-size(h3);
 }
 
 h4 {

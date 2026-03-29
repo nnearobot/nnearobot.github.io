@@ -120,6 +120,7 @@
     font-weight: 400;
     font-style: normal;
     text-transform: lowercase;
+
     &::placeholder {
         text-transform: lowercase;
     }
@@ -127,7 +128,7 @@
 
 
 @function calc-border-radius($boxHeight: $border-radius * 2) {
-    @return $boxHeight / 2;
+    @return calc($boxHeight / 2);
 }
 
 @mixin border-radius($boxHeight: $border-radius * 2) {

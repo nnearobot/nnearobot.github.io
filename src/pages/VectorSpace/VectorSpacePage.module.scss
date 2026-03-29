@@ -1,0 +1,161 @@
+@use "@/styles/_variables" as *;
+@use "@/styles/_mixins" as *;
+
+.page {
+    padding-bottom: 40px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.subtitle {
+    margin: 0;
+    max-width: 680px;
+    color: var(--color-muted);
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.canvasSection {
+    width: 100%;
+}
+
+.canvasFrame {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.canvasMount {
+    width: 1400px;
+    height: 800px;
+    margin: 20px auto;
+    border: 1px solid var(--color-contrast-20);
+    border-radius: $border-radius;
+    overflow: hidden;
+}
+
+.canvasMount :global(canvas) {
+    display: block;
+}
+
+.controlsRow {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    border: 1px solid var(--color-contrast-20);
+    border-radius: $border-radius;
+}
+
+.panelHeader {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.panelHeader h2,
+.basisBlock h3 {
+    margin: 0;
+}
+
+.newVectorForm {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.field {
+    input {
+        @include font-digital;
+        font-size: 1.4rem;
+        width: 50px;
+    }
+}
+
+.primaryButton {
+    border: none;
+    border-radius: 14px;
+    padding: 12px 16px;
+    font: inherit;
+    color: #fff;
+    background: #1f6feb;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.primaryButton:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.vectorList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.vectorRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(148, 163, 184, 0.12);
+}
+
+.vectorSwatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    flex: 0 0 auto;
+}
+
+.emptyState {
+    margin: 0;
+    color: var(--color-muted);
+}
+
+.basisBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.basisTable {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.basisCoordinates {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: auto;
+}
+
+.basisLabel {
+    font-size: 1.2rem;
+    text-align: center;
+}

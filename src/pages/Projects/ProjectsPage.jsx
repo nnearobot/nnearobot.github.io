@@ -22,6 +22,10 @@ const ProjectsPage = () => {
           An interactive Conway simulation where you can tweak settings and watch patterns evolve.
           Experiment with rules and speed to see different outcomes.
         </p>
+        <h4><a href="/vector-space">Vector Space</a></h4>
+        <p className={styles.description}>
+          A 3D vector space playground where you can add vectors from the origin and experiment with custom basis vectors.
+        </p>
       </Container>
     </div>
   )
