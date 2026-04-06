@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
+import { CanvasOverlayLayout } from "@/components";
 import { Container, InputWithSide, Button } from "@/components/UI";
 
 import styles from "./VectorSpacePage.module.scss";
@@ -96,8 +97,6 @@ const VectorSpacePage = () => {
     const [vectorForm, setVectorForm] = useState(INITIAL_VECTOR_FORM);
     const [basis, setBasis] = useState(DEFAULT_BASIS);
     const [basisForm, setBasisForm] = useState(INITIAL_BASIS_FORM);
-    const [isControlsOpen, setIsControlsOpen] = useState(true);
-
     const canAddVector = useMemo(() => {
         if (vectors.length >= MAX_VECTORS) return false;
         return ["x", "y", "z"].every((axis) => vectorForm[axis] !== "");
@@ -387,128 +386,119 @@ const VectorSpacePage = () => {
                 Add vectors from the origin and redefine the basis vectors of the space.
             </p>
 
-            <div className={styles.layout}>
-                <div className={styles.canvasFrame}>
-                    <div ref={mountRef} className={styles.canvasMount} />
-                </div>
+            <CanvasOverlayLayout
+                width={`${CANVAS_WIDTH}px`}
+                height={`${CANVAS_HEIGHT}px`}
+                toggleOpenLabel="Show control panel"
+                toggleCloseLabel="Hide control panel"
+                overlay={(
+                    <aside className={styles.controlsPanel}>
+                        <section className={styles.panel}>
+                            <div className={styles.panelHeader}>
+                                <h3>Basis</h3>
+                            </div>
 
-                <div className={styles.overlay}>
-                    {isControlsOpen && (
-                        <aside className={styles.controlsPanel}>
-                            <section className={styles.panel}>
-                                <div className={styles.panelHeader}>
-                                    <h3>Basis</h3>
-                                </div>
-
-                                <div className={styles.basisTable}>
-                                    {["i", "j", "k"].map((basisKey) => (
-                                        <div key={basisKey} className={styles.basisBlock}>
-                                            <span className={styles.basisLabel}>{basisKey}</span>
-                                            <div className={styles.basisCoordinates}>
-                                                {["x", "y", "z"].map((axis) => (
-                                                    <InputWithSide
-                                                        key={axis}
-                                                        id={`basis-${basisKey}-${axis}`}
-                                                        className={styles.field}
-                                                        value={basisForm[basisKey][axis]}
-                                                        onChange={(event) => handleBasisInputChange(basisKey, axis, event.currentTarget.value)}
-                                                        onBlur={() => handleBasisInputBlur(basisKey, axis)}
-                                                        placeholder={axis}
-                                                        sideLabel={axis}
-                                                        side="left"
-                                                    />
-                                                ))}
-                                            </div>
+                            <div className={styles.basisTable}>
+                                {["i", "j", "k"].map((basisKey) => (
+                                    <div key={basisKey} className={styles.basisBlock}>
+                                        <span className={styles.basisLabel}>{basisKey}</span>
+                                        <div className={styles.basisCoordinates}>
+                                            {["x", "y", "z"].map((axis) => (
+                                                <InputWithSide
+                                                    key={axis}
+                                                    id={`basis-${basisKey}-${axis}`}
+                                                    className={styles.field}
+                                                    value={basisForm[basisKey][axis]}
+                                                    onChange={(event) => handleBasisInputChange(basisKey, axis, event.currentTarget.value)}
+                                                    onBlur={() => handleBasisInputBlur(basisKey, axis)}
+                                                    placeholder={axis}
+                                                    sideLabel={axis}
+                                                    side="left"
+                                                />
+                                            ))}
                                         </div>
-                                    ))}
-                                </div>
-                            </section>
-
-                            <section className={styles.panel}>
-                                <div className={styles.panelHeader}>
-                                    <h3>Vectors</h3>
-                                    <span>{vectors.length}/{MAX_VECTORS}</span>
-                                </div>
-
-                                <form className={styles.newVectorForm} onSubmit={handleVectorSubmit}>
-                                    {["x", "y", "z"].map((axis) => (
-                                        <InputWithSide
-                                            key={axis}
-                                            id={`vector-${axis}`}
-                                            className={styles.field}
-                                            value={vectorForm[axis]}
-                                            ref={axis === "x" ? vectorXInputRef : undefined}
-                                            onChange={(event) => handleVectorInputChange(axis, event.currentTarget.value)}
-                                            placeholder={axis}
-                                            sideLabel={axis}
-                                            side="left"
-                                        />
-                                    ))}
-
-                                    <div className={styles.addRow}>
-                                        <Button
-                                            type="submit"
-                                            className={styles.primaryButton}
-                                            disabled={!canAddVector}
-                                        >
-                                            Add
-                                        </Button>
                                     </div>
-                                </form>
+                                ))}
+                            </div>
+                        </section>
 
-                                <div className={styles.vectorList}>
-                                    {vectors.length === 0 ? (
-                                        <p className={styles.emptyState}>No vectors added yet.</p>
-                                    ) : (
-                                        vectors.map((vector, index) => (
-                                            <div key={vector.id} className={styles.vectorRow}>
-                                                <label
-                                                    className={styles.vectorSwatch}
-                                                    style={{ backgroundColor: vector.color }}
-                                                >
-                                                    <input
-                                                        type="color"
-                                                        value={vector.color}
-                                                        className={styles.vectorColorInput}
-                                                        onChange={(event) =>
-                                                            handleVectorColorChange(
-                                                                vector.id,
-                                                                event.currentTarget.value
-                                                            )
-                                                        }
-                                                        aria-label={`Change color of vector ${index + 1}`}
-                                                    />
-                                                </label>
-                                                <span>
-                                                    v{index + 1} = (
-                                                    {vector.coordinates.x}, {vector.coordinates.y}, {vector.coordinates.z})
-                                                </span>
-                                                <button
-                                                    type="button"
-                                                    className={styles.removeVectorButton}
-                                                    onClick={() => handleRemoveVector(vector.id)}
-                                                    aria-label={`Remove vector ${index + 1}`}
-                                                >
-                                                    <FontAwesomeIcon icon={faXmark} />
-                                                </button>
-                                            </div>
-                                        ))
-                                    )}
+                        <section className={styles.panel}>
+                            <div className={styles.panelHeader}>
+                                <h3>Vectors</h3>
+                                <span>{vectors.length}/{MAX_VECTORS}</span>
+                            </div>
+
+                            <form className={styles.newVectorForm} onSubmit={handleVectorSubmit}>
+                                {["x", "y", "z"].map((axis) => (
+                                    <InputWithSide
+                                        key={axis}
+                                        id={`vector-${axis}`}
+                                        className={styles.field}
+                                        value={vectorForm[axis]}
+                                        ref={axis === "x" ? vectorXInputRef : undefined}
+                                        onChange={(event) => handleVectorInputChange(axis, event.currentTarget.value)}
+                                        placeholder={axis}
+                                        sideLabel={axis}
+                                        side="left"
+                                    />
+                                ))}
+
+                                <div className={styles.addRow}>
+                                    <Button
+                                        type="submit"
+                                        className={styles.primaryButton}
+                                        disabled={!canAddVector}
+                                    >
+                                        Add
+                                    </Button>
                                 </div>
-                            </section>
-                        </aside>
-                    )}
-                </div>
+                            </form>
 
-                <button
-                    type="button"
-                    className={styles.toggleButton}
-                    onClick={() => setIsControlsOpen((prev) => !prev)}
-                    aria-label={isControlsOpen ? "Hide control panel" : "Show control panel"}
-                >
-                    <FontAwesomeIcon icon={faBars} />
-                </button>
-            </div>
+                            <div className={styles.vectorList}>
+                                {vectors.length === 0 ? (
+                                    <p className={styles.emptyState}>No vectors added yet.</p>
+                                ) : (
+                                    vectors.map((vector, index) => (
+                                        <div key={vector.id} className={styles.vectorRow}>
+                                            <label
+                                                className={styles.vectorSwatch}
+                                                style={{ backgroundColor: vector.color }}
+                                            >
+                                                <input
+                                                    type="color"
+                                                    value={vector.color}
+                                                    className={styles.vectorColorInput}
+                                                    onChange={(event) =>
+                                                        handleVectorColorChange(
+                                                            vector.id,
+                                                            event.currentTarget.value
+                                                        )
+                                                    }
+                                                    aria-label={`Change color of vector ${index + 1}`}
+                                                />
+                                            </label>
+                                            <span>
+                                                v{index + 1} = (
+                                                {vector.coordinates.x}, {vector.coordinates.y}, {vector.coordinates.z})
+                                            </span>
+                                            <button
+                                                type="button"
+                                                className={styles.removeVectorButton}
+                                                onClick={() => handleRemoveVector(vector.id)}
+                                                aria-label={`Remove vector ${index + 1}`}
+                                            >
+                                                <FontAwesomeIcon icon={faXmark} />
+                                            </button>
+                                        </div>
+                                    ))
+                                )}
+                            </div>
+                        </section>
+                    </aside>
+                )}
+            >
+                <div ref={mountRef} className={styles.canvasMount} />
+            </CanvasOverlayLayout>
         </div>
     );
 };

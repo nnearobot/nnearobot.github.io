@@ -8,22 +8,6 @@ $canvas-height: 800px;
     padding-bottom: 40px;
 }
 
-.layout {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: $canvas-width;
-    height: $canvas-height;
-    margin: 0 auto;
-    gap: 20px;
-}
-
-.canvasFrame {
-    position: relative;
-    width: 100%;
-    overflow-x: auto;
-}
-
 .canvasMount {
     width: $canvas-width;
     height: $canvas-height;
@@ -38,44 +22,10 @@ $canvas-height: 800px;
     display: block;
 }
 
-.overlay {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    padding-top: 10px;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: $formGrid-gap;
-    backdrop-filter: blur(3px);
-    border: 1px solid var(--color-contrast-20);
-    border-radius: $border-radius;
-    bottom: 0;
-    overflow-y: scroll;
-}
-
 .controlsPanel {
     display: flex;
     flex-direction: column;
     gap: $formGrid-gap;
-}
-
-.toggleButton {
-    border: none;
-    width: 40px;
-    height: 40px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font: inherit;
-    color: var(--color-contrast-80);
-    background: transparent;
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 3;
 }
 
 .panel {

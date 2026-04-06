@@ -1,0 +1,66 @@
+@use "@/styles/_variables" as *;
+
+.layout {
+    --canvas-overlay-layout-width: 1400px;
+    --canvas-overlay-layout-height: 800px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: min(100%, var(--canvas-overlay-layout-width));
+    height: var(--canvas-overlay-layout-height);
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.canvasFrame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $formGrid-gap;
+    padding-top: 10px;
+    overflow-y: auto;
+    max-width: min(100%, calc(var(--canvas-overlay-layout-width) - 48px));
+    backdrop-filter: blur(3px);
+    border: 1px solid var(--color-contrast-20);
+    border-radius: $border-radius;
+}
+
+.toggleButton {
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font: inherit;
+    color: var(--color-contrast-80);
+    background: transparent;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+@media (max-width: 768px) {
+    .layout {
+        height: auto;
+        min-height: var(--canvas-overlay-layout-height);
+    }
+
+    .overlay {
+        max-width: calc(100% - 12px);
+    }
+}

@@ -1,3 +1,4 @@
+import CanvasOverlayLayout from "./CanvasOverlayLayout";
 import DownloadCVBtn from "./DownloadCVBtn";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -8,6 +9,7 @@ import ThemeToggle from "./ThemeToggle";
 
 
 export {
+    CanvasOverlayLayout,
     DownloadCVBtn,
     Footer,
     Header,
