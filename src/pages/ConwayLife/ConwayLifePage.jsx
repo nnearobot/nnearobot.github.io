@@ -1,14 +1,36 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { CanvasOverlayLayout } from "@/components";
 import { Button, Range, RadioGroup } from '@/components/UI'
 
 import styles from "./ConwayLifePage.module.scss";
 
+const DEFAULT_CELL_SIZE = 10;
+const MIN_CELL_SIZE = 4;
+const MAX_CELL_SIZE = 24;
+const MIN_BOARD_SIDE = 120;
+
+const createGrid = (cols, rows) => new Uint8Array(cols * rows);
+
+const resizeGrid = (sourceGrid, prevCols, prevRows, nextCols, nextRows) => {
+    const nextGrid = createGrid(nextCols, nextRows);
+    const copyCols = Math.min(prevCols, nextCols);
+    const copyRows = Math.min(prevRows, nextRows);
+
+    for (let y = 0; y < copyRows; y++) {
+        const prevOffset = y * prevCols;
+        const nextOffset = y * nextCols;
+        for (let x = 0; x < copyCols; x++) {
+            nextGrid[nextOffset + x] = sourceGrid[prevOffset + x];
+        }
+    }
+
+    return nextGrid;
+};
 
 const ConwayLifePage = () => {
     const pageRef = useRef(null);
-    const [size, setSize] = useState(100); // 50..300
+    const [cellSize, setCellSize] = useState(DEFAULT_CELL_SIZE);
     const [isRunning, setIsRunning] = useState(false);
     const [tickMs, setTickMs] = useState(120);
     const [generation, setGeneration] = useState(0);
@@ -17,24 +39,22 @@ const ConwayLifePage = () => {
     const [randomPercent, setRandomPercent] = useState(20); // 0..100
 
     const canvasRef = useRef(null);
-    const boardWrapperRef = useRef(null);
 
-    // computed by algorithm (fixed px)
-    const [cellSize, setCellSize] = useState();
-    const [boardSize, setBoardSize] = useState(1000);
+    const [boardMetrics, setBoardMetrics] = useState({
+        width: 1000,
+        height: 700,
+        cols: Math.floor(1000 / DEFAULT_CELL_SIZE),
+        rows: Math.floor(700 / DEFAULT_CELL_SIZE),
+    });
 
     // Simulation buffers
-    const gridRef = useRef(new Uint8Array(size * size));
-    const nextRef = useRef(new Uint8Array(size * size));
+    const gridRef = useRef(createGrid(boardMetrics.cols, boardMetrics.rows));
+    const nextRef = useRef(createGrid(boardMetrics.cols, boardMetrics.rows));
 
     // Latest refs
-    const sizeRef = useRef(size);
     const runningRef = useRef(isRunning);
     const boundaryModeRef = useRef(boundaryMode);
-
-    useEffect(() => {
-        sizeRef.current = size;
-    }, [size]);
+    const boardMetricsRef = useRef(boardMetrics);
 
     useEffect(() => {
         runningRef.current = isRunning;
@@ -44,19 +64,48 @@ const ConwayLifePage = () => {
         boundaryModeRef.current = boundaryMode;
     }, [boundaryMode]);
 
+    useEffect(() => {
+        boardMetricsRef.current = boardMetrics;
+    }, [boardMetrics]);
+
     const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
 
     useEffect(() => {
-        if (!boardWrapperRef.current || !pageRef.current) return;
+        if (!pageRef.current) return;
 
         const updateBoardSize = () => {
             const pageBounds = pageRef.current.getBoundingClientRect();
-            const availableWidth = Math.max(pageBounds.width, 300);
-            const basePx = Math.min(availableWidth, window.innerHeight - 40); // leave some margin
+            const availableWidth = Math.max(Math.floor(pageBounds.width), MIN_BOARD_SIDE);
+            const availableHeight = Math.max(Math.floor(window.innerHeight), MIN_BOARD_SIDE);
+            const nextCols = Math.max(1, Math.floor(availableWidth / cellSize));
+            const nextRows = Math.max(1, Math.floor(availableHeight / cellSize));
+            const nextWidth = nextCols * cellSize;
+            const nextHeight = nextRows * cellSize;
 
-            const cellSize = basePx / sizeRef.current;
-            setCellSize(cellSize);
-            setBoardSize(Math.ceil(cellSize * sizeRef.current));
+            const prevMetrics = boardMetricsRef.current;
+            if (
+                prevMetrics.cols === nextCols &&
+                prevMetrics.rows === nextRows &&
+                prevMetrics.width === nextWidth &&
+                prevMetrics.height === nextHeight
+            ) {
+                return;
+            }
+
+            gridRef.current = resizeGrid(
+                gridRef.current,
+                prevMetrics.cols,
+                prevMetrics.rows,
+                nextCols,
+                nextRows
+            );
+            nextRef.current = createGrid(nextCols, nextRows);
+            setBoardMetrics({
+                width: nextWidth,
+                height: nextHeight,
+                cols: nextCols,
+                rows: nextRows,
+            });
         };
 
         updateBoardSize();
@@ -70,7 +119,7 @@ const ConwayLifePage = () => {
             window.removeEventListener("resize", updateBoardSize);
             ro.disconnect();
         };
-    }, [size]); // recalc when grid size changes
+    }, [cellSize]);
 
     // ---- Draw ----
     const draw = useCallback(() => {
@@ -79,38 +128,39 @@ const ConwayLifePage = () => {
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
-        const n = sizeRef.current;
+        const { cols, rows, width, height } = boardMetricsRef.current;
         const grid = gridRef.current;
-        const cs = cellSize;
-        const bs = cs * n;
 
         // background
         ctx.fillStyle = "#ffffff";
-        ctx.fillRect(0, 0, bs, bs);
+        ctx.fillRect(0, 0, width, height);
 
         // alive cells
         ctx.fillStyle = "#000000";
-        for (let y = 0; y < n; y++) {
-            const rowBase = y * n;
-            const py = y * cs;
-            for (let x = 0; x < n; x++) {
+        for (let y = 0; y < rows; y++) {
+            const rowBase = y * cols;
+            const py = y * cellSize;
+            for (let x = 0; x < cols; x++) {
                 if (grid[rowBase + x] === 1) {
-                    ctx.fillRect(x * cs, py, cs, cs);
+                    ctx.fillRect(x * cellSize, py, cellSize, cellSize);
                 }
             }
         }
 
         // grid lines only when large enough
-        if (cs >= 6) {
+        if (cellSize >= 6) {
             ctx.strokeStyle = "rgba(0,0,0,0.07)";
             ctx.lineWidth = 1;
             ctx.beginPath();
-            for (let i = 0; i <= n; i++) {
-                const p = i * cs;
-                ctx.moveTo(p, 0);
-                ctx.lineTo(p, bs);
-                ctx.moveTo(0, p);
-                ctx.lineTo(bs, p);
+            for (let x = 0; x <= cols; x++) {
+                const px = x * cellSize;
+                ctx.moveTo(px, 0);
+                ctx.lineTo(px, height);
+            }
+            for (let y = 0; y <= rows; y++) {
+                const py = y * cellSize;
+                ctx.moveTo(0, py);
+                ctx.lineTo(width, py);
             }
             ctx.stroke();
         }
@@ -121,17 +171,16 @@ const ConwayLifePage = () => {
         const canvas = canvasRef.current;
         if (!canvas) return;
 
-        const n = sizeRef.current;
-        const cssSize = cellSize * n; // must match boardWrapper fixed size
+        const { width, height } = boardMetrics;
         const dpr = window.devicePixelRatio || 1;
 
         // internal bitmap size
-        canvas.width = Math.floor(cssSize * dpr);
-        canvas.height = Math.floor(cssSize * dpr);
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
 
         // css size
-        canvas.style.width = `${cssSize}px`;
-        canvas.style.height = `${cssSize}px`;
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
 
         const ctx = canvas.getContext("2d");
         if (ctx) {
@@ -139,72 +188,63 @@ const ConwayLifePage = () => {
         }
 
         draw();
-    }, [cellSize, size, draw]);
+    }, [boardMetrics, draw]);
 
     // ===== Simulation =====
-    const applySize = useCallback(
+    const applyCellSize = useCallback(
         (value) => {
-            const n = clamp(Number(value), 50, 300);
-
             setIsRunning(false);
             setGeneration(0);
-            setSize(n);
-
-            sizeRef.current = n;
-            gridRef.current = new Uint8Array(n * n);
-            nextRef.current = new Uint8Array(n * n);
-
-            // board size will be recomputed by the sizing effect
-            requestAnimationFrame(draw);
+            setCellSize(clamp(Number(value), MIN_CELL_SIZE, MAX_CELL_SIZE));
         },
-        [draw]
+        []
     );
 
     const reset = useCallback(() => {
         setIsRunning(false);
         setGeneration(0);
-        const n = sizeRef.current;
-        gridRef.current = new Uint8Array(n * n);
-        nextRef.current = new Uint8Array(n * n);
+        const { cols, rows } = boardMetricsRef.current;
+        gridRef.current = createGrid(cols, rows);
+        nextRef.current = createGrid(cols, rows);
         draw();
     }, [draw]);
 
     const randomFill = useCallback(() => {
-        const n = sizeRef.current;
         const p = clamp(randomPercent, 0, 100) / 100;
+        const { cols, rows } = boardMetricsRef.current;
 
-        const grid = new Uint8Array(n * n);
+        const grid = createGrid(cols, rows);
         for (let i = 0; i < grid.length; i++) {
             grid[i] = Math.random() < p ? 1 : 0;
         }
 
         gridRef.current = grid;
-        nextRef.current = new Uint8Array(n * n);
+        nextRef.current = createGrid(cols, rows);
 
         setGeneration(0);
         draw();
     }, [randomPercent, draw]);
 
     const step = useCallback(() => {
-        const n = sizeRef.current;
+        const { cols, rows } = boardMetricsRef.current;
         const grid = gridRef.current;
         const next = nextRef.current;
         const mode = boundaryModeRef.current;
 
-        const idx = (x, y) => y * n + x;
+        const idx = (x, y) => y * cols + x;
 
         const getCell = (x, y) => {
             if (mode === "wrap") {
-                const xx = (x % n + n) % n;
-                const yy = (y % n + n) % n;
+                const xx = (x % cols + cols) % cols;
+                const yy = (y % rows + rows) % rows;
                 return grid[idx(xx, yy)];
             }
-            if (x < 0 || y < 0 || x >= n || y >= n) return 0;
+            if (x < 0 || y < 0 || x >= cols || y >= rows) return 0;
             return grid[idx(x, y)];
         };
 
-        for (let y = 0; y < n; y++) {
-            for (let x = 0; x < n; x++) {
+        for (let y = 0; y < rows; y++) {
+            for (let x = 0; x < cols; x++) {
                 const neighbors =
                     getCell(x - 1, y - 1) +
                     getCell(x, y - 1) +
@@ -259,10 +299,10 @@ const ConwayLifePage = () => {
             const x = Math.floor(px / cellSize);
             const y = Math.floor(py / cellSize);
 
-            const n = sizeRef.current;
-            if (x < 0 || y < 0 || x >= n || y >= n) return -1;
+            const { cols, rows } = boardMetricsRef.current;
+            if (x < 0 || y < 0 || x >= cols || y >= rows) return -1;
 
-            return y * n + x;
+            return y * cols + x;
         },
         [cellSize]
     );
@@ -309,24 +349,24 @@ const ConwayLifePage = () => {
             <h1 className={styles.title}>Conway's Game of Life</h1>
 
             <CanvasOverlayLayout
-                width={`${boardSize}px`}
-                height={`${boardSize}px`}
+                width={`${boardMetrics.width}px`}
+                height={`${boardMetrics.height}px`}
                 toggleOpenLabel="Show controls panel"
                 toggleCloseLabel="Hide controls panel"
                 overlay={(
                     <aside>
                         <section className={styles.panel}>
                             <label className={styles.controlLabel}>
-                                <span>Field size</span>
+                                <span>Cell size</span>
                             </label>
                             <div className={styles.inputsRow}>
                                 <Range
                                     className={styles.rangeInput}
-                                    min={50}
-                                    max={300}
-                                    value={size}
-                                    formatValue={(v) => `${v}×${v} cells`}
-                                    onChange={(e) => applySize(e.target.value)}
+                                    min={MIN_CELL_SIZE}
+                                    max={MAX_CELL_SIZE}
+                                    value={cellSize}
+                                    label=" px"
+                                    onChange={(e) => applyCellSize(e.target.value)}
                                 />
                             </div>
                         </section>
@@ -339,7 +379,7 @@ const ConwayLifePage = () => {
                                 <Range
                                     className={styles.rangeInput}
                                     min={20}
-                                    max={800}
+                                    max={1000}
                                     value={tickMs}
                                     label=" ms"
                                     onChange={(e) => setTickMs(+e.target.value)}
@@ -404,26 +444,20 @@ const ConwayLifePage = () => {
                             </Button>
                         </section>
 
-                        <section className={styles.metadataRow}>
-                            <span>Generation</span>
-                            <strong>{generation}</strong>
-                        </section>
-
-                        <section className={styles.metadataRow}>
-                            <span>Board: {boardSize}px</span>
-                            <span>{size}×{size}</span>
-                            <span>Cell: {cellSize != undefined ? cellSize.toFixed(2) : ""}px</span>
+                        <section className={`${styles.panel} ${styles.metadataRow}`}>
+                            <div className={styles.row}><span>Generation</span><strong>{generation}</strong></div>
+                            <div className={styles.row}><span>Board</span><span>{boardMetrics.width}×{boardMetrics.height}px</span></div>
+                            <div className={styles.row}><span>Cells</span><span>{boardMetrics.cols}×{boardMetrics.rows}</span></div>
                         </section>
                     </aside>
                 )}
             >
                 <div className={styles.boardColumn}>
                     <div
-                        ref={boardWrapperRef}
                         className={styles.boardWrapper}
                         style={{
-                            width: `${boardSize}px`,
-                            height: `${boardSize}px`,
+                            width: `${boardMetrics.width}px`,
+                            height: `${boardMetrics.height}px`,
                         }}
                     >
                         <canvas
