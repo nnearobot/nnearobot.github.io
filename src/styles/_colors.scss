@@ -1,5 +1,33 @@
-@use "sass:map";
 @use "sass:color";
+@use "sass:map";
+@use "sass:math";
+
+@function build-contrast-colors($reverse: false) {
+    $contrast-colors: ();
+
+    @for $step from 0 through 20 {
+        $value: $step * 5;
+        $lightness: if($reverse, 100 - $value, $value);
+        $base-color: lab($lightness * 1% 0 0);
+
+        $contrast-colors: map.merge($contrast-colors, ("color-contrast-#{$value}": $base-color));
+
+        @for $alpha-step from 0 through 9 {
+            $alpha-value: $alpha-step * 10;
+            $contrast-colors: map.merge(
+                $contrast-colors,
+                (
+                    "color-contrast-#{$value}-a#{$alpha-value}": color.change(
+                            $base-color,
+                            $alpha: math.div($alpha-value, 100)
+                        ),
+                )
+            );
+        }
+    }
+
+    @return $contrast-colors;
+}
 
 /* 1) Base: color map per theme */
 $colors: (
@@ -10,29 +38,6 @@ $colors: (
         color-link: lab(20% 0 0),
         color-link-hover: lab(0% 0 0),
         color-divider: lab(80% 0 0),
-
-        color-contrast-0: lab(100% 0 0),
-        color-contrast-5: lab(95% 0 0),
-        color-contrast-05: lab(95% 0 0),
-        color-contrast-10: lab(90% 0 0),
-        color-contrast-15: lab(85% 0 0),
-        color-contrast-20: lab(80% 0 0),
-        color-contrast-25: lab(75% 0 0),
-        color-contrast-30: lab(70% 0 0),
-        color-contrast-35: lab(65% 0 0),
-        color-contrast-40: lab(60% 0 0),
-        color-contrast-45: lab(55% 0 0),
-        color-contrast-50: lab(50% 0 0),
-        color-contrast-55: lab(45% 0 0),
-        color-contrast-60: lab(40% 0 0),
-        color-contrast-65: lab(35% 0 0),
-        color-contrast-70: lab(30% 0 0),
-        color-contrast-75: lab(25% 0 0),
-        color-contrast-80: lab(20% 0 0),
-        color-contrast-85: lab(15% 0 0),
-        color-contrast-90: lab(10% 0 0),
-        color-contrast-95: lab(5% 0 0),
-        color-contrast-100: lab(0% 0 0),
     ),
 
     dark: (color-background: lab(2% 0 0),
@@ -42,30 +47,15 @@ $colors: (
         color-link: lab(80% 0 0),
         color-link-hover: lab(100% 0 0),
         color-divider: lab(40% 0 0),
-
-        color-contrast-0: lab(0% 0 0),
-        color-contrast-5: lab(5% 0 0),
-        color-contrast-05: lab(5% 0 0),
-        color-contrast-10: lab(10% 0 0),
-        color-contrast-15: lab(15% 0 0),
-        color-contrast-20: lab(20% 0 0),
-        color-contrast-25: lab(25% 0 0),
-        color-contrast-30: lab(30% 0 0),
-        color-contrast-35: lab(35% 0 0),
-        color-contrast-40: lab(40% 0 0),
-        color-contrast-45: lab(45% 0 0),
-        color-contrast-50: lab(50% 0 0),
-        color-contrast-55: lab(55% 0 0),
-        color-contrast-60: lab(60% 0 0),
-        color-contrast-65: lab(65% 0 0),
-        color-contrast-70: lab(70% 0 0),
-        color-contrast-75: lab(75% 0 0),
-        color-contrast-80: lab(80% 0 0),
-        color-contrast-85: lab(85% 0 0),
-        color-contrast-90: lab(90% 0 0),
-        color-contrast-95: lab(95% 0 0),
-        color-contrast-100: lab(100% 0 0),
     ),
+);
+
+$colors: map.merge(
+    $colors,
+    (
+        default: map.merge(map.get($colors, default), build-contrast-colors(true)),
+        dark: map.merge(map.get($colors, dark), build-contrast-colors()),
+    )
 );
 
 /* 3) Export CSS custom properties (base + derived) */
