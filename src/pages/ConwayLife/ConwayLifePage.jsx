@@ -200,6 +200,10 @@ const ConwayLifePage = () => {
         []
     );
 
+    const toggleRunning = useCallback(() => {
+        setIsRunning((value) => !value);
+    }, []);
+
     const reset = useCallback(() => {
         setIsRunning(false);
         setGeneration(0);
@@ -280,6 +284,32 @@ const ConwayLifePage = () => {
         }, tickMs);
         return () => clearInterval(id);
     }, [isRunning, tickMs, step]);
+
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.repeat) return;
+
+            if (event.key === "Enter") {
+                event.preventDefault();
+                toggleRunning();
+                return;
+            }
+
+            if (event.key === "ArrowRight" && !runningRef.current) {
+                event.preventDefault();
+                step();
+                return;
+            }
+
+            if (event.key === "Escape") {
+                event.preventDefault();
+                reset();
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [reset, step, toggleRunning]);
 
     // ===== Input (click + drag) =====
     const isPointerDownRef = useRef(false);
@@ -426,7 +456,7 @@ const ConwayLifePage = () => {
                         </section>
 
                         <section className={styles.buttonsRow}>
-                            <Button onClick={() => setIsRunning((v) => !v)}>
+                            <Button onClick={toggleRunning}>
                                 {isRunning ? "Pause" : "Play"}
                             </Button>
 
@@ -442,6 +472,12 @@ const ConwayLifePage = () => {
                             <Button onClick={reset}>
                                 Reset
                             </Button>
+                        </section>
+
+                        <section className={styles.buttonHintsRow} aria-label="Keyboard shortcuts">
+                            <span>Enter</span>
+                            <span>Right Arrow</span>
+                            <span>Escape</span>
                         </section>
 
                         <section className={`${styles.panel} ${styles.metadataRow}`}>

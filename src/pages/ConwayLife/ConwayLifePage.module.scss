@@ -34,6 +34,17 @@
     justify-content: space-between;
 }
 
+.buttonHintsRow {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 6px;
+    font-size: 0.7rem;
+    line-height: 1.2;
+    color: rgba(0, 0, 0, 0.55);
+    text-align: center;
+}
+
 button {
     width: 65px;
 }
