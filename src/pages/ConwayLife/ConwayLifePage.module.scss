@@ -1,19 +1,11 @@
 @use "@/styles/_variables" as *;
 @use "@/styles/_mixins" as *;
 
-.layout {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-/* ===== Controls ===== */
-.controls {
+.panel {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    width: 300px;
+    gap: $formGrid-gap;
+    padding-block: 20px;
 }
 
 .controlLabel {
@@ -53,7 +45,6 @@ button {
     font-size: 0.8rem;
 }
 
-/* ===== Board ===== */
 .boardColumn {
     min-width: 300px;
 }

@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { GlassPlate, Button, Range, RadioGroup } from '@/components/UI'
+import { CanvasOverlayLayout } from "@/components";
+import { Button, Range, RadioGroup } from '@/components/UI'
 
 import styles from "./ConwayLifePage.module.scss";
 
 
 const ConwayLifePage = () => {
+    const pageRef = useRef(null);
     const [size, setSize] = useState(100); // 50..300
     const [isRunning, setIsRunning] = useState(false);
     const [tickMs, setTickMs] = useState(120);
@@ -45,13 +47,13 @@ const ConwayLifePage = () => {
     const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
 
     useEffect(() => {
-        if (!boardWrapperRef.current) return;
+        if (!boardWrapperRef.current || !pageRef.current) return;
 
         const updateBoardSize = () => {
-            const parent = boardWrapperRef.current.parentElement;
-            if (!parent) return;
+            const pageBounds = pageRef.current.getBoundingClientRect();
+            const availableWidth = Math.max(pageBounds.width, 300);
+            const basePx = Math.min(availableWidth, window.innerHeight - 40); // leave some margin
 
-            const basePx = Math.min(parent.getBoundingClientRect().width, window.innerHeight - 40); // leave some margin
             const cellSize = basePx / sizeRef.current;
             setCellSize(cellSize);
             setBoardSize(Math.ceil(cellSize * sizeRef.current));
@@ -60,10 +62,7 @@ const ConwayLifePage = () => {
         updateBoardSize();
 
         const ro = new ResizeObserver(updateBoardSize);
-        ro.observe(boardWrapperRef.current);
-        if (boardWrapperRef.current.parentElement) {
-            ro.observe(boardWrapperRef.current.parentElement);
-        }
+        ro.observe(pageRef.current);
 
         window.addEventListener("resize", updateBoardSize);
 
@@ -306,14 +305,17 @@ const ConwayLifePage = () => {
     };
 
     return (
-        <div className={styles.page}>
+        <div ref={pageRef} className={styles.page}>
             <h1 className={styles.title}>Conway's Game of Life</h1>
 
-            <div className={styles.layout}>
-                <div>
-
-                    <GlassPlate className={styles.controls}>
-                        <div className={styles.controlGroup}>
+            <CanvasOverlayLayout
+                width={`${boardSize}px`}
+                height={`${boardSize}px`}
+                toggleOpenLabel="Show controls panel"
+                toggleCloseLabel="Hide controls panel"
+                overlay={(
+                    <aside>
+                        <section className={styles.panel}>
                             <label className={styles.controlLabel}>
                                 <span>Field size</span>
                             </label>
@@ -327,9 +329,9 @@ const ConwayLifePage = () => {
                                     onChange={(e) => applySize(e.target.value)}
                                 />
                             </div>
-                        </div>
+                        </section>
 
-                        <div className={styles.controlGroup}>
+                        <section className={styles.panel}>
                             <label className={styles.controlLabel}>
                                 <span>Speed</span>
                             </label>
@@ -343,9 +345,9 @@ const ConwayLifePage = () => {
                                     onChange={(e) => setTickMs(+e.target.value)}
                                 />
                             </div>
-                        </div>
+                        </section>
 
-                        <div className={styles.controlGroup}>
+                        <section className={styles.panel}>
                             <label className={styles.controlLabel}>
                                 <span>Field</span>
                             </label>
@@ -362,9 +364,9 @@ const ConwayLifePage = () => {
                                     aria-label="Boundary mode selection"
                                 />
                             </div>
-                        </div>
+                        </section>
 
-                        <div className={styles.controlGroup}>
+                        <section className={styles.panel}>
                             <label className={styles.controlLabel}>
                                 <span>Random fill</span>
                             </label>
@@ -381,9 +383,9 @@ const ConwayLifePage = () => {
                                     Fill
                                 </Button>
                             </div>
-                        </div>
+                        </section>
 
-                        <div className={styles.buttonsRow}>
+                        <section className={styles.buttonsRow}>
                             <Button onClick={() => setIsRunning((v) => !v)}>
                                 {isRunning ? "Pause" : "Play"}
                             </Button>
@@ -400,21 +402,21 @@ const ConwayLifePage = () => {
                             <Button onClick={reset}>
                                 Reset
                             </Button>
-                        </div>
+                        </section>
 
-                        <div className={styles.metadataRow}>
+                        <section className={styles.metadataRow}>
                             <span>Generation</span>
                             <strong>{generation}</strong>
-                        </div>
+                        </section>
 
-                        <div className={styles.metadataRow}>
+                        <section className={styles.metadataRow}>
                             <span>Board: {boardSize}px</span>
                             <span>{size}×{size}</span>
                             <span>Cell: {cellSize != undefined ? cellSize.toFixed(2) : ""}px</span>
-                        </div>
-                    </GlassPlate>
-                </div>
-
+                        </section>
+                    </aside>
+                )}
+            >
                 <div className={styles.boardColumn}>
                     <div
                         ref={boardWrapperRef}
@@ -434,7 +436,7 @@ const ConwayLifePage = () => {
                         />
                     </div>
                 </div>
-            </div>
+            </CanvasOverlayLayout>
         </div>
     );
 };

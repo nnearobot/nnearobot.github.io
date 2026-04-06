@@ -392,7 +392,7 @@ const VectorSpacePage = () => {
                 toggleOpenLabel="Show control panel"
                 toggleCloseLabel="Hide control panel"
                 overlay={(
-                    <aside className={styles.controlsPanel}>
+                    <aside>
                         <section className={styles.panel}>
                             <div className={styles.panelHeader}>
                                 <h3>Basis</h3>
